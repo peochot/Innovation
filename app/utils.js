@@ -1,5 +1,8 @@
+import fetch from 'isomorphic-fetch';
 
-export function checkHttpStatus(response) {
+const API_URL = "/api/";
+
+function checkHttpStatus(response) {
     if (response.status >= 200 && response.status < 300) {
         return response
     } else {
@@ -9,7 +12,7 @@ export function checkHttpStatus(response) {
     }
 }
 
-export function parseJSON(response) {
+function parseJSON(response) {
      return response.json()
 }
 
@@ -26,4 +29,20 @@ export function getCookie(cname) {
           }
       }
       return "";
+}
+export function request(endpoint,body,method="GET"){
+      return fetch(endpoint, {
+          headers: {'content-type': 'application/json', 'Authorization': localStorage.getItem("token")},
+          method,
+          body: JSON.stringify(body)
+      }).then(checkHttpStatus)
+        .then(parseJSON);
+}
+export function postFormData(endpoint,body,method="POST"){
+      return fetch(`${endpoint}`, {
+          headers: {'Authorization': localStorage.getItem("token")},
+          method,
+          body: body
+      }).then(checkHttpStatus)
+        .then(parseJSON);
 }

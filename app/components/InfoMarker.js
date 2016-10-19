@@ -7,7 +7,7 @@ import JobCard from './JobCard';
 const mapStateToProps = ({selectedJob}) => ({selectedJob});
 
 const mapDispatchToProps = dispatch => ({
-  selectJob: (job_id)=>dispatch(selectJob(job_id))
+  selectJob: (jobId)=>dispatch(selectJob(jobId))
 });
 export class InfoMarker extends Component {
 

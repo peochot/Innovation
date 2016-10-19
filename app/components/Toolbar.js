@@ -12,6 +12,9 @@ const Toolbar = ({ deckId, showAddDeck, onFilter }) => {
 
   return (<div className="container--baseline">
   <span className="m--1 g--4">Navigation</span>
+  <input type="checkbox" id="nav--horizontal-responsive"/>
+  <label htmlFor="nav--horizontal-responsive">MENU</label>
+  <nav className="nav--horizontal g--4"/>
   <nav className="g--3 m--3 nav--horizontal">
     <ul>
       <li><Link to="/"> Home </Link></li>

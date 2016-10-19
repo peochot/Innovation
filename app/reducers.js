@@ -20,16 +20,33 @@ export const auth = (state = initAuth, action) => {
 export const jobs = (state=[], action) => {
   switch (action.type) {
     case 'RECEIVE_JOBS':
-      return action.data.jobs || state;
+      return action.data || state;
     default:
       return state;
 }};
 
 export const selectedJob= (state=null, action) => {
-  console.log("Whyyy");
   switch (action.type) {
     case 'SELECT_JOB':
       return action.job_id;
+    default:
+      return state;
+}};
+export const bookmark = (state=[],action)=>{
+  switch (action.type) {
+    case 'RECEIVE_BOOKMARKS':
+      return action.data || state;
+    case 'ADD_BOOKMARK':
+      return state.concat([action.data]);
+    default:
+      return state;
+}};
+export const application = (state=[],action)=>{
+  switch (action.type) {
+    case 'RECEIVE_APPLICATIONS':
+      return action.data || state;
+    case 'ADD_APPLICATION':
+      return state.concat([action.data]);
     default:
       return state;
 }};

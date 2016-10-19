@@ -9,13 +9,13 @@ const UserMailService = function() {
     var _getBase64 = function(str) {
         return new Buffer(str).toString('base64').replace(/\+/g, '-').replace(/\//g, '_');
     }
-    var send = function(accessToken,targetEmail,originEmail,subject,content,mimeType,filename,fileData) {
+    var send = function(accessToken,targetEmail,user,subject,content,mimeType,filename,fileData) {
       let mail =[
       `Content-Type: multipart/mixed; boundary="foo_bar_baz"\r\n`,
       `MIME-Version: 1.0\r\n`,
       `to: ${targetEmail}\r\n`,
-      `from: ${originEmail}\r\n`,
-      `reply-to: ${originEmail}\r\n`,
+      `from: ${user.firstName} ${user.lastName} <${user.email}>\r\n`,
+      `reply-to: ${user.email}\r\n`,
       `subject: ${subject}\r\n\r\n`,
       `--foo_bar_baz\r\n`,
       `Content-Type: text/html; charset="UTF-8"\r\n`,
@@ -31,7 +31,29 @@ const UserMailService = function() {
       `--foo_bar_baz--`].join('');
       //console.log(mail);
       mail=_getBase64(mail);
-      let requestOptions = {
+      let requestOptions = composeOptions(accessToken,mail);
+      //return;
+      return rp(requestOptions).catch((err)=>{
+        if(err.statusCode === 401){
+          console.log("Refresh");
+          refresh.requestNewAccessToken('google', user.google.refreshToken, function(err, accessToken) {
+            if(err || !accessToken) {
+              return Promise.rejest("Cant refresh token")
+            }
+            user.google.accessToken=accessToken;
+            user.markModified('google');
+            user.save().then(()=>{
+              console.log("Saved new access token");
+              return rp(composeOptions(accessToken,mail));
+            });
+          });
+        }
+        console.log("Error when sent mail",err.statusCode);
+
+      });
+    }
+    var composeOptions=function(accessToken,mail){
+      return {
         url : server,
         method : "POST",
         headers: {
@@ -42,29 +64,6 @@ const UserMailService = function() {
           raw: mail
         })
       };
-      //return;
-      return rp(requestOptions).catch((err)=>{
-        console.log("Error when sent mail",err);
-        /*
-
-        Use later
-        if(reason.code === 401) {
-                  // Access token expired.
-                  // Try to fetch a new one.
-                  refresh.requestNewAccessToken('google', user.refreshToken, function(err, accessToken) {
-                    if(err || !accessToken) { return send401Response(); }
-
-                    // Save the new accessToken for future use
-                    user.save({ accessToken: accessToken }, function() {
-                     // Retry the request.
-                     makeRequest();
-                    });
-                  });
-
-                }
-
-        */
-      });
     }
     var readFile=function(){
       const location= path.join(__dirname, '../../uploads/2b5d75737ff29977fb429387122bb53a');

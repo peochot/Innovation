@@ -20,7 +20,7 @@ const MolService = function() {
               alueet: area,
               englanti:"true",
               sort:"ilmoitusnumero desc",
-              ilmoitettuPvm:"2"
+              ilmoitettuPvm:"1"
             });
     }
     var getJobDetail = function(id) {

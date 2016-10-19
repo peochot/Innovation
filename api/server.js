@@ -42,6 +42,7 @@ const job = new CronJob("15 14 * * *", function() {
   "Europe/Helsinki" /* Time zone of this job. */
 );
 server.listen(app.get('port'),function(){
+  //MolCrawler.crawl();
   /*const fileData =UserMailService.readFile();
   UserMailService.send("ya29.Ci9pA6GTWXwnqwxJYaBRIH3qftggZl4xTkj4kApEf7-pieS06-YaZgW_gVsAb99_uA",
                       "beochot@gmail.com",'Huy Phan <huyphan1493@gmail.com>',"Yo what up ya ?",

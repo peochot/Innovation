@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
 const JobList = props => (
   <div>
   <input type="checkbox" id="nav--super-vertical-responsive"/>
-  <label htmlFor="nav--super-vertical-responsive">MENU</label>
+  <label className="m--1" htmlFor="nav--super-vertical-responsive">JobList</label>
   <nav className="nav--super-vertical g--2"/>
   <aside className="nav--super-vertical g--2 g-med--3 g-small--6 g-tiny--12 no-margin-vertical">
     <nav className="g--12">

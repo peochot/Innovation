@@ -7,7 +7,7 @@ import configureStore from './store/configureStore';
 import { syncHistoryWithStore} from 'react-router-redux';
 import {getCookie} from './utils';
 import {loginUserSuccess} from './actions';
-
+import axios from 'axios';
 
 
 const store = configureStore();

@@ -8,12 +8,12 @@ import {fetchJobs} from '../actions';
 const mapStateToProps = ({auth,jobs}) => ({auth,jobs});
 
 const mapDispatchToProps = dispatch => ({
-  fetchJobs:   (token)   => dispatch(fetchJobs(token))
+  fetchJobs:   ()   => dispatch(fetchJobs())
 });
 
 export class GeoJob extends Component {
   componentWillMount(){
-    this.props.fetchJobs(this.props.auth.token);
+    this.props.fetchJobs();
   }
   render() {
     let height=(window.innerHeight > 0) ? window.innerHeight : screen.height;

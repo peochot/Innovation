@@ -1,12 +1,44 @@
 import Job from '../models/job';
-import Application from '../models/application';
-import Bookmark from '../models/bookmark';
+import JobRef from '../models/job-ref';
 import MailService from '../services/UserMail';
 import libmime from 'libmime';
+
 function list(req,res){
-    Job.find({coords: {$exists: true}}).then((jobs)=>{
-      res.json({jobs:jobs});
+    //cach ngu rat ngu
+    const Promise = require('bluebird');
+    Promise.all([
+        JobRef.find({owner: req.user._id,type:"bookmark"}).lean().distinct('job'),
+        JobRef.find({owner: req.user._id,type:"application"}).lean().distinct('job'),
+        Job.getJobs(req.query).lean()
+    ]).spread(function(bookmarks, applications,jobs) {
+        bookmarks=bookmarks.map((bookmark)=>(bookmark.toString()));
+        applications=applications.map((application)=>(application.toString()));
+        jobs=jobs.map((job)=>{
+          if(bookmarks.indexOf(job._id.toString())!=-1){
+            job['bookmarked']=true;
+          }
+          if(applications.indexOf(job._id.toString())!=-1){
+            job['applied']=true;
+          }
+          return job;
+        });
+        res.json({
+            data: jobs
+        });
+    }, function(err) {
+        res.status(403).json({ message: err });
     });
+  };
+function ownList(req,res){
+  JobRef.find({owner:req.user._id,type:req.query.type})
+        .populate('job')
+        .then((jobRefs)=>{
+          let jobs=[];
+          jobRefs.map((jobRef)=>{
+            jobs.push(jobRef.job);
+          });
+          res.json({data:jobs});
+        });
 };
 function doAction(req,res){
   Job.findById(req.params.jobId)
@@ -42,7 +74,7 @@ function applyWithFile(req,res){
           return MailService.send(
                           user.google.accessToken,
                           "beochot@gmail.com",
-                          `${user.firstName} ${user.lastName} <${user.email}>`,
+                          user,
                           libmime.encodeWord(job.title, 'Q'),
                           req.body.letter,
                           "application/pdf",
@@ -63,16 +95,17 @@ function apply(job,user){
 
 };
 function close(job,user){
-  return Application.remove({ job: job._id,owner:user._id });
+  return JobRef.remove({ job: job._id,owner:user._id,type:"application"});
 };
 function bookmark(job,user){
-    return Bookmark.create({
+    return JobRef.create({
       owner:user._id,
-      job:job._id
+      job:job._id,
+      type:"bookmark"
     });
 };
 function unBookmark(job,user){
-    return Bookmark.remove({ job: job._id,owner:user._id });
+    return Bookmark.remove({ job: job._id,owner:user._id ,type:"bookmark"});
 };
 
-export default {list,doAction,applyWithFile}
+export default {list,ownList,doAction,applyWithFile}

@@ -1,5 +1,6 @@
 //import {push} from 'react-router-redux'
-import { checkHttpStatus, parseJSON } from './utils';
+
+import { request,postFormData } from './utils';
 export const selectJob = job_id => ({
     type: "SELECT_JOB",
     job_id
@@ -70,27 +71,44 @@ export function loginUser(email, password, redirect="/") {
             })
     }
 }
-
-export function receiveProtectedData(data) {
+export function addBookmark(data){
+    return {
+        type: "ADD_BOOKMARK",
+        data
+    }
+}
+export function addApplication(data){
+    return {
+        type: "ADD_APPLICATION",
+        data
+    }
+}
+export function receiveJobs(data) {
     return {
         type: "RECEIVE_JOBS",
         data
     }
 }
+export function receiveBookmarks(data) {
+    return {
+        type: "RECEIVE_BOOKMARKS",
+        data
+    }
+}
+export function receiveApplications(data) {
+    return {
+        type: "RECEIVE_APPLICATIONS",
+        data
+    }
+}
 
-export function fetchJobs(token) {
 
+export function fetchJobs() {
     return (dispatch, state) => {
-//      dispatch(fetchProtectedDataRequest());
-        return fetch('/api/job', {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            .then(checkHttpStatus)
-            .then(parseJSON)
+//      dispatch(fetchingJobs());
+        return request('/api/job')
             .then(response => {
-                dispatch(receiveProtectedData(response));
+                dispatch(receiveJobs(response.data));
             })
             .catch(error => {
               console.log(error);
@@ -100,25 +118,78 @@ export function fetchJobs(token) {
                   dispatch(push('/login'))
                 }
                 */
-            })
+            });
        }
 }
-
-/*
-export const receiveData = data => ({ type: 'RECEIVE_DATA', data: data });
-
-export var startLogin = () => {
-  return (dispatch, getState) => {
-    fetch('/api/login')
-      .then(res => res.json())
-      .then(json => dispatch(receiveData(json)));
-  };
-};
-export const fetchJob = () => {
-  return dispatch => {
-    fetch('/api/job')
-      .then(res => res.json())
-      .then(json => dispatch(receiveData(json)));
-  };
-};
-*/
+export function fetchBookmarks() {
+    return (dispatch, state) => {
+//      dispatch(fetchingJobs());
+        return request('/api/job/bookmark')
+            .then(response => {
+                dispatch(receiveBookmarks(response.data));
+            })
+            .catch(error => {
+              console.log(error);
+              /*
+                if(error.response.status === 401) {
+                  dispatch(loginUserFailure(error));
+                  dispatch(push('/login'))
+                }
+                */
+            });
+       }
+}
+export function fetchApplications() {
+    return (dispatch, state) => {
+//      dispatch(fetchingJobs());
+        return request('/api/job/bookmark')
+            .then(response => {
+                dispatch(receiveApplications(response.data));
+            })
+            .catch(error => {
+              console.log(error);
+              /*
+                if(error.response.status === 401) {
+                  dispatch(loginUserFailure(error));
+                  dispatch(push('/login'))
+                }
+                */
+            });
+       }
+}
+export function bookmark(jobId) {
+    return (dispatch, state) => {
+//      dispatch(fetchingJobs());
+        return request(`/api/job/${jobId}/bookmark`,null,"POST")
+            .then(response => {
+                dispatch(addBookmark(response.data));
+            })
+            .catch(error => {
+              console.log(error);
+              /*
+                if(error.response.status === 401) {
+                  dispatch(loginUserFailure(error));
+                  dispatch(push('/login'))
+                }
+                */
+            });
+       }
+}
+export function apply(jobId) {
+    return (dispatch, state) => {
+//      dispatch(fetchingJobs());
+        return request(`/api/job/${jobId}/apply`,null,"POST")
+            .then(response => {
+                dispatch(addApplication(response.data));
+            })
+            .catch(error => {
+              console.log(error);
+              /*
+                if(error.response.status === 401) {
+                  dispatch(loginUserFailure(error));
+                  dispatch(push('/login'))
+                }
+                */
+            });
+       }
+}
