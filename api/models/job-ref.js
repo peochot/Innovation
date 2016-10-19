@@ -20,7 +20,7 @@ let jobRefSchema = db.Schema({
   }
 });
 
-jobRefSchema.index({ job: 1, type: 1}, { unique: true });
+jobRefSchema.index({ job: 1,type: 1,owner:1}, { unique: true });
 const JobRef =db.model('JobRef',jobRefSchema);
 
 module.exports = JobRef;

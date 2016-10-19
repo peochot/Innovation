@@ -25,11 +25,11 @@ export class InfoMarker extends Component {
           onClick={() => this.props.selectJob(this.props.job._id)}
           {...marker}
               >
-              {this.props.selectedJob==this.props.job._id && (
+              {this.props.selectedJob.jobId==this.props.job._id && (
                 <InfoWindow
                   options={{maxWidth: 400}}
                   onCloseClick={() => this.props.selectJob(null)}>
-                  <JobCard job={this.props.job}/>
+                  <JobCard job={this.props.job} index={this.props.index}/>
                 </InfoWindow>
               )}
 

@@ -25,10 +25,10 @@ export const jobs = (state=[], action) => {
       return state;
 }};
 
-export const selectedJob= (state=null, action) => {
+export const selectedJob= (state={}, action) => {
   switch (action.type) {
     case 'SELECT_JOB':
-      return action.job_id;
+      return action.job;
     default:
       return state;
 }};

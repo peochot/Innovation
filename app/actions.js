@@ -1,9 +1,9 @@
 //import {push} from 'react-router-redux'
 
 import { request,postFormData } from './utils';
-export const selectJob = job_id => ({
+export const selectJob = (jobId,index) => ({
     type: "SELECT_JOB",
-    job_id
+    job:{jobId,index}
 });
 export const loginUserSuccess = auth => {
   localStorage.setItem('token', auth.token);

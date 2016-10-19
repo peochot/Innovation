@@ -30,7 +30,11 @@ function list(req,res){
     });
   };
 function ownList(req,res){
-  JobRef.find({owner:req.user._id,type:req.query.type})
+  let type="bookmark";
+  if(req.query.type=="application"){
+      type="application";
+  }
+  JobRef.find({owner:req.user._id,type:type})
         .populate('job')
         .then((jobRefs)=>{
           let jobs=[];

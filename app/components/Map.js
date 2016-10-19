@@ -10,8 +10,8 @@ export const Map = props => (
     //onClick={this.props.onMapClick}
   >
     {
-        props.jobs.map((job) => (
-        <InfoMarker job={job} key={job._id}/>
+        props.jobs.map((job,index) => (
+        <InfoMarker job={job} index={index} key={job._id}/>
       ))
     }
   </GoogleMap>
