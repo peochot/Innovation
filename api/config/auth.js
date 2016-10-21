@@ -1,6 +1,6 @@
 var url ="http://localhost:3000/";
 if(process.env.PORT){
-    url = "https://young-sierra-68180.herokuapp.com/";
+    url = "https://hidden-peak-51879.herokuapp.com/";
 }
 module.exports={
   'facebookAuth' : {
