@@ -7,7 +7,8 @@
     "start": "node index.js",
     "build": "watchify app/app.js -d -o public/bundle.js -t [ babelify --presets [ react es2015 ] ]",
     "minify": "browserify -d -t [ babelify --presets [  react es2015 ] ] -p [minifyify --map bundle.map.json --output public/bundle.map.json] app/app.js > public/bundle.js",
-    "mini": "browserify app/app.js -d -t [ babelify --presets [  react es2015 ] ] -p [minifyify --map bundle.js.map --output bundle.js.map --uglify [ --compress [ --dead_code ] ] ] > public/bundle.js"
+    "mini": "browserify app/app.js -d -t [ babelify --presets [  react es2015 ] ] -p [minifyify --map bundle.js.map --output bundle.js.map --uglify [ --compress [ --dead_code ] ] ] > public/bundle.js",
+    "postinstall":"npm run minify"
   },
   "engines": {
     "node": "~6.4.0",
