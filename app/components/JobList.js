@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import {selectJob} from '../actions';
 const mapDispatchToProps = dispatch => ({
-  selectJob: (jobId,index)=>dispatch(selectJob(jobId,index))
+  selectJob: (job_id)=>dispatch(selectJob(job_id))
 });
 const JobList = props => (
   <div>
@@ -13,8 +13,8 @@ const JobList = props => (
   <aside className="nav--super-vertical g--2 g-med--3 g-small--6 g-tiny--12 no-margin-vertical">
     <nav className="g--12">
       {
-        props.jobs.map((job,index) => (
-        <a key={job._id} onClick={()=>props.selectJob(job._id,index)}>{job.title}</a>
+        props.jobs.map((job) => (
+        <a key={job._id} onClick={()=>props.selectJob(job._id)}>{job.title}</a>
       ))
       }
     </nav>

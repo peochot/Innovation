@@ -2,7 +2,7 @@ import {Router} from 'express';
 import authController from '../controllers/authenthication';
 import searchController from '../controllers/search';
 import jobController from '../controllers/job';
-import bookmarkController from '../controllers/bookmark';
+import letterController from '../controllers/letter';
 import multer from 'multer';
 
 let storage = multer.memoryStorage();
@@ -26,5 +26,8 @@ router.get('/myJob',jobController.ownList);
 router.post('/job/:jobId/applyWithFile',upload.single('document'),jobController.applyWithFile);
 router.post('/job/:jobId/:action',jobController.doAction);
 
+
+router.get('/letter',letterController.index);
+router.post('/letter',letterController.create);
 
 module.exports=router;

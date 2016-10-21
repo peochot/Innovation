@@ -1,9 +1,9 @@
 //import {push} from 'react-router-redux'
 
 import { request,postFormData } from './utils';
-export const selectJob = (jobId,index) => ({
+export const selectJob = (jobId) => ({
     type: "SELECT_JOB",
-    job:{jobId,index}
+    jobId
 });
 export const loginUserSuccess = auth => {
   localStorage.setItem('token', auth.token);
@@ -71,6 +71,18 @@ export function loginUser(email, password, redirect="/") {
             })
     }
 }
+export function bookmarkJob(jobId){
+    return {
+        type: "BOOKMARK_JOB",
+        jobId
+    }
+}
+export function applyJob(jobId){
+    return {
+        type: "APPLY_JOB",
+        jobId
+    }
+}
 export function addBookmark(data){
     return {
         type: "ADD_BOOKMARK",
@@ -101,7 +113,12 @@ export function receiveApplications(data) {
         data
     }
 }
-
+export function receiveLetters(data){
+  return {
+      type: "RECEIVE_LETTERS",
+      data
+  }
+}
 
 export function fetchJobs() {
     return (dispatch, state) => {
@@ -124,7 +141,7 @@ export function fetchJobs() {
 export function fetchBookmarks() {
     return (dispatch, state) => {
 //      dispatch(fetchingJobs());
-        return request('/api/job/bookmark')
+        return request('/api/myJob?type=bookmark')
             .then(response => {
                 dispatch(receiveBookmarks(response.data));
             })
@@ -142,9 +159,27 @@ export function fetchBookmarks() {
 export function fetchApplications() {
     return (dispatch, state) => {
 //      dispatch(fetchingJobs());
-        return request('/api/job/bookmark')
+        return request('/api/myJob?type=application')
             .then(response => {
                 dispatch(receiveApplications(response.data));
+            })
+            .catch(error => {
+              console.log(error);
+              /*
+                if(error.response.status === 401) {
+                  dispatch(loginUserFailure(error));
+                  dispatch(push('/login'))
+                }
+                */
+            });
+       }
+}
+export function fetchLetters() {
+    return (dispatch, state) => {
+//      dispatch(fetchingJobs());
+        return request('/api/letter')
+            .then(response => {
+                dispatch(receiveLetters(response.data));
             })
             .catch(error => {
               console.log(error);
@@ -160,9 +195,10 @@ export function fetchApplications() {
 export function bookmark(jobId) {
     return (dispatch, state) => {
 //      dispatch(fetchingJobs());
-        return request(`/api/job/${jobId}/bookmark`,null,"POST")
+        return request(`/api/job/${jobId}/bookmark`,undefined,"POST")
             .then(response => {
                 dispatch(addBookmark(response.data));
+                dispatch(bookmarkJob(jobId));
             })
             .catch(error => {
               console.log(error);
@@ -175,12 +211,13 @@ export function bookmark(jobId) {
             });
        }
 }
-export function apply(jobId) {
+export function apply(jobId,index) {
     return (dispatch, state) => {
 //      dispatch(fetchingJobs());
-        return request(`/api/job/${jobId}/apply`,null,"POST")
+        return request(`/api/job/${jobId}/apply`,undefined,"POST")
             .then(response => {
                 dispatch(addApplication(response.data));
+                dispatch(applyJob(jobId));
             })
             .catch(error => {
               console.log(error);

@@ -6,8 +6,7 @@ import getRoutes from './routes';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore} from 'react-router-redux';
 import {getCookie} from './utils';
-import {loginUserSuccess} from './actions';
-import axios from 'axios';
+import {loginUserSuccess,fetchJobs,fetchBookmarks,fetchApplications,fetchLetters} from './actions';
 
 
 const store = configureStore();
@@ -34,6 +33,11 @@ function init () {
         statusText: null
       }
       store.dispatch(loginUserSuccess(authData));
+      store.dispatch(fetchJobs());
+      store.dispatch(fetchBookmarks());
+      store.dispatch(fetchApplications());
+      store.dispatch(fetchLetters());
+
   }
   run();
   store.subscribe(run);

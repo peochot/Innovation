@@ -9,7 +9,7 @@ function index(req,res){
 }
 function create(req,res){
    Letter.create({
-     owner: req,user._id,
+     owner: req.user._id,
      content: req.body.content,
      category: req.body.category
    }).then((letter)=>{
@@ -19,11 +19,9 @@ function create(req,res){
 function update(req,res){
 
 }
-function delete(req,res){
 
-}
 function uploadCV(req,res){
 
 }
 
-export default {index,create,update,delete,uploadCV};
+export default {index,create,update,uploadCV};
