@@ -44,7 +44,6 @@ function insertJobList(jobs){
         );
     });
     console.log("Finnish crawl");
-
 }
 module.exports.crawl = ()=>{
    MolService.getJobLists().then((response)=>{
