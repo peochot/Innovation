@@ -1,4 +1,4 @@
-let initAuth={
+let initAuth = {
   token: null,
   user: {},
   isAuthenticated: false,
@@ -17,43 +17,44 @@ export const auth = (state = initAuth, action) => {
   }
 };
 
-export const jobs = (state=[], action) => {
+export const jobs = (state = [], action) => {
   switch (action.type) {
     case 'RECEIVE_JOBS':
       return action.data || state;
     case 'BOOKMARK_JOB':
       console.log("Cac");
-      return state.map((job)=>{
-        if(action.jobId==job._id){
+      return state.map((job) => {
+        if (action.jobId == job._id) {
           return {
             ...job,
-            bookmarked:true
+        bookmarked:true
           };
-        }
-        return job;
+}
+return job;
       });
     case 'APPLY_JOB':
-      return state.map((job)=>{
-        if(action.jobId==job._id){
-          return {
+return state.map((job) => {
+  if (action.jobId == job._id) {
+    return {
             ...job,
-            applied:true
+  applied:true
           };
         }
-        return job;
+return job;
       });
     default:
-      return state;
+return state;
 }};
 
-export const selectedJob= (state=null, action) => {
+export const selectedJob = (state = null, action) => {
   switch (action.type) {
     case 'SELECT_JOB':
       return action.jobId;
     default:
       return state;
-}};
-export const bookmark = (state=[],action)=>{
+  }
+};
+export const bookmark = (state = [], action) => {
   switch (action.type) {
     case 'RECEIVE_BOOKMARKS':
       return action.data || state;
@@ -61,8 +62,9 @@ export const bookmark = (state=[],action)=>{
       return state.concat([action.data]);
     default:
       return state;
-}};
-export const application = (state=[],action)=>{
+  }
+};
+export const application = (state = [], action) => {
   switch (action.type) {
     case 'RECEIVE_APPLICATIONS':
       return action.data || state;
@@ -70,13 +72,25 @@ export const application = (state=[],action)=>{
       return state.concat([action.data]);
     default:
       return state;
-}};
-export const letter = (state=[],action)=>{
-  switch(action.type){
+  }
+};
+export const letter = (state = [], action) => {
+  switch (action.type) {
     case 'RECEIVE_LETTERS':
-      return action.data||state;
+      return action.data || state;
     case 'ADD_LETTER':
       return state.concat([action.data]);
+    default:
+      return state;
+  }
+}
+
+export const isDiscussOpen = (state=false,action)=>{
+  switch(action.type){
+    case 'OPEN_DICUSS_MODAL':
+      return true;
+    case 'CLOSE_DICUSS_MODAL':
+      return false;
     default:
       return state;
   }

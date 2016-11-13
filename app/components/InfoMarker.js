@@ -10,14 +10,27 @@ const mapDispatchToProps = dispatch => ({
   selectJob: (jobId)=>dispatch(selectJob(jobId))
 });
 export const InfoMarker = props => {
-    let marker={
-      position: {
-        lat: props.job.coords[0],
-        lng: props.job.coords[1],
-      },
-      key: props.job._id,
-      defaultAnimation: 2,
-    };
+    let marker;
+    if(props.job.coords){
+       marker={
+          position: {
+            lat: props.job.coords[0]||1,
+            lng: props.job.coords[1]||1,
+          },
+          key: props.job._id,
+          defaultAnimation: 2,
+        };
+    }else{
+       marker={
+          position: {
+            lat: 0,
+            lng: 0,
+          },
+          key: props.job._id,
+          defaultAnimation: 2,
+        }; 
+    }
+    
     return (
       <Marker
           onClick={() => props.selectJob(props.job._id)}

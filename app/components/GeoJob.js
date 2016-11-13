@@ -4,8 +4,9 @@ import Map from './Map';
 import JobList from './JobList';
 import { connect } from 'react-redux';
 import {fetchJobs} from '../actions';
+import DiscussModal from "./DiscussModal";
 
-const mapStateToProps = ({auth,jobs}) => ({auth,jobs});
+const mapStateToProps = ({auth,jobs,isDiscussOpen,selectedJob}) => ({auth,jobs,isDiscussOpen,selectedJob});
 
 const mapDispatchToProps = dispatch => ({
   fetchJobs:   ()   => dispatch(fetchJobs())
@@ -20,9 +21,13 @@ export class GeoJob extends Component {
     const divStyle = {
       height:height*0.85
     };
-    return (
-      <div style={divStyle} >
+    let content;
+    if(this.props.selectedJob&&this.props.isDiscussOpen){
+      content = <DiscussModal/>
+    }else{
+      content =<div style={divStyle} >
         <JobList jobs={this.props.jobs}/>
+        
         <Map
          containerElement={
            <div style={{ height: `100%`}} />
@@ -36,6 +41,9 @@ export class GeoJob extends Component {
   //       onMarkerRightClick={()=>{}}
         />
       </div>
+    }
+    return (
+      content
     );
   }
 }

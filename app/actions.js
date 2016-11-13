@@ -37,7 +37,13 @@ export const logoutAndRedirect= () => {
         //dispatch(push('/login'))
     }
 }
-
+export const openDiscussModal=()=>{
+    console.log("dsiaohfoiqaesbfoiqwbhfpoawd");
+    return {type:"OPEN_DICUSS_MODAL"}
+}
+export const closeDiscussModal=()=>{
+    return {type:"CLOSE_DICUSS_MODAL"}
+}
 export function loginUser(email, password, redirect="/") {
     return (dispatch)=> {
 //        dispatch(loginUserRequest());
