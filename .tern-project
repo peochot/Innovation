@@ -1,0 +1,29 @@
+{
+    "ecmaVersion": 6,
+    "libs": [
+        "browser",
+        "jquery",
+        "underscore"
+    ],
+    "loadEagerly": [
+	"api/**/*.js",
+	"app/**/*.js"
+    ],
+    "dontLoad": [
+        "public/*.js"
+    ],
+    "plugins": {
+        "complete_strings": {},
+        "node": {},
+        "angular": {},
+        "requirejs": {
+            "baseURL": "./",
+            "paths": {}
+        },
+        "modules": {},
+        "es_modules": {},
+        "doc_comment": {
+            "fullDocs": true
+        }
+    }
+}
