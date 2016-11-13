@@ -1,7 +1,7 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "test",
+  "name": "innovation-project",
+  "version": "0.1.0",
+  "description": "Metropolia Univeristy Innovation Project",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
