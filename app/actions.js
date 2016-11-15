@@ -1,14 +1,15 @@
 //import {push} from 'react-router-redux'
+import * as Action from './store/constants';
 
 import { request,postFormData } from './utils';
 export const selectJob = (jobId) => ({
-    type: "SELECT_JOB",
+    type: Action.SELECT_JOB,
     jobId
 });
 export const loginUserSuccess = auth => {
   localStorage.setItem('token', auth.token);
   return {
-    type: "LOGIN_USER_SUCCESS",
+    type: Action.LOGIN_USER_SUCCESS,
     auth
   }
 }
@@ -16,18 +17,18 @@ export const loginUserSuccess = auth => {
 export const loginUserFailure= error => {
   localStorage.removeItem('token');
   return {
-    type: "LOGIN_USER_FAILURE"
+    type: Action.LOGIN_USER_FAILURE
   }
 }
 
 export const loginUserRequest= () => {
-    type: "LOGIN_USER_REQUEST"
+    type: Action.LOGIN_USER_REQUEST
 }
 
 export const logout= () => {
     localStorage.removeItem('token');
     return {
-        type: "LOGOUT"
+        type: Action.LOGOUT
     }
 }
 
@@ -73,19 +74,19 @@ export function loginUser(email, password, redirect="/") {
 }
 export function bookmarkJob(jobId){
     return {
-        type: "BOOKMARK_JOB",
+        type: Action.BOOKMARK_JOB,
         jobId
     }
 }
 export function applyJob(jobId){
     return {
-        type: "APPLY_JOB",
+        type: Action.APPLY_JOB
         jobId
     }
 }
 export function addBookmark(data){
     return {
-        type: "ADD_BOOKMARK",
+        type: Action.ADD_BOOKMARK,
         data
     }
 }
