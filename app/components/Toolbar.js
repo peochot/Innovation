@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { logout } from './../actions';
+
+// import as ToolbarStyle from './Toolbar.css';
 
 const mapStateToProps = ({auth}) => ({auth});
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout)
+});
 
+// TODO : dispatch(logout);
 const Toolbar = (props) => {
   let Menu;
   if(props.auth.isAuthenticated){
@@ -11,20 +18,17 @@ const Toolbar = (props) => {
             <ul>
               <li className="dropdown"><a>Welcome {props.auth.user.firstName}</a>
                 <ul>
-                  <li><a href="http://www.google.com">D Link</a></li>
-                  <li><a href="http://www.google.com">D Link</a></li>
-                  <li><a href="http://www.google.com">D Link</a></li>
-                  <li><a href="http://www.google.com">D Link</a></li>
+                  <li><a href="http://www.google.com">Logout</a></li>
                 </ul>
               </li>
               <li><Link to="/"> Home </Link></li>
               <li><Link to="/map"> Map </Link></li>
             </ul>
           </nav>
-  }else{
+  } else {
     Menu=
       <nav className="g--3 m--3 nav--horizontal">
-        <li><a href="/google"> Google Login </a></li>
+        <li><a href="/google"> Login using Google </a></li>
       </nav>
   }
   return (<div className="container--baseline">
@@ -36,4 +40,4 @@ const Toolbar = (props) => {
           </div>);
 };
 
-export default connect(mapStateToProps)(Toolbar);
+export default connect(mapStateToProps,mapDispatchToProps)(Toolbar);
