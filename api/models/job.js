@@ -70,7 +70,7 @@ jobSchema.methods.toJSON = function() {
 jobSchema.statics.getQuery = function(params,ids=null) {
     var today = new Date();
     //let criteria = [{ expire: { $gte: today } },{coords: {$exists: true}}];
-    let criteria = [{coords: {$exists: true}}];
+    let criteria = [{coords: {$exists: true,$ne: null }}];
     for (let key in params) {
         if(params[key]){
             switch (key) {

@@ -80,5 +80,4 @@ export const letter = (state=[],action)=>{
       return state.concat([action.data]);
     default:
       return state;
-  }
-}
+}};

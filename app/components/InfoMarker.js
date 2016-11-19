@@ -30,7 +30,6 @@ export const InfoMarker = props => {
           <JobCard job={props.job} index={props.index} />
         </InfoWindow>
       )}
-
     </Marker>
   );
 

@@ -2,6 +2,7 @@ const rp = require('request-promise');
 const fs =require('fs');
 const path = require("path");
 import refresh from 'passport-oauth2-refresh';
+import libmime from 'libmime';
 
 const UserMailService = function() {
     var server = "https://www.googleapis.com/gmail/v1/users/me/messages/send";
@@ -10,11 +11,12 @@ const UserMailService = function() {
         return new Buffer(str).toString('base64').replace(/\+/g, '-').replace(/\//g, '_');
     }
     var send = function(accessToken,targetEmail,user,subject,content,mimeType,filename,fileData) {
+      let from =libmime.encodeWord(`${user.firstName} ${user.lastName} <${user.email}>`,'Q')
       let mail =[
       `Content-Type: multipart/mixed; boundary="foo_bar_baz"\r\n`,
       `MIME-Version: 1.0\r\n`,
       `to: ${targetEmail}\r\n`,
-      `from: ${user.firstName} ${user.lastName} <${user.email}>\r\n`,
+      `from: ${from}\r\n`,
       `reply-to: ${user.email}\r\n`,
       `subject: ${subject}\r\n\r\n`,
       `--foo_bar_baz\r\n`,

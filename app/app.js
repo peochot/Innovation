@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { Router, browserHistory } from 'react-router'; 
 import getRoutes from './routes';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -22,9 +22,7 @@ function run() {
 }
 
 function init() {
-  // TODO : Why both cookie and localStorage ?   
   let token = localStorage.getItem('token') || getCookie("mycookie");
-  console.info('Checking Token',token);
   if (token) {
     const user = JSON.parse(window.atob(token.split('.')[1]));
     const authData = {

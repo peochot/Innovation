@@ -41,9 +41,14 @@ export const logoutAndRedirect = () => {
     }
 }
 
-export function loginUser(email, password, redirect = "/") {
-    return (dispatch) => {
-        //        dispatch(loginUserRequest());
+export const openDiscussModal=()=>{
+    return {type:"OPEN_DICUSS_MODAL"}
+}
+export const closeDiscussModal=()=>{
+    return {type:"CLOSE_DICUSS_MODAL"}
+}
+export function loginUser(email, password, redirect="/") {
+    return (dispatch)=> {
         return fetch('/api/login', {
             method: 'post',
             headers: {

@@ -1,14 +1,14 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "test",
+  "name": "innovation-project",
+  "version": "0.1.0",
+  "description": "Metropolia Univeristy Innovation Project",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "watchify app/app.js -d -o public/bundle.js -t [ babelify --presets [ react es2015 ] ]",
-    "minify": "browserify -d -t [ babelify --presets [  react es2015 ] ] -p [minifyify --map bundle.map.json --output public/bundle.map.json] app/app.js > public/bundle.js",
-    "mini": "browserify app/app.js -d -t [ babelify --presets [  react es2015 ] ] -p [minifyify --map bundle.js.map --output bundle.js.map --uglify [ --compress [ --dead_code ] ] ] > public/bundle.js",
-    "postinstall":"npm run minify"
+    "build":"webpack -w",
+    "postinstall":"webpack",
+    "dedochobiet": "watchify app/app.js -d -o public/bundle.js -t [ babelify --presets [ react es2015 ] ]",
+    "dungxaidedothoi": "browserify -d -t [ babelify --presets [  react es2015 ] ] -p [minifyify --map bundle.map.json --output public/bundle.map.json] app/app.js > public/bundle.js"
   },
   "engines": {
     "node": "~6.4.0",
@@ -48,10 +48,19 @@
     "socket.io": "^1.4.8"
   },
   "devDependencies": {
+    "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.13.0",
+    "css-loader": "^0.25.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
     "babelify": "^7.2.0",
     "browserify": "^13.1.0",
     "fuzzysearch": "^1.0.3",
