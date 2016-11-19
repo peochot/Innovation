@@ -22,6 +22,7 @@ function run() {
 }
 
 function init() {
+  // TODO : Why both cookie and localStorage ?   
   let token = localStorage.getItem('token') || getCookie("mycookie");
   console.info('Checking Token',token);
   if (token) {

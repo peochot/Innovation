@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from './../actions';
 
-import as ToolbarStyle from './Toolbar.css';
+// import as ToolbarStyle from './Toolbar.css';
 
 const mapStateToProps = ({auth}) => ({auth});
 const mapDispatchToProps = dispatch => ({

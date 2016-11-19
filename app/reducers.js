@@ -74,7 +74,7 @@ export const application = (state=[],action)=>{
 }};
 export const letter = (state=[],action)=>{
   switch(action.type){
-    case Names.RECEIVE_LETTERS
+    case Names.RECEIVE_LETTERS:
       return action.data||state;
     case Names.ADD_LETTER:
       return state.concat([action.data]);
