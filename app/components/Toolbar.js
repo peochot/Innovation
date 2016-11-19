@@ -18,7 +18,7 @@ const Toolbar = (props) => {
             <ul>
               <li className="dropdown"><a>Welcome {props.auth.user.firstName}</a>
                 <ul>
-                  <li><a href="http://www.google.com">D Link</a></li>
+                  <li><a href="http://www.google.com">Logout</a></li>
                 </ul>
               </li>
               <li><Link to="/"> Home </Link></li>
