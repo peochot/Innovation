@@ -44,9 +44,11 @@ export const logoutAndRedirect = () => {
 export const openDiscussModal=()=>{
     return {type:"OPEN_DICUSS_MODAL"}
 }
+
 export const closeDiscussModal=()=>{
     return {type:"CLOSE_DICUSS_MODAL"}
 }
+
 export function loginUser(email, password, redirect="/") {
     return (dispatch)=> {
         return fetch('/api/login', {
@@ -211,12 +213,6 @@ export function bookmark(jobId) {
             })
             .catch(error => {
                 console.log(error);
-                /*
-                  if(error.response.status === 401) {
-                    dispatch(loginUserFailure(error));
-                    dispatch(push('/login'))
-                  }
-                  */
             });
     }
 }
