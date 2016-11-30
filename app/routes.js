@@ -6,6 +6,8 @@ import GeoJob from './components/GeoJob';
 import NotFound from './components/NotFound';
 import Home from './components/Home';
 import Application from './components/Application';
+import ProfilePage from './components/ProfilePage';
+
 export default function({dispatch,getState}){
   function onEnter(nextState, replace) {
     if (!getState().auth.isAuthenticated) {
@@ -21,6 +23,7 @@ export default function({dispatch,getState}){
       <IndexRoute component={Home}/>
       <Route path='map(/:jobId)' component={GeoJob} onEnter={onEnter}/>
       <Route path='job/:jobId/apply' component={Application} onEnter={onEnter}/>
+      <Route path='profile' component={ProfilePage} onEnter={onEnter} />
       <Route path='' />
       <Route path='*' component={NotFound} />e
     </Route>

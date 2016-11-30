@@ -4,7 +4,7 @@ import MailService from '../services/UserMail';
 import libmime from 'libmime';
 
 function list(req,res){
-    //cach ngu rat ngu
+    //cach ngu rat ngu , TODO : Refucktor
     const Promise = require('bluebird');
     Promise.all([
         JobRef.find({owner: req.user._id,type:"bookmark"}).lean().distinct('job'),
