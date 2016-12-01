@@ -50,8 +50,8 @@ ProfileForm = reduxForm({
 
 ProfileForm = connect(
     state => ({
-        initialValues: state.user
-    })
+        initialValues: state.auth.user
+    }),{}
 )(ProfileForm);
 
 export default ProfileForm;
