@@ -3,6 +3,7 @@ import authController from '../controllers/authenthication';
 import searchController from '../controllers/search';
 import jobController from '../controllers/job';
 import letterController from '../controllers/letter';
+import userController from '../controllers/user';
 import multer from 'multer';
 
 let storage = multer.memoryStorage();
@@ -29,5 +30,8 @@ router.post('/job/:jobId/:action',jobController.doAction);
 
 router.get('/letter',letterController.index);
 router.post('/letter',letterController.create);
+
+
+router.post('/user',userController.editProfile);
 
 module.exports=router;
