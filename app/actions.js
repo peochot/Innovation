@@ -41,14 +41,16 @@ export const logoutAndRedirect = () => {
     }
 }
 
-export const openDiscussModal=()=>{
-    return {type:"OPEN_DICUSS_MODAL"}
+export const openDiscussModal = () => {
+    return { type: Action.OPEN_DISCUSS_MODAL }
 }
-export const closeDiscussModal=()=>{
-    return {type:"CLOSE_DICUSS_MODAL"}
+
+export const closeDiscussModal = () => {
+    return { type: Action.CLOSE_DISCUSS_MODAL }
 }
-export function loginUser(email, password, redirect="/") {
-    return (dispatch)=> {
+
+export function loginUser(email, password, redirect = "/") {
+    return (dispatch) => {
         return fetch('/api/login', {
             method: 'post',
             headers: {
@@ -103,13 +105,7 @@ export function addApplication(data) {
         data
     }
 }
-// TODO: REQ , SUC ,FAIL
-export function receiveJobs(data) {
-    return {
-        type: Action.RECEIVE_JOBS,
-        data
-    }
-}
+
 export function receiveBookmarks(data) {
     return {
         type: Action.RECEIVE_BOOKMARKS,
@@ -147,6 +143,14 @@ export function fetchJobs() {
             });
     }
 }
+// TODO: REQ , SUC ,FAIL
+export function receiveJobs(data) {
+    return {
+        type: Action.RECEIVE_JOBS,
+        data
+    }
+}
+
 export function fetchBookmarks() {
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
@@ -211,12 +215,6 @@ export function bookmark(jobId) {
             })
             .catch(error => {
                 console.log(error);
-                /*
-                  if(error.response.status === 401) {
-                    dispatch(loginUserFailure(error));
-                    dispatch(push('/login'))
-                  }
-                  */
             });
     }
 }
@@ -237,5 +235,90 @@ export function apply(jobId, index) {
                   }
                   */
             });
+    }
+}
+
+let mockProfile = {
+    firstName: 'Tri',
+    lastName: 'Nguyen',
+    title: 'Student',
+    company: 'Metropolia Oy',
+    experiences : [
+
+    ],
+    applications: [
+
+    ],
+    letterTemplates: [
+        
+    ]
+}
+
+export function fetchProfile() {
+    return (dispatch, state) => {
+        // TODO : Later
+        // return request('/api/myProfile')
+        //     .then(res => {
+        //         dispatch(fetchProfileSuccess(res.data))
+        //     })
+        //     .catch(error => {
+        //         dispatch(fetchProfileFailed(error));
+        //     })
+        return dispatch(fetchProfileSuccess(mockProfile));
+    }
+}
+
+const fetchProfileSuccess = (data) => {
+    return {
+        type: Action.RECEIVE_PROFILE_SUCCESS,
+        data
+    }
+}
+
+const fetchProfileFailed = (err) => {
+    return {
+        type: Action.RECEIVE_PROFILE_FAILED,
+        err
+    }
+}
+
+export function updateProfile(profilePayload) {
+    return (dispatch, state) => {
+        return fetch('/api/myProfile', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(profilePayload)
+        })
+            .then(checkHttpStatus) // WTF are these ?
+            .then(parseJSON)
+            .then(res => {
+                console.log('update profile res',res);
+                try {
+                    dispatch(updateProfileSuccess(res));
+                } catch (e) {
+                    dispatch(updateProfileFailed(e));
+                }
+            })
+            .catch(err => {
+                console.log('update profile err',err)
+                dispatch(updateProfileFailed(err))
+            })
+    }
+}
+
+const updateProfileSuccess = (data) => {
+    return {
+        type: Action.UPDATE_PROFILE_SUCCESS,
+        data
+    }
+}
+
+const updateProfileFailed = (message) => {
+    return {
+        type: Action.UPDATE_PROFILE_FAILED,
+        message
     }
 }

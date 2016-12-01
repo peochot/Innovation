@@ -1,6 +1,12 @@
-function editProfile(req, res) {
+import User from './../models/user';
+
+function getProfile(req, res) {
+    res.json({ data: user });
+}
+
+function updateProfile(req, res) {
     for (let key in req.body) {
-        if (["firstName","lastName", "email"].indexOf(key)!=-1) {
+        if (["firstName","lastName", "email","title","company"].indexOf(key)!=-1) {
             req.user[key] = req.body[key];
         }
     }
@@ -12,5 +18,4 @@ function editProfile(req, res) {
         });
 }
 
-
-export default { editProfile};
+export default { getProfile, updateProfile };

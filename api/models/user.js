@@ -5,17 +5,17 @@ require('dotenv').load();
 
 const schemaOptions = {
     toObject: {
-      virtuals: true
+        virtuals: true
     }
-    ,toJSON: {
-      virtuals: true
+    , toJSON: {
+        virtuals: true
     }
-  };
+};
 
 let userSchema = db.Schema({
     __v: {
-      type: Number,
-      select: false
+        type: Number,
+        select: false
     },
     firstName: {
         type: String,
@@ -30,8 +30,8 @@ let userSchema = db.Schema({
         unique: true,
         required: true
     },
-    avatar :{
-        type:String
+    avatar: {
+        type: String
     },
     passhash: {
         type: String,
@@ -41,42 +41,50 @@ let userSchema = db.Schema({
         type: Date,
         default: Date.now
     },
-    facebook:{
-        type:db.SchemaTypes.Mixed,
-        default:{ accessToken:""}
+    facebook: {
+        type: db.SchemaTypes.Mixed,
+        default: { accessToken: "" }
     },
     google: {
-        type:db.SchemaTypes.Mixed,
-        default:{ accessToken:"",
-                  refreshToken:""}
+        type: db.SchemaTypes.Mixed,
+        default: {
+            accessToken: "",
+            refreshToken: ""
+        }
+    },
+    title: {
+        type: db.SchemaTypes.String
+    },
+    company: {
+        type: db.SchemaTypes.String
     },
     salt: String
-},schemaOptions);
+}, schemaOptions);
 
 userSchema.virtual('name').get(function () {
-  return this.firstName+" "+this.lastName;
+    return this.firstName + " " + this.lastName;
 });
-userSchema.methods.generateJWT = function() {
+userSchema.methods.generateJWT = function () {
     var expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
     return jwt.sign({
         _id: this._id,
         email: this.email,
         firstName: this.firstName,
-        lastName:this.lastName,
+        lastName: this.lastName,
         exp: parseInt(expiry.getTime() / 1000),
     }, process.env.JWT_SECRET);
 };
-userSchema.methods.validPassword = function(password) {
+userSchema.methods.validPassword = function (password) {
     return bcrypt.compareSync(password, this.passhash);
 };
 
-userSchema.statics.findByToken = function(token) {
-    let decodedUser={};
+userSchema.statics.findByToken = function (token) {
+    let decodedUser = {};
     try {
-      decodedUser = jwt.verify(token, process.env.JWT_SECRET);
+        decodedUser = jwt.verify(token, process.env.JWT_SECRET);
     } catch (e) {
-      return Promise.reject("Invalid token");
+        return Promise.reject("Invalid token");
     }
     if (decodedUser) {
         //console.log(decodedUser._id);
@@ -86,11 +94,11 @@ userSchema.statics.findByToken = function(token) {
     }
 };
 
-userSchema.methods.toJSON = function() {
-  var obj = this.toObject();
-  delete obj.passhash
-  return obj;
+userSchema.methods.toJSON = function () {
+    var obj = this.toObject();
+    delete obj.passhash
+    return obj;
 }
 
-const User =db.model('User',userSchema);
+const User = db.model('User', userSchema);
 module.exports = User;

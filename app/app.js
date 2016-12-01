@@ -37,7 +37,6 @@ function init() {
     store.dispatch(fetchBookmarks());
     store.dispatch(fetchApplications());
     store.dispatch(fetchLetters());
-
   }
   run();
   store.subscribe(run);
