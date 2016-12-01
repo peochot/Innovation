@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router'; 
+import { Router, browserHistory } from 'react-router';
 import getRoutes from './routes';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { getCookie } from './utils';
 import { loginUserSuccess, fetchJobs, fetchBookmarks, fetchApplications, fetchLetters } from './actions';
-
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
