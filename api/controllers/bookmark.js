@@ -1,18 +1,13 @@
-/*
 import Job from '../models/job';
-import Bookmark from '../models/bookmark';
+import JobRef from '../models/job-ref';
 
-function list(req,res){
-  Bookmark.find({owner: req.user._id}).lean().distinct('job')
-          .then((ids)=>{
-            req.query.ids=ids;
-            return Job.getJobs(req.query);
-          })
-          .then((jobs)=>{
+function index(req,res){
+  JobRef.find({owner: req.user._id,type:"bookmark"}).populate('job').lean()
+          .then((refs)=>{
+            let jobs = refs.map((job)=>job.job);
             res.json({data:jobs});
           });
 };
 
 
-export default {list}
-*/
+export default {index}
