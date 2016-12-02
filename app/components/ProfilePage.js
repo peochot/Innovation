@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
+import ProfileForm from './ProfileForm';
+
 import { fetchProfile } from './../actions';
 
 const mapStateToProps = ({ auth, profile }) => ({ auth, profile });
@@ -25,14 +27,34 @@ export class ProfilePage extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        console.log('ProfilePage', newProps);
+        console.log('ProfilePage willreceiprops', newProps);
+    }
+
+    onChange($event) {
+
+    }
+
+    onProfileSubmit( values ) {
+        console.info('Form',values); 
+        // Dispatch something
     }
 
     render() {
-        const { profile } = this.props;
+        console.log(this.props.profile);
+        const { firstName, lastName } = this.props.profile;
+        // console.log(profile);
         return (
-            <div className="container">
-                {profile.firstName}- {profile.lastName}
+            <div>
+                <div className="container">
+                   PROFILE PAGE HEADER HERE {firstName}- {lastName}
+                </div>
+                <h3>
+                    TODO : Tabbed content
+                </h3>
+                <div className="container">
+                    <h4> Profile Form </h4>
+                    <ProfileForm onSubmit={this.onProfileSubmit}></ProfileForm>
+                </div>
             </div>
         )
     }
