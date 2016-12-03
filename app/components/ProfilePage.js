@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
+import { Tabs, Tab } from 'material-ui/Tabs';
+import FontIcon from 'material-ui/FontIcon';
+
 import ProfileForm from './ProfileForm';
+import ApplicationList from './ApplicationList'
 
 import { fetchProfile } from './../actions';
 
@@ -14,24 +18,30 @@ const mapDispatchToProps = dispatch => ({
 export class ProfilePage extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            tabValue : 'basic'
+        }
     }
 
     componentWillMount() {
-        console.log('componentWillMount');
         this.props.getProfile();
     }
 
     componentDidMount() {
-        console.log('componentDidMount');
-        console.log(this.props.profile);
     }
 
     componentWillReceiveProps(newProps) {
-        console.log('ProfilePage willreceiprops', newProps);
     }
 
     onChange($event) {
 
+    }
+
+    onTabChange( value ) {
+        console.log('tAB CHANGE',value);
+        this.setState({
+            tabValue: value,
+        })
     }
 
     onProfileSubmit( values ) {
@@ -41,20 +51,30 @@ export class ProfilePage extends React.Component {
 
     render() {
         console.log(this.props.profile);
+        const { tabValue } =  this.state ;
         const { firstName, lastName } = this.props.profile;
         // console.log(profile);
         return (
             <div>
-                <div className="container">
-                   PROFILE PAGE HEADER HERE {firstName}- {lastName}
-                </div>
-                <h3>
-                    TODO : Tabbed content
-                </h3>
-                <div className="container">
-                    <h4> Profile Form </h4>
-                    <ProfileForm onSubmit={this.onProfileSubmit}></ProfileForm>
-                </div>
+                <h4> User Profile </h4>
+                <Tabs
+                    value={this.state.tabValue}
+                    onChange={this.onTabChange.bind(this)}>
+                    <Tab
+                        icon={<FontIcon className="material-icons">phone</FontIcon>}
+                        label="Basic Information"
+                        value='basic'>
+                        <ProfileForm onSubmit={this.onProfileSubmit}></ProfileForm>
+                    </Tab>
+                    <Tab
+                        icon={<FontIcon className="material-icons">favorite</FontIcon>}
+                        label="Pending Application"
+                        value='application'
+                    >
+                        <ApplicationList></ApplicationList>
+                    </Tab>
+                </Tabs>
+                
             </div>
         )
     }

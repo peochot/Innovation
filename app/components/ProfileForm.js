@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
+import {
+  AutoComplete,
+  Checkbox,
+  DatePicker,
+  TimePicker,
+  RadioButtonGroup,
+  SelectField,
+  Slider,
+  TextField,
+  Toggle
+} from 'redux-form-material-ui'
+
+
 class ProfileForm extends Component {
     constructor(props) {
         super(props);
@@ -13,27 +26,23 @@ class ProfileForm extends Component {
         return (
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>First Name</label>
                     <div>
-                        <Field name="firstName" component="input" type="text"  />
+                        <Field component={TextField} hintText="First Name" name="firstName"  />
                     </div>
                 </div>
                 <div>
-                    <label> Last Name</label>
                     <div>
-                        <Field name="lastName" component="input" type="text"  />
+                        <Field component={TextField} hintText="Last Name" name="lastName"  />
                     </div>
                 </div>
                 <div>
-                    <label> Title</label>
                     <div>
-                        <Field name="title" component="input" type="text"  />
+                        <Field component={TextField} hintText="Title" name="title"  />
                     </div>
                 </div>
                 <div>
-                    <label> Company</label>
                     <div>
-                        <Field name="company" component="input" type="text"  />
+                        <Field component={TextField} hintText="Company" name="company"  />
                     </div>
                 </div>
                 <div>
