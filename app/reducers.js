@@ -2,10 +2,10 @@ import * as Names from './store/constants';
 
 let initAuth = {
   token: null,
-  user: {},
+  user: null,
   isAuthenticated: false,
   isAuthenticating: false,
-  statusText: null
+  isLogout: false
 }
 
 export const auth = (state = initAuth, action) => {
@@ -13,7 +13,10 @@ export const auth = (state = initAuth, action) => {
     case Names.LOGIN_USER_SUCCESS:
       return action.auth;
     case Names.LOGOUT:
-      return initAuth;
+      return {
+        ...initAuth,
+        isLogout:true
+      };
     default:
       return state;
   }
@@ -94,7 +97,7 @@ export const profile = (state = [], action) => {
       return action.data || state;
     default:
       return state;
-    // case Names.UPDATE_PROFILE_FAILED:    
+    // case Names.UPDATE_PROFILE_FAILED:
     // case Names.RECEIVE_PROFILE_FAILED:
   }
 }

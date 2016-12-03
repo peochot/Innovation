@@ -1,5 +1,6 @@
 //import {push} from 'react-router-redux'
 import * as Action from './store/constants';
+import { browserHistory } from 'react-router'
 
 import { request, postFormData } from './utils';
 export const selectJob = (jobId) => ({
@@ -29,17 +30,12 @@ export const loginUserRequest = () => {
 
 export const logout = () => {
     localStorage.removeItem('token');
+    browserHistory.push('/')
     return {
         type: Action.LOGOUT
     }
 }
 
-export const logoutAndRedirect = () => {
-    return (dispatch, state) => {
-        dispatch(logout());
-        //dispatch(push('/login'))
-    }
-}
 
 export const openDiscussModal = () => {
     return { type: Action.OPEN_DISCUSS_MODAL }
@@ -250,7 +246,7 @@ let mockProfile = {
 
     ],
     letterTemplates: [
-        
+
     ]
 }
 

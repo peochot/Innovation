@@ -1,4 +1,3 @@
-
 import Job from '../models/job';
 import JobRef from '../models/job-ref';
 

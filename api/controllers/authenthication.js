@@ -15,7 +15,7 @@ function oauthCallback(name,req,res,next){
     session: false,
   },(err,user,info)=>{
     let sessionToken=user.generateJWT();
-    res.cookie('mycookie', sessionToken, { maxAge: 900000, httpOnly: false});
+    res.cookie('mycookie', sessionToken, { maxAge: 10000, httpOnly: false});
     res.redirect('/');
   })(req,res,next);
 }
