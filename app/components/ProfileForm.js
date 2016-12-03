@@ -22,6 +22,7 @@ class ProfileForm extends Component {
     }
 
     render() {
+        console.log('render profileFOrm');
         const { handleSubmit, pristine, submitting } = this.props;
         return (
             <form onSubmit={handleSubmit}>

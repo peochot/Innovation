@@ -6,13 +6,14 @@ import { Tabs, Tab } from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 
 import ProfileForm from './ProfileForm';
-import ApplicationList from './ApplicationList'
+import ApplicationList from './ApplicationList';
 
-import { fetchProfile } from './../actions';
+import { fetchProfile, setProfile } from './../actions';
 
 const mapStateToProps = ({ auth, profile }) => ({ auth, profile });
 const mapDispatchToProps = dispatch => ({
-    getProfile: () => dispatch(fetchProfile())
+    getProfile: () => dispatch(fetchProfile()),
+    setProfile: () => dispatch(setProfile())
 });
 
 export class ProfilePage extends React.Component {
@@ -47,34 +48,39 @@ export class ProfilePage extends React.Component {
     onProfileSubmit( values ) {
         console.info('Form',values); 
         // Dispatch something
+        // this.props.setProfile(values);
+
     }
 
     render() {
-        console.log(this.props.profile);
         const { tabValue } =  this.state ;
-        const { firstName, lastName } = this.props.profile;
+        const { firstName, lastName, applications } = this.props.profile;
         // console.log(profile);
         return (
             <div>
-                <h4> User Profile </h4>
                 <Tabs
                     value={this.state.tabValue}
                     onChange={this.onTabChange.bind(this)}>
                     <Tab
                         icon={<FontIcon className="material-icons">phone</FontIcon>}
                         label="Basic Information"
-                        value='basic'>
+                        value="basic">
                         <ProfileForm onSubmit={this.onProfileSubmit}></ProfileForm>
                     </Tab>
                     <Tab
                         icon={<FontIcon className="material-icons">favorite</FontIcon>}
                         label="Pending Application"
-                        value='application'
-                    >
-                        <ApplicationList></ApplicationList>
+                        value="application">
+
+                        <ApplicationList appList={applications} />
                     </Tab>
-                </Tabs>
-                
+                    <Tab
+                        icon={<FontIcon className="material-icons">favorite</FontIcon>}
+                        label="CV Templates"
+                        value="templates">
+                        <h4></h4>
+                     </Tab>
+                </Tabs>   
             </div>
         )
     }

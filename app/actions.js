@@ -2,7 +2,7 @@
 import * as Action from './store/constants';
 import { browserHistory } from 'react-router'
 
-import { request, postFormData } from './utils';
+import { request, postFormData, parseJSON } from './utils';
 export const selectJob = (jobId) => ({
     type: Action.SELECT_JOB,
     jobId
@@ -243,10 +243,20 @@ let mockProfile = {
 
     ],
     applications: [
-
+        1,2,3,4
     ],
     letterTemplates: [
-
+        {
+            id: 1,
+            templateName: 'Template Senior DEveloper',
+            contentUrl : 'abcabc'
+        },
+        {
+            id: 2,
+            templateName: 'Template Bad Developer',
+            contentUrl: '',
+            contentString: ''
+        }
     ]
 }
 
@@ -261,6 +271,33 @@ export function fetchProfile() {
         //         dispatch(fetchProfileFailed(error));
         //     })
         return dispatch(fetchProfileSuccess(mockProfile));
+    }
+}
+
+export function setProfile( data ) {
+    return (dispatch, state) => {
+        // TODO: PUT/ POST
+        postFormData(data).then( res => {
+            console.log('form post response',parseJSON(res));
+            return dispatch(setProfileSuccess);         
+        }).catch( err => {
+            console.error('error postProfile',err);
+            return dispatch(setProfileFailed);
+        });
+    }
+}
+
+const setProfileSuccess = ( newUserProfile ) => {
+    return {
+        type: Action.UPDATE_PROFILE_SUCCESS,
+        data: newUserProfile
+    }
+}
+
+const setProfileFailed = ( errMsg) => {
+    return {
+        type: Action.UPDATE_PROFILE_FAILED,
+        error: errMsg
     }
 }
 

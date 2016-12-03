@@ -1,4 +1,4 @@
-import {Router} from 'express';
+\import {Router} from 'express';
 import authController from '../controllers/authenthication';
 import searchController from '../controllers/search';
 import jobController from '../controllers/job';
