@@ -4,6 +4,9 @@ import searchController from '../controllers/search';
 import jobController from '../controllers/job';
 import letterController from '../controllers/letter';
 import profileController from '../controllers/profile';
+import applicationController from '../controllers/application';
+import bookmarkController from '../controllers/bookmark';
+
 import multer from 'multer';
 
 let storage = multer.memoryStorage();
@@ -24,9 +27,13 @@ router.get('/playlist',searchController.playlists);
 router.get('/job',jobController.list);
 router.get('/myJob',jobController.ownList);
 
+
 router.post('/job/:jobId/applyWithFile',upload.single('document'),jobController.applyWithFile);
 router.post('/job/:jobId/:action',jobController.doAction);
 
+router.get('/application',applicationController.index);
+
+router.get('/bookmark',bookmarkController.index);
 
 router.get('/letter',letterController.index);
 router.post('/letter',letterController.create);
