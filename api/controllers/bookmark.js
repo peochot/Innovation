@@ -1,11 +1,11 @@
 import Job from '../models/job';
-import JobRef from '../models/job-ref';
+import Bookmark from '../models/bookmark';
 
 function index(req,res){
-  JobRef.find({owner: req.user._id,type:"bookmark"}).populate('job').lean()
-          .then((refs)=>{
-            let jobs = refs.map((job)=>job.job);
-            res.json({data:jobs});
+  Bookmark.find({owner: req.user._id}).populate('job')
+          .then((bookmarks)=>{
+            //let jobs = refs.map((job)=>job.job);
+            res.json({data:bookmarks});
           });
 };
 

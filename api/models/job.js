@@ -15,6 +15,10 @@ let jobSchema = db.Schema({
         type: String,
         required: true
     },
+    cid:{
+        type:db.SchemaTypes.ObjectId,
+        ref:'Company'
+    },
     company: {//tyonantajanNimi
         type: String,
         required: true
@@ -60,13 +64,7 @@ let jobSchema = db.Schema({
        type:String,
     },
 });
-/*
-jobSchema.methods.toJSON = function() {
-  var obj = this.toObject()
-  delete obj.mol_id
-  return obj
-}
-*/
+
 jobSchema.statics.getQuery = function(params,ids=null) {
     var today = new Date();
     //let criteria = [{ expire: { $gte: today } },{coords: {$exists: true}}];
