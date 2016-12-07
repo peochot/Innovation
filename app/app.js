@@ -8,6 +8,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { getCookie } from './utils';
 import { loginUserSuccess, fetchJobs, fetchBookmarks, fetchApplications, fetchLetters } from './actions';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
@@ -24,15 +25,16 @@ function run() {
 }
 
 function init() {
+  injectTapEventPlugin();
   let token = localStorage.getItem('token') || getCookie("mycookie");
-  if (token) {
+  if (token&&!store.getState().auth.isLogout) {
     const user = JSON.parse(window.atob(token.split('.')[1]));
     const authData = {
       token,
       user,
       isAuthenticated: true,
       isAuthenticating: false,
-      statusText: null
+      isLogout: false
     }
     store.dispatch(loginUserSuccess(authData));
     store.dispatch(fetchJobs());

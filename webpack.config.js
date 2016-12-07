@@ -11,13 +11,15 @@ var webpackConfig = {
     publicPath: '/public',
     filename: 'bundle.js'
   },
-  watch: true,
+  watch: false,
+  devtool: 'source-map',
+  debug: true,
   module: {
     loaders: [{
         test: /\.js?$/,
         exclude: /node_modules/, // js / jsx
         loaders: ['babel-loader'], // is handled by babel loader with es2015 support,
-        
+
       },
       { test: /\.css$/, loader: "style-loader!css-loader" },
       {

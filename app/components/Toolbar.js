@@ -1,43 +1,59 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import FlatButton from 'material-ui/FlatButton';
+import Avatar from 'material-ui/Avatar';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from './../actions';
+import { browserHistory } from 'react-router'
 
-// import as ToolbarStyle from './Toolbar.css';
+function handleTouchTap() {
+  browserHistory.push('/')
+}
 
+const styles = {
+  title: {
+    cursor: 'pointer',
+  },
+};
 const mapStateToProps = ({auth}) => ({auth});
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout)
+  logout: ()=>dispatch(logout())
 });
 
-// TODO : dispatch(logout);
 const Toolbar = (props) => {
-  let Menu;
+  let AccountManagement;
   if(props.auth.isAuthenticated){
-    Menu=  <nav className="g--3 m--3 nav--horizontal">
-            <ul>
-              <li className="dropdown"><a>Welcome {props.auth.user.firstName}</a>
-                <ul>
-                  <li><a href="http://www.google.com">Logout</a></li>
-                </ul>
-              </li>
-              <li><Link to="/"> Home </Link></li>
-              <li><Link to="/map"> Map </Link></li>
-            </ul>
-          </nav>
+    AccountManagement =
+                <div id="userManagement" style={{display: 'flex', alignItems: 'center'}}>
+                    <FlatButton
+                      containerElement={<Link to="/" />}
+                      label='Home'/>
+                    <FlatButton
+                      containerElement={<Link to="/map" />}
+                      label='Job Map'/>
+                    <FlatButton style={{color:'#FFFFFF'}} label={props.auth.user.name}
+                                secondary={true}
+                                icon={<Avatar size={30}>{props.auth.user.name}</Avatar>}/>
+                    <FlatButton style={{color:'#FFFFFF'}} onTouchTap={()=>props.logout()} label='Sign out'/>
+                </div>;
   } else {
-    Menu=
-      <nav className="g--3 m--3 nav--horizontal">
-        <li><a href="/google"> Login using Google </a></li>
-      </nav>
+    AccountManagement =
+                <div id="userManagement" style={{display: 'flex', alignItems: 'center'}}>
+                    <FlatButton style={{color:'#FFFFFF'}} href="/google" label='Sign in'/>
+                </div>;
   }
-  return (<div className="container--baseline">
-            <h2 className="m--1 g--8" style={{marginTop:0,marginBottom:0}}>Smart Career</h2>
-            <input type="checkbox" id="nav--horizontal-responsive"/>
-            <label htmlFor="nav--horizontal-responsive">MENU</label>
-            <nav className="nav--horizontal g--4"/>
-            {Menu}
-          </div>);
-};
+
+  return (
+    <AppBar
+      title={<span style={styles.title}>Smart Career</span>}
+      onTitleTouchTap={handleTouchTap}
+      iconClassNameRight="muidocs-icon-navigation-expand-more">
+      {AccountManagement}
+      </AppBar>
+  );
+}
 
 export default connect(mapStateToProps,mapDispatchToProps)(Toolbar);

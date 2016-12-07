@@ -1,5 +1,6 @@
 import Job from '../models/job';
-import JobRef from '../models/job-ref';
+import Application from '../models/application';
+import Bookmark from '../models/bookmark';
 import MailService from '../services/UserMail';
 import libmime from 'libmime';
 
@@ -7,8 +8,8 @@ function list(req,res){
     //cach ngu rat ngu , TODO : Refucktor
     const Promise = require('bluebird');
     Promise.all([
-        JobRef.find({owner: req.user._id,type:"bookmark"}).lean().distinct('job'),
-        JobRef.find({owner: req.user._id,type:"application"}).lean().distinct('job'),
+        Application.find({owner: req.user._id}).lean().distinct('job'),
+        Bookmark.find({owner: req.user._id}).lean().distinct('job'),
         Job.getJobs(req.query).lean()
     ]).spread(function(bookmarks, applications,jobs) {
         bookmarks=bookmarks.map((bookmark)=>(bookmark.toString()));
@@ -30,11 +31,18 @@ function list(req,res){
     });
   };
 function ownList(req,res){
-  let type="bookmark";
   if(req.query.type=="application"){
-      type="application";
+    Application.find({owner:req.user._id})
+          .populate('job')
+          .then((jobRefs)=>{
+            let jobs=[];
+            jobRefs.map((jobRef)=>{
+              jobs.push(jobRef.job);
+            });
+            res.json({data:jobs});
+          });
   }
-  JobRef.find({owner:req.user._id,type:type})
+  Bookmark.find({owner:req.user._id})
         .populate('job')
         .then((jobRefs)=>{
           let jobs=[];
@@ -99,17 +107,16 @@ function apply(job,user){
 
 };
 function close(job,user){
-  return JobRef.remove({ job: job._id,owner:user._id,type:"application"});
+  return Application.remove({ job: job._id,owner:user._id});
 };
 function bookmark(job,user){
-    return JobRef.create({
+    return Bookmark.create({
       owner:user._id,
-      job:job._id,
-      type:"bookmark"
+      job:job._id
     });
 };
 function unBookmark(job,user){
-    return Bookmark.remove({ job: job._id,owner:user._id ,type:"bookmark"});
+    return Bookmark.remove({ job: job._id,owner:user._id});
 };
 
 export default {list,ownList,doAction,applyWithFile}

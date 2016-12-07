@@ -1,16 +1,14 @@
 const db = require('../config/db.js');
 
-let letterSchema = db.Schema({
+let reviewSchema = db.Schema({
   owner: {
       type:db.SchemaTypes.ObjectId,
-      ref:'User'
-  },
-  content: {
-      type: String,
+      ref:'User',
       required: true
   },
-  category: {
-      type:String
+  content: {
+      type:String,
+      required: true
   },
   created: {
       type: Date,
@@ -18,7 +16,6 @@ let letterSchema = db.Schema({
   }
 });
 
+const Review =db.model('Review',reviewSchema);
 
-const Letter =db.model('Letter',letterSchema);
-
-module.exports = Letter;
+module.exports = Review;

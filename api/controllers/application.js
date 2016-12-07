@@ -1,12 +1,11 @@
-
 import Job from '../models/job';
-import JobRef from '../models/job-ref';
+import Application from '../models/application';
 
 function index(req,res){
-  JobRef.find({owner: req.user._id,type:"application"}).populate('job').lean()
-          .then((refs)=>{
-            let jobs = refs.map((job)=>job.job);
-            res.json({data:jobs});
+  Application.find({owner: req.user._id}).populate('job')
+          .then((applications)=>{
+            //let jobs = refs.map((job)=>job.job);
+            res.json({data:applications});
           });
 };
 
