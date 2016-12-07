@@ -121,6 +121,16 @@ export function receiveLetters(data) {
     }
 }
 
+export function createLetters(data) {
+    return (dispatch, state) => {
+        return postFormData('/api/letter', data).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.error(err);
+        })
+    }
+}
+
 export function fetchJobs() {
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
@@ -165,6 +175,12 @@ export function fetchBookmarks() {
             });
     }
 }
+
+const mockFetchLetter = [
+
+];
+
+
 export function fetchApplications() {
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
@@ -188,7 +204,7 @@ export function fetchLetters() {
         //      dispatch(fetchingJobs());
         return request('/api/letter')
             .then(response => {
-                dispatch(receiveLetters(response.data));
+                dispatch(receiveLetters(response.letters));
             })
             .catch(error => {
                 console.log(error);
@@ -239,24 +255,14 @@ let mockProfile = {
     lastName: 'Nguyen',
     title: 'Student',
     company: 'Metropolia Oy',
-    experiences : [
+    experiences: [
 
     ],
     applications: [
-        1,2,3,4
+        1, 2, 3, 4
     ],
-    letterTemplates: [
-        {
-            id: 1,
-            templateName: 'Template Senior DEveloper',
-            contentUrl : 'abcabc'
-        },
-        {
-            id: 2,
-            templateName: 'Template Bad Developer',
-            contentUrl: '',
-            contentString: ''
-        }
+    templates: [
+        1, 2
     ]
 }
 
@@ -274,27 +280,27 @@ export function fetchProfile() {
     }
 }
 
-export function setProfile( data ) {
+export function setProfile(data) {
     return (dispatch, state) => {
         // TODO: PUT/ POST
-        postFormData(data).then( res => {
-            console.log('form post response',parseJSON(res));
-            return dispatch(setProfileSuccess);         
-        }).catch( err => {
-            console.error('error postProfile',err);
+        postFormData(data).then(res => {
+            console.log('form post response', parseJSON(res));
+            return dispatch(setProfileSuccess);
+        }).catch(err => {
+            console.error('error postProfile', err);
             return dispatch(setProfileFailed);
         });
     }
 }
 
-const setProfileSuccess = ( newUserProfile ) => {
+const setProfileSuccess = (newUserProfile) => {
     return {
         type: Action.UPDATE_PROFILE_SUCCESS,
         data: newUserProfile
     }
 }
 
-const setProfileFailed = ( errMsg) => {
+const setProfileFailed = (errMsg) => {
     return {
         type: Action.UPDATE_PROFILE_FAILED,
         error: errMsg
@@ -328,7 +334,7 @@ export function updateProfile(profilePayload) {
             .then(checkHttpStatus) // WTF are these ?
             .then(parseJSON)
             .then(res => {
-                console.log('update profile res',res);
+                console.log('update profile res', res);
                 try {
                     dispatch(updateProfileSuccess(res));
                 } catch (e) {
@@ -336,7 +342,7 @@ export function updateProfile(profilePayload) {
                 }
             })
             .catch(err => {
-                console.log('update profile err',err)
+                console.log('update profile err', err)
                 dispatch(updateProfileFailed(err))
             })
     }

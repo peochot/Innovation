@@ -7,6 +7,7 @@ import FontIcon from 'material-ui/FontIcon';
 
 import ProfileForm from './ProfileForm';
 import ApplicationList from './ApplicationList';
+import TemplateList from './TemplateList';
 
 import { fetchProfile, setProfile } from './../actions';
 
@@ -39,7 +40,6 @@ export class ProfilePage extends React.Component {
     }
 
     onTabChange( value ) {
-        console.log('tAB CHANGE',value);
         this.setState({
             tabValue: value,
         })
@@ -54,7 +54,7 @@ export class ProfilePage extends React.Component {
 
     render() {
         const { tabValue } =  this.state ;
-        const { firstName, lastName, applications } = this.props.profile;
+        const { firstName, lastName, applications, templates } = this.props.profile;
         // console.log(profile);
         return (
             <div>
@@ -78,7 +78,8 @@ export class ProfilePage extends React.Component {
                         icon={<FontIcon className="material-icons">favorite</FontIcon>}
                         label="CV Templates"
                         value="templates">
-                        <h4></h4>
+                        
+                        <TemplateList templateList={templates} />
                      </Tab>
                 </Tabs>   
             </div>

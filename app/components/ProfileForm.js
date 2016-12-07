@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
+import RaisedButton from 'material-ui/RaisedButton';
+
 import {
-  AutoComplete,
-  Checkbox,
-  DatePicker,
-  TimePicker,
-  RadioButtonGroup,
-  SelectField,
-  Slider,
-  TextField,
-  Toggle
+    AutoComplete,
+    Checkbox,
+    DatePicker,
+    TimePicker,
+    RadioButtonGroup,
+    SelectField,
+    Slider,
+    TextField,
+    Toggle
 } from 'redux-form-material-ui'
 
 
@@ -21,33 +23,40 @@ class ProfileForm extends Component {
         console.log('ProfileForm', props);
     }
 
+    componentWillMount() {
+        // TODO : LOAD
+    }
+
+    componentWillReceiveProps() {
+
+    }
+
     render() {
-        console.log('render profileFOrm');
         const { handleSubmit, pristine, submitting } = this.props;
         return (
             <form onSubmit={handleSubmit}>
                 <div>
                     <div>
-                        <Field component={TextField} hintText="First Name" name="firstName"  />
+                        <Field fullWidth="true" component={TextField} floatingLabelText="First Name" hintText="First Name" name="firstName" />
                     </div>
                 </div>
                 <div>
                     <div>
-                        <Field component={TextField} hintText="Last Name" name="lastName"  />
+                        <Field fullWidth="true" component={TextField} floatingLabelText="Last Name" hintText="Last Name" name="lastName" />
                     </div>
                 </div>
                 <div>
                     <div>
-                        <Field component={TextField} hintText="Title" name="title"  />
+                        <Field fullWidth="true" component={TextField} floatingLabelText="Title" hintText="Title" name="title" />
                     </div>
                 </div>
                 <div>
                     <div>
-                        <Field component={TextField} hintText="Company" name="company"  />
+                        <Field fullWidth="true" component={TextField} floatingLabelText="Company" hintText="Company" name="company" />
                     </div>
                 </div>
                 <div>
-                    <button type="submit" disabled={pristine || submitting}>Submit</button>
+                    <RaisedButton primary={true} type="submit" label="Submit" fullWidth={true} disabled={ pristine || submitting } />
                 </div>
             </form>
         )
@@ -61,7 +70,7 @@ ProfileForm = reduxForm({
 ProfileForm = connect(
     state => ({
         initialValues: state.auth.user
-    }),{}
+    }), {}
 )(ProfileForm);
 
 export default ProfileForm;
