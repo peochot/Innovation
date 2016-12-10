@@ -28,7 +28,7 @@ let jobSchema = db.Schema({
         required: true
     },
     created:{ //ilmoituspaivamaarateksti
-        type:String,
+        type:Date,
         required:true
     },
     coords: {type: [Number], index: '2dsphere'},
@@ -49,7 +49,7 @@ let jobSchema = db.Schema({
         type:String,
     },
     expire:{//hakuPaattyy
-        type:String,
+        type:Date,
     },
     website:{//tyonantajanWwwOsoite
         type:String,
