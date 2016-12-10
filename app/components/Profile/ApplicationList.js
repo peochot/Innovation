@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
-import { fetchApplications } from './../actions';
+import { fetchApplications } from './../../actions';
 
 
 // TODO : NOt this map
@@ -19,29 +19,6 @@ const mapDispatchToProps = dispatch => ({
 export class ApplicationList extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            mock: [
-                {
-                    id: 1,
-                    jobReference: {
-                        companyName: 'Papa Oy',
-                        position: 'Senior Machine Learner',
-                        shortDescription: 'Senior momo'
-                    },
-                    status: 'Pending'
-                },
-                {
-                    id: 2,
-                    jobReference: {
-                        companyName: 'Papa Oy 2',
-                        position: 'Senior Machine SLeeper',
-                        shortDescription: 'Senior momofafa'
-                    },
-                    status: 'Sent'
-                }
-            ]
-        }
     }
 
     componentWillMount() {
@@ -53,8 +30,8 @@ export class ApplicationList extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        console.log(' newProps', newProps);
-        // this.props.fetchApplications(newProps.appList);
+        // console.log(' newProps', newProps);
+        this.props.fetchApplications();
 
     }
 
@@ -75,13 +52,12 @@ export class ApplicationList extends React.Component {
     render() {
         // const { appList } = this.props;
         // const appList = this.props.appList;
-        const appList = this.state.mock;
-
+        const appList = [];
         return (
             <div>
                 {appList.map((app) => {
                     let applyButton;
-                    if (app.status === 'Pending') applyButton = <FlatButton onTouchTap={this.onApplicationSend.bind(this,app.id)} label="Something" primary={true} />;
+                    if (app.status === 'Pending') applyButton = <FlatButton onTouchTap={this.onApplicationSend.bind(this, app.id)} label="Something" primary={true} />;
                     else applyButton = null;
                     return (
                         <Card key={app.id}>
@@ -92,7 +68,7 @@ export class ApplicationList extends React.Component {
                                 showExpandableButton={true}
                                 />
                             <CardActions>
-                                <FlatButton onTouchTap={this.onApplicationDiscard.bind(this,app.id)} label="Discard" secondary={true} />
+                                <FlatButton onTouchTap={this.onApplicationDiscard.bind(this, app.id)} label="Discard" secondary={true} />
                                 {applyButton}
                             </CardActions>
                             <CardText expandable={true}>

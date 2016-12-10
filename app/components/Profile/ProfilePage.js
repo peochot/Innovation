@@ -9,12 +9,12 @@ import ProfileForm from './ProfileForm';
 import ApplicationList from './ApplicationList';
 import TemplateList from './TemplateList';
 
-import { fetchProfile, setProfile } from './../actions';
+import { fetchProfile, setProfile } from './../../actions';
 
 const mapStateToProps = ({ auth, profile }) => ({ auth, profile });
 const mapDispatchToProps = dispatch => ({
     getProfile: () => dispatch(fetchProfile()),
-    setProfile: () => dispatch(setProfile())
+    setProfile: (data) => dispatch(setProfile(data))
 });
 
 export class ProfilePage extends React.Component {
@@ -48,7 +48,7 @@ export class ProfilePage extends React.Component {
     onProfileSubmit( values ) {
         console.info('Form',values); 
         // Dispatch something
-        // this.props.setProfile(values);
+        this.props.setProfile(values);
 
     }
 
@@ -65,7 +65,7 @@ export class ProfilePage extends React.Component {
                         icon={<FontIcon className="material-icons">phone</FontIcon>}
                         label="Basic Information"
                         value="basic">
-                        <ProfileForm onSubmit={this.onProfileSubmit}></ProfileForm>
+                        <ProfileForm onSubmit={this.onProfileSubmit.bind(this)}></ProfileForm>
                     </Tab>
                     <Tab
                         icon={<FontIcon className="material-icons">favorite</FontIcon>}

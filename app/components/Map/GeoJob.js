@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Map from './Map';
 import JobList from './JobList';
 import { connect } from 'react-redux';
-import {fetchJobs} from '../actions';
+import {fetchJobs} from '../../actions';
 import DiscussModal from "./DiscussModal";
 
 const mapStateToProps = ({auth,jobs,isDiscussOpen,selectedJob}) => ({auth,jobs,isDiscussOpen,selectedJob});
