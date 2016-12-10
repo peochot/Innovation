@@ -33,7 +33,7 @@ router.post('/letter', letterController.create);
 
 
 router.get('/profile', profileController.getProfile);
-router.get('/profile', profileController.updateProfile);
+router.post('/profile', profileController.updateProfile);
 
 
 

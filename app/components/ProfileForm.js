@@ -31,10 +31,15 @@ class ProfileForm extends Component {
 
     }
 
+    handleSubmit(value) {
+        consoel.log('handleSubmit',value);
+        this.props.onSubmit()
+    }
+
     render() {
-        const { handleSubmit, pristine, submitting } = this.props;
+        const { pristine, submitting } = this.props;
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={this.props.handleSubmit}>
                 <div>
                     <div>
                         <Field fullWidth="true" component={TextField} floatingLabelText="First Name" hintText="First Name" name="firstName" />
@@ -69,7 +74,8 @@ ProfileForm = reduxForm({
 
 ProfileForm = connect(
     state => ({
-        initialValues: state.auth.user
+        initialValues: state.profile,
+        enableReinitialize: true
     }), {}
 )(ProfileForm);
 

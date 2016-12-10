@@ -89,7 +89,7 @@ export const letter = (state = [], action) => {
   }
 };
 
-export const profile = (state = [], action) => {
+export const profile = (state = {}, action) => {
   switch (action.type) {
     case Names.UPDATE_PROFILE_SUCCESS:
       return action.data || state;

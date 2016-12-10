@@ -268,26 +268,22 @@ let mockProfile = {
 
 export function fetchProfile() {
     return (dispatch, state) => {
-        // TODO : Later
-        // return request('/api/myProfile')
-        //     .then(res => {
-        //         dispatch(fetchProfileSuccess(res.data))
-        //     })
-        //     .catch(error => {
-        //         dispatch(fetchProfileFailed(error));
-        //     })
-        return dispatch(fetchProfileSuccess(mockProfile));
+        return request('/api/profile')
+            .then(res => {
+                dispatch(fetchProfileSuccess(res.data))
+            })
+            .catch(error => {
+                dispatch(fetchProfileFailed(error));
+            })
     }
 }
 
 export function setProfile(data) {
     return (dispatch, state) => {
         // TODO: PUT/ POST
-        postFormData(data).then(res => {
-            console.log('form post response', parseJSON(res));
+        request('api/profile',data,'POST').then(res => {
             return dispatch(setProfileSuccess);
         }).catch(err => {
-            console.error('error postProfile', err);
             return dispatch(setProfileFailed);
         });
     }
