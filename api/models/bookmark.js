@@ -1,6 +1,6 @@
 const db = require('../config/db.js');
 
-let jobRefSchema = db.Schema({
+let bookmarkSchema = db.Schema({
   owner: {
       type:db.SchemaTypes.ObjectId,
       ref:'User',
@@ -11,8 +11,8 @@ let jobRefSchema = db.Schema({
       ref:'Job',
       required: true
   },
-  type:{
-     type:String
+  watch:{
+     type: Boolean
   },
   created: {
       type: Date,
@@ -20,7 +20,7 @@ let jobRefSchema = db.Schema({
   }
 });
 
-jobRefSchema.index({ job: 1,type: 1,owner:1}, { unique: true });
-const JobRef =db.model('JobRef',jobRefSchema);
+bookmarkSchema.index({ job: 1,owner:1,watch:1}, { unique: true });
+const Bookmark =db.model('Bookmark',bookmarkSchema);
 
-module.exports = JobRef;
+module.exports = Bookmark;

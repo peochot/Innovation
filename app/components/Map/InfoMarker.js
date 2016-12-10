@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Marker, InfoWindow } from "react-google-maps";
 import { connect } from 'react-redux';
-import { selectJob } from '../actions';
+import { selectJob } from '../../actions';
 import JobCard from './JobCard';
 
 const mapStateToProps = ({selectedJob}) => ({ selectedJob });

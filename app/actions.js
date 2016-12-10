@@ -1,7 +1,8 @@
 //import {push} from 'react-router-redux'
 import * as Action from './store/constants';
+import { browserHistory } from 'react-router'
 
-import { request, postFormData } from './utils';
+import { request, postFormData, parseJSON } from './utils';
 export const selectJob = (jobId) => ({
     type: Action.SELECT_JOB,
     jobId
@@ -29,26 +30,23 @@ export const loginUserRequest = () => {
 
 export const logout = () => {
     localStorage.removeItem('token');
+    browserHistory.push('/')
     return {
         type: Action.LOGOUT
     }
 }
 
-export const logoutAndRedirect = () => {
-    return (dispatch, state) => {
-        dispatch(logout());
-        //dispatch(push('/login'))
-    }
+
+export const openDiscussModal = () => {
+    return { type: Action.OPEN_DISCUSS_MODAL }
 }
 
-export const openDiscussModal=()=>{
-    return {type:"OPEN_DICUSS_MODAL"}
+export const closeDiscussModal = () => {
+    return { type: Action.CLOSE_DISCUSS_MODAL }
 }
-export const closeDiscussModal=()=>{
-    return {type:"CLOSE_DICUSS_MODAL"}
-}
-export function loginUser(email, password, redirect="/") {
-    return (dispatch)=> {
+
+export function loginUser(email, password, redirect = "/") {
+    return (dispatch) => {
         return fetch('/api/login', {
             method: 'post',
             headers: {
@@ -103,13 +101,7 @@ export function addApplication(data) {
         data
     }
 }
-// TODO: REQ , SUC ,FAIL
-export function receiveJobs(data) {
-    return {
-        type: Action.RECEIVE_JOBS,
-        data
-    }
-}
+
 export function receiveBookmarks(data) {
     return {
         type: Action.RECEIVE_BOOKMARKS,
@@ -126,6 +118,16 @@ export function receiveLetters(data) {
     return {
         type: Action.RECEIVE_LETTERS,
         data
+    }
+}
+
+export function createLetters(data) {
+    return (dispatch, state) => {
+        return postFormData('/api/letter', data).then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.error(err);
+        })
     }
 }
 
@@ -147,6 +149,14 @@ export function fetchJobs() {
             });
     }
 }
+// TODO: REQ , SUC ,FAIL
+export function receiveJobs(data) {
+    return {
+        type: Action.RECEIVE_JOBS,
+        data
+    }
+}
+
 export function fetchBookmarks() {
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
@@ -165,6 +175,12 @@ export function fetchBookmarks() {
             });
     }
 }
+
+const mockFetchLetter = [
+
+];
+
+
 export function fetchApplications() {
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
@@ -188,7 +204,7 @@ export function fetchLetters() {
         //      dispatch(fetchingJobs());
         return request('/api/letter')
             .then(response => {
-                dispatch(receiveLetters(response.data));
+                dispatch(receiveLetters(response.letters));
             })
             .catch(error => {
                 console.log(error);
@@ -211,12 +227,6 @@ export function bookmark(jobId) {
             })
             .catch(error => {
                 console.log(error);
-                /*
-                  if(error.response.status === 401) {
-                    dispatch(loginUserFailure(error));
-                    dispatch(push('/login'))
-                  }
-                  */
             });
     }
 }
@@ -237,5 +247,113 @@ export function apply(jobId, index) {
                   }
                   */
             });
+    }
+}
+
+let mockProfile = {
+    firstName: 'Tri',
+    lastName: 'Nguyen',
+    title: 'Student',
+    company: 'Metropolia Oy',
+    experiences: [
+
+    ],
+    applications: [
+        1, 2, 3, 4
+    ],
+    templates: [
+        1, 2
+    ]
+}
+
+export function fetchProfile() {
+    return (dispatch, state) => {
+        return request('/api/profile')
+            .then(res => {
+                dispatch(fetchProfileSuccess(res.data))
+            })
+            .catch(error => {
+                dispatch(fetchProfileFailed(error));
+            })
+    }
+}
+
+export function setProfile(data) {
+    return (dispatch, state) => {
+        // TODO: PUT/ POST
+        request('api/profile',data,'POST').then(res => {
+            return dispatch(setProfileSuccess);
+        }).catch(err => {
+            return dispatch(setProfileFailed);
+        });
+    }
+}
+
+const setProfileSuccess = (newUserProfile) => {
+    return {
+        type: Action.UPDATE_PROFILE_SUCCESS,
+        data: newUserProfile
+    }
+}
+
+const setProfileFailed = (errMsg) => {
+    return {
+        type: Action.UPDATE_PROFILE_FAILED,
+        error: errMsg
+    }
+}
+
+const fetchProfileSuccess = (data) => {
+    return {
+        type: Action.RECEIVE_PROFILE_SUCCESS,
+        data
+    }
+}
+
+const fetchProfileFailed = (err) => {
+    return {
+        type: Action.RECEIVE_PROFILE_FAILED,
+        err
+    }
+}
+
+export function updateProfile(profilePayload) {
+    return (dispatch, state) => {
+        return fetch('/api/myProfile', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(profilePayload)
+        })
+            .then(checkHttpStatus) // WTF are these ?
+            .then(parseJSON)
+            .then(res => {
+                console.log('update profile res', res);
+                try {
+                    dispatch(updateProfileSuccess(res));
+                } catch (e) {
+                    dispatch(updateProfileFailed(e));
+                }
+            })
+            .catch(err => {
+                console.log('update profile err', err)
+                dispatch(updateProfileFailed(err))
+            })
+    }
+}
+
+const updateProfileSuccess = (data) => {
+    return {
+        type: Action.UPDATE_PROFILE_SUCCESS,
+        data
+    }
+}
+
+const updateProfileFailed = (message) => {
+    return {
+        type: Action.UPDATE_PROFILE_FAILED,
+        message
     }
 }

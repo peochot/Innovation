@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import {selectJob} from '../actions';
+import {selectJob} from '../../actions';
 const mapDispatchToProps = dispatch => ({
   selectJob: (job_id)=>dispatch(selectJob(job_id))
 });
