@@ -8,6 +8,18 @@ function index(req,res){
             res.json({data:bookmarks});
           });
 };
+function create(req,res){
+  Job.findById(req.params.jobId)
+    .then((job) => {
+      return Bookmark.create({
+        owner:req.user._id,
+        job:job._id
+      });
+    }).then((object) => {
+        res.json({ data: object });
+    }).catch((err) => {
+        res.status(400).json({ message: err });
+    });
+}
 
-
-export default {index}
+export default {index,create}

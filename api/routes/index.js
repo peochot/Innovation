@@ -6,7 +6,8 @@ import letterController from '../controllers/letter';
 import profileController from '../controllers/profile';
 import applicationController from '../controllers/application';
 import bookmarkController from '../controllers/bookmark';
-
+import companyController from '../controllers/company';
+import reviewController from '../controllers/review';
 import multer from 'multer';
 
 let storage = multer.memoryStorage();
@@ -40,8 +41,12 @@ router.post('/letter', letterController.create);
 
 
 router.get('/profile', profileController.getProfile);
-router.get('/profile', profileController.updateProfile);
+router.post('/profile', profileController.updateProfile);
 
+router.get('/company',companyController.index);
 
+router.get('/company/:companyId/review',reviewController.index);
+router.post('/company/:companyid/review',reviewController.create);
+router.put('/review/:reviewId',reviewController.update);
 
 module.exports = router;

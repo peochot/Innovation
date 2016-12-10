@@ -9,5 +9,7 @@ function index(req,res){
           });
 };
 
+function create(req,res){
 
-export default {index}
+}
+export default {index,create}
