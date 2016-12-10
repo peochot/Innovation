@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
-import { fetchApplications } from './../actions';
+import { fetchApplications } from './../../actions';
 
 
 // TODO : NOt this map

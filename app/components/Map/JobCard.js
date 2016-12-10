@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { bookmark,apply,openDiscussModal} from '../actions';
+import { bookmark,apply,openDiscussModal} from '../../actions';
 
 const mapDispatchToProps = dispatch => ({
   bookmark: (jobId)=>dispatch(bookmark(jobId)),

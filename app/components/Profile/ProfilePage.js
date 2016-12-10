@@ -9,7 +9,7 @@ import ProfileForm from './ProfileForm';
 import ApplicationList from './ApplicationList';
 import TemplateList from './TemplateList';
 
-import { fetchProfile, setProfile } from './../actions';
+import { fetchProfile, setProfile } from './../../actions';
 
 const mapStateToProps = ({ auth, profile }) => ({ auth, profile });
 const mapDispatchToProps = dispatch => ({
