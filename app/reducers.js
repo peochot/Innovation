@@ -101,3 +101,12 @@ export const profile = (state = {}, action) => {
     // case Names.RECEIVE_PROFILE_FAILED:
   }
 }
+
+export const tags = ( state = [], action) => {
+  switch(action.type){
+    case Names.RECEIVE_TAGS_SUCCESS:{
+      return action.data || state;
+    }
+    default : return state;
+  }
+}

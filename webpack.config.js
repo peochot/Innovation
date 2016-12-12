@@ -16,23 +16,30 @@ var webpackConfig = {
   debug: true,
   module: {
     loaders: [{
-        test: /\.js?$/,
-        exclude: /node_modules/, // js / jsx
-        loaders: ['babel-loader'], // is handled by babel loader with es2015 support,
-
-      },
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-      {
-        test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
-      }
+      test: /\.js?$/,
+      exclude: /node_modules/, // js / jsx
+      loaders: ['babel-loader'], // is handled by babel loader with es2015 support,
+    },
+    { test: /\.css$/, loader: "style-loader!css-loader" },
+    {
+      test: /\.scss$/,
+      loaders: ["style", "css", "sass"]
+    },
+    {
+      test: /\.(jpg|png|gif)$/,
+      loaders: ['file-loader']
+    },
+    {
+      test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+      loader: 'file-loader'
+    }
     ]
   },
   plugins: process.env.PORT ? [
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false }
     })
-    ] : [],
+  ] : [],
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.scss'], // what file extensions babel looks for in imports
     root: path.resolve(__dirname), // absolute imports

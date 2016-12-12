@@ -5,9 +5,9 @@ function getProfile(req, res) {
 }
 
 function updateProfile(req, res) {
-    console.log('Update request',req.body);
+    console.log('Update request', req.body);
     for (let key in req.body) {
-        if (["firstName","lastName", "email","title","company"].indexOf(key)!=-1) {
+        if (["firstName", "lastName", "email", "title", "company", "preferences"].indexOf(key) != -1) {
             req.user[key] = req.body[key];
         }
     }
