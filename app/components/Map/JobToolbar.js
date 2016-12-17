@@ -17,8 +17,6 @@ export default class JobToolbar extends React.Component {
       value: 3,
     };
   }
-
-
   handleChange = (event, index, value) => this.setState({value});
   openAdvanceSearch = () => this.setState({value});
 
@@ -43,6 +41,7 @@ export default class JobToolbar extends React.Component {
             }
           </DropDownMenu>
           <TextField
+                errorText="error"
                 hintText="Keyword"
                 fullWidth={true}
                 style={{width:"20em"}}

@@ -6,6 +6,7 @@ import JobToolbar from './JobToolbar';
 import ASDialog from './AdvanceSearchDialog';
 import { connect } from 'react-redux';
 import {selectJob} from '../../actions';
+
 const mapDispatchToProps = dispatch => ({
   selectJob: (job_id)=>dispatch(selectJob(job_id))
 });
