@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-
+import Multiselect from 'react-widgets/lib/Multiselect';
 import RaisedButton from 'material-ui/RaisedButton';
+import 'react-widgets/dist/css/react-widgets.css';
+// require('react-widgets/dist/css/react-widgets.css');
 
 import {
     AutoComplete,
@@ -14,7 +16,7 @@ import {
     Slider,
     TextField,
     Toggle
-} from 'redux-form-material-ui'
+} from 'redux-form-material-ui';
 
 
 class ProfileForm extends Component {
@@ -32,12 +34,12 @@ class ProfileForm extends Component {
     }
 
     handleSubmit(value) {
-        consoel.log('handleSubmit',value);
+        console.log('handleSubmit', value);
         this.props.onSubmit()
     }
 
     render() {
-        const { pristine, submitting } = this.props;
+        const { pristine, submitting, dataSource } = this.props;
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <div>
@@ -61,12 +63,24 @@ class ProfileForm extends Component {
                     </div>
                 </div>
                 <div>
-                    <RaisedButton primary={true} type="submit" label="Submit" fullWidth={true} disabled={ pristine || submitting } />
+                    <label> TODO: Label styling </label>
+                    <Field hintText="Preference" floatingLabelText="Preference" component={renderMultiselect}
+                        floatingLabelText="Preference" name="preferences"
+                        data={dataSource} />
+                </div>
+                <div>
+                    <RaisedButton primary={true} type="submit" label="Submit" fullWidth={true} disabled={pristine || submitting} />
                 </div>
             </form>
         )
     }
 }
+
+const renderMultiselect = ({ input, ...rest }) =>
+<Multiselect {...input}
+    onBlur={() => input.onBlur()}
+    value={input.value || []} // requires value to be an array
+    {...rest} />
 
 ProfileForm = reduxForm({
     form: 'profile'
@@ -74,6 +88,7 @@ ProfileForm = reduxForm({
 
 ProfileForm = connect(
     state => ({
+        dataSource: state.tags,
         initialValues: state.profile,
         enableReinitialize: true
     }), {}

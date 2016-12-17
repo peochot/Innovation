@@ -9,24 +9,27 @@ import ProfileForm from './ProfileForm';
 import ApplicationList from './ApplicationList';
 import TemplateList from './TemplateList';
 
-import { fetchProfile, setProfile } from './../../actions';
+import { fetchProfile, setProfile, fetchTags } from './../../actions';
 
 const mapStateToProps = ({ auth, profile }) => ({ auth, profile });
 const mapDispatchToProps = dispatch => ({
     getProfile: () => dispatch(fetchProfile()),
+    getTags: () => dispatch(fetchTags()),
     setProfile: (data) => dispatch(setProfile(data))
 });
 
 export class ProfilePage extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            tabValue : 'basic'
+            tabValue: 'basic'
         }
     }
 
     componentWillMount() {
         this.props.getProfile();
+        // this.props.getTags();
     }
 
     componentDidMount() {
@@ -39,21 +42,21 @@ export class ProfilePage extends React.Component {
 
     }
 
-    onTabChange( value ) {
+    onTabChange(value) {
         this.setState({
             tabValue: value,
         })
     }
 
-    onProfileSubmit( values ) {
-        console.info('Form',values); 
+    onProfileSubmit(values) {
+        console.info('Form', values);
         // Dispatch something
         this.props.setProfile(values);
 
     }
 
     render() {
-        const { tabValue } =  this.state ;
+        const { tabValue } = this.state;
         const { firstName, lastName, applications, templates } = this.props.profile;
         // console.log(profile);
         return (
@@ -76,12 +79,12 @@ export class ProfilePage extends React.Component {
                     </Tab>
                     <Tab
                         icon={<FontIcon className="material-icons">favorite</FontIcon>}
-                        label="CV Templates"
+                        label="Letter"
                         value="templates">
-                        
+
                         <TemplateList templateList={templates} />
-                     </Tab>
-                </Tabs>   
+                    </Tab>
+                </Tabs>
             </div>
         )
     }
