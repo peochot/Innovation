@@ -32,7 +32,7 @@ class TemplateList extends React.Component {
         this.props.fetchLetters();
     }
 
-    componentWillReceiveProps( newProps ) {
+    componentWillReceiveProps(newProps) {
 
     }
 

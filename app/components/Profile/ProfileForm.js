@@ -43,26 +43,10 @@ class ProfileForm extends Component {
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <div>
-                    <div>
-                        <Field fullWidth="true" component={TextField} floatingLabelText="First Name" hintText="First Name" name="firstName" />
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <Field fullWidth="true" component={TextField} floatingLabelText="Last Name" hintText="Last Name" name="lastName" />
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <Field fullWidth="true" component={TextField} floatingLabelText="Title" hintText="Title" name="title" />
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <Field fullWidth="true" component={TextField} floatingLabelText="Company" hintText="Company" name="company" />
-                    </div>
-                </div>
-                <div>
+                    <Field fullWidth="true" component={TextField} floatingLabelText="First Name" hintText="First Name" name="firstName" />
+                    <Field fullWidth="true" component={TextField} floatingLabelText="Last Name" hintText="Last Name" name="lastName" />
+                    <Field fullWidth="true" component={TextField} floatingLabelText="Title" hintText="Title" name="title" />
+                    <Field fullWidth="true" component={TextField} floatingLabelText="Company" hintText="Company" name="company" />
                     <label> TODO: Label styling </label>
                     <Field hintText="Preference" floatingLabelText="Preference" component={renderMultiselect}
                         floatingLabelText="Preference" name="preferences"
@@ -77,10 +61,10 @@ class ProfileForm extends Component {
 }
 
 const renderMultiselect = ({ input, ...rest }) =>
-<Multiselect {...input}
-    onBlur={() => input.onBlur()}
-    value={input.value || []} // requires value to be an array
-    {...rest} />
+    <Multiselect {...input}
+        onBlur={() => input.onBlur()}
+        value={input.value || []} // requires value to be an array
+        {...rest} />
 
 ProfileForm = reduxForm({
     form: 'profile'
