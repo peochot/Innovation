@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Map from './Map';
-import JobList from './JobList';
+import JobDrawer from './JobDrawer';
 import { connect } from 'react-redux';
-import {fetchJobs} from '../actions';
+import {fetchJobs} from '../../actions';
 import DiscussModal from "./DiscussModal";
 
 const mapStateToProps = ({auth,jobs,isDiscussOpen,selectedJob}) => ({auth,jobs,isDiscussOpen,selectedJob});
@@ -19,15 +19,15 @@ export class GeoJob extends Component {
   render() {
     let height=(window.innerHeight > 0) ? window.innerHeight : screen.height;
     const divStyle = {
-      height:height*0.85
+      height:height<500 ? height:height*0.85
     };
     let content;
     if(this.props.selectedJob&&this.props.isDiscussOpen){
       content = <DiscussModal/>
     }else{
       content =<div style={divStyle} >
-        <JobList jobs={this.props.jobs}/>
-        
+        <JobDrawer jobs={this.props.jobs}/>
+
         <Map
          containerElement={
            <div style={{ height: `100%`}} />

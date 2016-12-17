@@ -14,7 +14,7 @@ let companySchema = db.Schema({
       default: Date.now
   },
   reviews:[{
-        type: mongoose.SchemaTypes.ObjectId,
+        type: db.SchemaTypes.ObjectId,
         ref: 'Review',
   }]
 });

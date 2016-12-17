@@ -44,8 +44,10 @@
     "passport-oauth2-refresh": "^1.0.0",
     "passport-twitter": "^1.0.4",
     "randomstring": "^1.1.5",
+    "react-widgets": "^3.4.5",
     "request": "^2.74.0",
     "request-promise": "^4.1.1",
+    "rxjs": "^5.0.0-rc.5",
     "sinon": "^1.17.6",
     "socket.io": "^1.4.8"
   },
@@ -62,6 +64,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.1.0",
     "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
     "fuzzysearch": "^1.0.3",
     "material-ui": "^0.16.4",
     "minifyify": "^7.3.3",

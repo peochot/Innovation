@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"cooking.jobs"},{"v":1,"unique":true,"key":{"mol_id":-1},"name":"mol_id_-1","ns":"cooking.jobs"}]}

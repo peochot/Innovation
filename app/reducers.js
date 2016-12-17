@@ -89,7 +89,7 @@ export const letter = (state = [], action) => {
   }
 };
 
-export const profile = (state = [], action) => {
+export const profile = (state = {}, action) => {
   switch (action.type) {
     case Names.UPDATE_PROFILE_SUCCESS:
       return action.data || state;
@@ -99,5 +99,14 @@ export const profile = (state = [], action) => {
       return state;
     // case Names.UPDATE_PROFILE_FAILED:
     // case Names.RECEIVE_PROFILE_FAILED:
+  }
+}
+
+export const tags = ( state = [], action) => {
+  switch(action.type){
+    case Names.RECEIVE_TAGS_SUCCESS:{
+      return action.data || state;
+    }
+    default : return state;
   }
 }

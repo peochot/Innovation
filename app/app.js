@@ -7,7 +7,7 @@ import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { getCookie } from './utils';
-import { loginUserSuccess, fetchJobs, fetchBookmarks, fetchApplications, fetchLetters } from './actions';
+import { loginUserSuccess, fetchJobs, fetchBookmarks, fetchApplications, fetchLetters, fetchTags } from './actions';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 const store = configureStore();
@@ -41,6 +41,7 @@ function init() {
     store.dispatch(fetchBookmarks());
     store.dispatch(fetchApplications());
     store.dispatch(fetchLetters());
+    store.dispatch(fetchTags());
   }
   run();
   store.subscribe(run);

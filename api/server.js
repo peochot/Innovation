@@ -36,7 +36,7 @@ const job = new CronJob("15 14 * * *", function() {
    console.log('Start daily job crawler');
   }, function () {
     /* This function is executed when the job stops */
-    console.log('Job finnish');
+    console.log('Job finished');
   },
   true, /* Start the job right now */
   "Europe/Helsinki" /* Time zone of this job. */

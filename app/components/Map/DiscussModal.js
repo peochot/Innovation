@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {closeDiscussModal} from '../actions';
+import {closeDiscussModal} from '../../actions';
 
 const mapStateToProps = ({selectedJob}) => ({selectedJob});
 const mapDispatchToProps = dispatch => ({

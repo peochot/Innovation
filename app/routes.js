@@ -2,11 +2,11 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import {push} from 'react-router-redux'
 import App from './components/App';
-import GeoJob from './components/GeoJob';
+import GeoJob from './components/Map/GeoJob';
 import NotFound from './components/NotFound';
 import Home from './components/Home';
 import Application from './components/Application';
-import ProfilePage from './components/ProfilePage';
+import ProfilePage from './components/Profile/ProfilePage';
 
 export default function({dispatch,getState}){
   function onEnter(nextState, replace) {

@@ -34,9 +34,10 @@ const Toolbar = (props) => {
                     <FlatButton
                       containerElement={<Link to="/map" />}
                       label='Job Map'/>
-                    <FlatButton style={{color:'#FFFFFF'}} label={props.auth.user.name}
+                    <FlatButton style={{color:'#FFFFFF'}} label={props.auth.user.firstName}
                                 secondary={true}
-                                icon={<Avatar size={30}>{props.auth.user.name}</Avatar>}/>
+                                icon={<Avatar size={30}>{props.auth.user.firstName}</Avatar>}
+                                containerElement={<Link to="/profile"/> } />
                     <FlatButton style={{color:'#FFFFFF'}} onTouchTap={()=>props.logout()} label='Sign out'/>
                 </div>;
   } else {
