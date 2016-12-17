@@ -17,9 +17,9 @@ const mapDispatchToProps = dispatch => ({
 export class JobCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { fullDesc: false };
+    this.state = {fullDesc: false};
   }
-  toggleDescription = () => { this.setState({ fullDesc: !this.state.fullDesc }) }
+  toggleDescription = () =>{ this.setState({fullDesc:!this.state.fullDesc})}
   render() {
     return (
       <Card>
@@ -46,3 +46,4 @@ export class JobCard extends React.Component {
   }
 }
 export default connect(null, mapDispatchToProps)(JobCard);
+
