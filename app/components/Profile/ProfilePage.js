@@ -58,7 +58,7 @@ export class ProfilePage extends React.Component {
     render() {
         const { tabValue } = this.state;
         const { firstName, lastName, applications, templates } = this.props.profile;
-        // console.log(profile);
+        
         return (
             <div>
                 <Tabs

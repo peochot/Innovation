@@ -6,6 +6,6 @@ if (process.env.PORT) {
 }
 db.connect(url);
 db.connection.on('connected', () => {
-    console.log('%s MongoDB connection established!');
+    console.log('MongoDB connection established!');
 });
 module.exports = db;
