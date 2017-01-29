@@ -193,13 +193,25 @@ const mockFetchLetter = [
 
 ];
 
+const mockApplication = [
+    {
+        jobData: {
+            jobTitle: '',
+            jobType: '',
+            jobRegion: '',
+            companyName: ''
+        },
+
+    }
+]
 
 export function fetchApplications() {
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
         return request('/api/myJob?type=application')
             .then(response => {
-                dispatch(receiveApplications(response.data));
+                // dispatch(receiveApplications(response.data));
+                dispatch(receiveApplications());
             })
             .catch(error => {
                 console.log(error);
