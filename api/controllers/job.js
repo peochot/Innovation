@@ -30,6 +30,7 @@ function list(req,res){
         res.status(403).json({ message: err });
     });
   };
+
 function ownList(req,res){
   if(req.query.type=="application"){
     Application.find({owner:req.user._id})
@@ -42,7 +43,25 @@ function ownList(req,res){
             res.json({data:jobs});
           });
   }
-  Bookmark.find({owner:req.user._id})
+
+// Tri
+const myApplicationList = (req, res) => {
+    if( rep.query.type == 'application') {
+        Application.find({ owner:req.user._id})
+            .populate('job')
+            .then( (jobRefs) => {
+                let jobResult = [];
+
+                jobRefs.map( (jobRef) => {
+
+                })
+
+                res.json({ data: jobResult });
+            })
+    }
+}
+
+Bookmark.find({owner:req.user._id})
         .populate('job')
         .then((jobRefs)=>{
           let jobs=[];
@@ -52,6 +71,7 @@ function ownList(req,res){
           res.json({data:jobs});
         });
 };
+
 function doAction(req,res){
   Job.findById(req.params.jobId)
     .then((job) => {

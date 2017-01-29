@@ -30,9 +30,8 @@ export class ApplicationList extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        // console.log(' newProps', newProps);
+        console.log('ApplicationList newProps', newProps);
         this.props.fetchApplications();
-
     }
 
     onApplicationDiscard(appId) {
@@ -52,7 +51,7 @@ export class ApplicationList extends React.Component {
     render() {
         // const { appList } = this.props;
         // const appList = this.props.appList;
-        const appList = [];
+        const appList = this.props.appList;
         return (
             <div>
                 {appList.map((app) => {
