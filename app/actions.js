@@ -149,6 +149,19 @@ export function fetchJobs() {
             });
     }
 }
+
+export function fetchTags() {
+    return (dispatch, state) => {
+        dispatch(receiveTags(['developer','thai','ohjelmointi','kehittaja']));
+    }
+}
+
+function receiveTags(data) {
+    return {
+        type: Action.RECEIVE_TAGS_SUCCESS,
+        data: data
+    }
+}
 // TODO: REQ , SUC ,FAIL
 export function receiveJobs(data) {
     return {

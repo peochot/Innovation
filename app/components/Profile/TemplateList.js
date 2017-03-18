@@ -15,7 +15,7 @@ import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import { blue500, yellow600 } from 'material-ui/styles/colors';
 
 // TODO : NO NO NO
-const mapStateToProps = ({ auth  }) => ({ auth });
+const mapStateToProps = ({ letter  }) => ({ letter });
 const mapDispatchToProps = dispatch => ({
     fetchLetters: () => dispatch(fetchLetters)
 });
@@ -37,6 +37,7 @@ class TemplateList extends React.Component {
     }
 
     render() {
+        const { letter } = this.props;
         return (
             <List>
                 <ListItem

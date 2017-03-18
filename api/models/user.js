@@ -58,6 +58,10 @@ let userSchema = db.Schema({
     company: {
         type: String
     },
+    preferences: {
+        type:Array,
+        default: []
+    },
     salt: String
 }, schemaOptions);
 
