@@ -25,7 +25,8 @@ export class GeoJob extends Component {
     if(this.props.selectedJob&&this.props.isDiscussOpen){
       content = <DiscussModal/>
     }else{
-      content =<div style={divStyle} >
+      content =
+      <div style={divStyle} >
         <JobDrawer jobs={this.props.jobs}/>
 
         <Map
