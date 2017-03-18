@@ -37,7 +37,7 @@ export class JobCard extends React.Component {
           this.props.job.bookmarked?<div>Bookmarked</div>:
           <FloatingActionButton onClick={()=>this.props.bookmark(this.this.props.job._id)} label="Ac"></FloatingActionButton>
         }
-          <FlatButton label="Action2" />
+          <FlatButton label="Direction" href={`https://www.reittiopas.fi/reitti/YourLocation::${this.props.userLocation.lat},${this.props.userLocation.lng}/${this.props.job.company}::${this.props.jobLocation.lat},${this.props.jobLocation.lng}?time=1489846005&arriveBy=false`} />
         </CardActions>
       </Card>)}
     }
