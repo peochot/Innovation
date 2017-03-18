@@ -20,7 +20,7 @@ export const Map = props => (
     >
     {
       props.jobs.map((job) => (
-        <InfoMarker job={job} key={job._id} />
+        <InfoMarker job={job} key={job._id} userLocation={{ lat: defaultLat, lng: defaultLon  }} />
       ))
     }
   </GoogleMap>

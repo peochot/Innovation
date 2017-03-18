@@ -14,19 +14,7 @@ export class ASDialog extends React.Component {
 
     return (
       <div>
-        <Dialog
-          title="Advanced Job Search"
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
-        >
-        {
-          this.props.searchKey.map((obj)=>{
-
-          });
-        }
-        </Dialog>
+        
       </div>
     );
   }

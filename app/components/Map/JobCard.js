@@ -41,7 +41,7 @@ export class JobCard extends React.Component {
                 <FontIcon className="material-icons">fingerprint</FontIcon>
               </FloatingActionButton>
           }
-          <FlatButton label="Action2" />
+          <FlatButton label="Direction" href={`https://www.reittiopas.fi/reitti/YourLocation::${this.props.userLocation.lat},${this.props.userLocation.lng}/${this.props.job.company}::${this.props.jobLocation.lat},${this.props.jobLocation.lng}?time=1489846005&arriveBy=false`} />
         </CardActions>
       </Card>)
   }
