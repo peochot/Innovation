@@ -9,7 +9,7 @@ import {ioListener} from './config/socket';
 import MolCrawler from './services/MolCrawler';
 import MailService from './services/Mail';
 import UserMailService from './services/UserMail';
-import {CronJob} from 'cron';
+// import {CronJob} from 'cron';
 import auth from './middlewares/auth';
 
 const app = express();
@@ -32,15 +32,15 @@ app.get('*', function(req, res) {
     res.sendFile(path.resolve(__dirname, '../public', 'index.html'))
 });
 
-const job = new CronJob("15 14 * * *", function() {
-   console.log('Start daily job crawler');
-  }, function () {
-    /* This function is executed when the job stops */
-    console.log('Job finished');
-  },
-  true, /* Start the job right now */
-  "Europe/Helsinki" /* Time zone of this job. */
-);
+// const job = new CronJob("15 14 * * *", function() {
+//    console.log('Start daily job crawler');
+//   }, function () {
+//     /* This function is executed when the job stops */
+//     console.log('Job finished');
+//   },
+//   true, /* Start the job right now */
+//   "Europe/Helsinki" /* Time zone of this job. */
+// );
 server.listen(app.get('port'),function(){
   //MolCrawler.crawl();
   /*const fileData =UserMailService.readFile();
