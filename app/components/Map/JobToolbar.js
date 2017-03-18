@@ -18,7 +18,9 @@ export default class JobToolbar extends React.Component {
     };
   }
 
+
   handleChange = (event, index, value) => this.setState({value});
+  openAdvanceSearch = () => this.setState({value});
 
   render() {
     let searchKey=[{key:"title",label:"By Title"},
@@ -41,7 +43,6 @@ export default class JobToolbar extends React.Component {
             }
           </DropDownMenu>
           <TextField
-                errorText="error"
                 hintText="Keyword"
                 fullWidth={true}
                 style={{width:"20em"}}
@@ -57,7 +58,7 @@ export default class JobToolbar extends React.Component {
               </IconButton>
             }
           >
-            <MenuItem primaryText="Download" />
+            <MenuItem primaryText="Advance Search" onClick/>
             <MenuItem primaryText="More Info" />
           </IconMenu>
         </ToolbarGroup>

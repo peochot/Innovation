@@ -3,6 +3,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import JobToolbar from './JobToolbar';
+import ASDialog from './AdvanceSearchDialog';
 import { connect } from 'react-redux';
 import {selectJob} from '../../actions';
 const mapDispatchToProps = dispatch => ({
@@ -21,6 +22,7 @@ export class JobDrawer extends React.Component {
     return (
       <div>
         <JobToolbar handleDrawer={this.handleToggle}/>
+        <ASDialog/>
         <Drawer
         docked={false}
         open={this.state.open}
