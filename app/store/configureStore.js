@@ -4,6 +4,9 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { routerReducer } from 'react-router-redux';
 import * as reducers from '../reducers';
 import { reducer as formReducer } from 'redux-form'
+import { persistStore, autoRehydrate } from 'redux-persist';
+
+
 /*
 export default (history,initialState = {}) => {
   reducers.routing = routerReducer;
@@ -18,11 +21,13 @@ export default (history,initialState = {}) => {
 
 export default (initialState = {}) => {
   reducers.routing = routerReducer;
-  reducers.form=formReducer;
+  reducers.form = formReducer;
   let store = redux.createStore(redux.combineReducers(reducers), initialState, redux.compose(
     redux.applyMiddleware(thunk),
+    autoRehydrate(), // Tri : Auto-rehydrate state from storage
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
-
+  persistStore(store);
   return store;
 };
+
