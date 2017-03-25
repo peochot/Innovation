@@ -17,6 +17,7 @@ export default class JobToolbar extends React.Component {
       value: 3,
     };
   }
+
   handleChange = (event, index, value) => this.setState({value});
   openAdvanceSearch = () => this.setState({value});
 

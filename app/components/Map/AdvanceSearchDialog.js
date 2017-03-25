@@ -13,7 +13,6 @@ export class ASDialog extends React.Component {
   handleOpen = () => this.setState({ open: true });
   handleClose = () => this.setState({ open: false });
   render() {
-
     return (
       <div>
         <Dialog

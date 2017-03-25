@@ -26,7 +26,6 @@ let initGeoJobs = {
   jobList: [],
   isLatest: false
 }
-
 export const geoJob = (state = initGeoJobs, action) => {
   switch (action.type) {
     case Names.RECEIVE_JOBS:
