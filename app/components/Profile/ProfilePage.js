@@ -52,7 +52,6 @@ export class ProfilePage extends React.Component {
         console.info('Form', values);
         // Dispatch something
         this.props.setProfile(values);
-
     }
 
     render() {
