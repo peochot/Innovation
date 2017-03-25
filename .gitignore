@@ -10,3 +10,4 @@ yarn.lock
 .idea/*
 .vscode/*
 .tern-project
+.fusebox

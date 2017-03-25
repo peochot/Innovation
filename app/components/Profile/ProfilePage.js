@@ -52,13 +52,12 @@ export class ProfilePage extends React.Component {
         console.info('Form', values);
         // Dispatch something
         this.props.setProfile(values);
-
     }
 
     render() {
         const { tabValue } = this.state;
         const { firstName, lastName, applications, templates } = this.props.profile;
-        // console.log(profile);
+        
         return (
             <div>
                 <Tabs

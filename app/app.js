@@ -1,14 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+
+// Router
 import { Router, browserHistory } from 'react-router';
 import getRoutes from './routes';
+
+// State management
+import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
+
+//  Material theming
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { getCookie } from './utils';
-import { loginUserSuccess, fetchJobs, fetchBookmarks, fetchApplications, fetchLetters, fetchTags } from './actions';
+
+// Reducers
+import {
+  loginUserSuccess, fetchJobs,
+  fetchBookmarks, fetchApplications, fetchLetters, fetchTags
+} from './actions';
+
+// Misc
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import { getCookie } from './utils';
+
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
@@ -27,7 +41,7 @@ function run() {
 function init() {
   injectTapEventPlugin();
   let token = localStorage.getItem('token') || getCookie("mycookie");
-  if (token&&!store.getState().auth.isLogout) {
+  if (token && !store.getState().auth.isLogout) {
     const user = JSON.parse(window.atob(token.split('.')[1]));
     const currentTimestamp = Math.floor(Date.now() / 1000);
 

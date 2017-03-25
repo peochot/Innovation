@@ -28,3 +28,10 @@ applicationSchema.index({ job: 1,owner:1,status:1}, { unique: true });
 const Application =db.model('Application',applicationSchema);
 
 module.exports = Application;
+
+/**
+ * jobData : {
+ *  jobId:
+ *  
+ * }
+ */
