@@ -29,19 +29,27 @@ function init() {
   let token = localStorage.getItem('token') || getCookie("mycookie");
   if (token&&!store.getState().auth.isLogout) {
     const user = JSON.parse(window.atob(token.split('.')[1]));
-    const authData = {
-      token,
-      user,
-      isAuthenticated: true,
-      isAuthenticating: false,
-      isLogout: false
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+
+    if (user.exp > currentTimestamp) {
+      console.log(user.exp)
+      console.log(currentTimestamp)
+      const authData = {
+        token,
+        user,
+        isAuthenticated: true,
+        isAuthenticating: false,
+        isLogout: false
+      }
+      store.dispatch(loginUserSuccess(authData));
+      store.dispatch(fetchJobs());
+      store.dispatch(fetchBookmarks());
+      store.dispatch(fetchApplications());
+      store.dispatch(fetchLetters());
+      store.dispatch(fetchTags());
+    } else {
+      localStorage.removeItem('token')
     }
-    store.dispatch(loginUserSuccess(authData));
-    store.dispatch(fetchJobs());
-    store.dispatch(fetchBookmarks());
-    store.dispatch(fetchApplications());
-    store.dispatch(fetchLetters());
-    store.dispatch(fetchTags());
   }
   run();
   store.subscribe(run);
