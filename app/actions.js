@@ -162,6 +162,7 @@ function receiveTags(data) {
         data: data
     }
 }
+
 // TODO: REQ , SUC ,FAIL
 export function receiveJobs(data) {
     return {

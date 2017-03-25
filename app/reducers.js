@@ -15,40 +15,54 @@ export const auth = (state = initAuth, action) => {
     case Names.LOGOUT:
       return {
         ...initAuth,
-        isLogout:true
+        isLogout: true
       };
     default:
       return state;
   }
 };
 
-export const jobs = (state = [], action) => {
+let initGeoJobs = {
+  jobList: [],
+  isLatest: false
+}
+
+
+export const geoJob = (state = initGeoJobs, action) => {
   switch (action.type) {
     case Names.RECEIVE_JOBS:
-      return action.data || state;
+      {
+        console.log('Reducer receiving jobs',action);
+        return {
+          ...state,
+          jobList: action.data,
+          isLatest: true
+        }
+      }
     case Names.BOOKMARK_JOB:
       return state.map((job) => {
         if (action.jobId == job._id) {
           return {
             ...job,
-        bookmarked:true
-          };
-}
-return job;
-      });
-    case Names.APPLY_JOB:
-return state.map((job) => {
-  if (action.jobId == job._id) {
-    return {
-            ...job,
-  applied:true
+            bookmarked: true
           };
         }
-return job;
+        return job;
+      });
+    case Names.APPLY_JOB:
+      return state.map((job) => {
+        if (action.jobId == job._id) {
+          return {
+            ...job,
+            applied: true
+          };
+        }
+        return job;
       });
     default:
-return state;
-}};
+      return state;
+  }
+};
 
 export const selectedJob = (state = null, action) => {
   switch (action.type) {
@@ -102,11 +116,11 @@ export const profile = (state = {}, action) => {
   }
 }
 
-export const tags = ( state = [], action) => {
-  switch(action.type){
-    case Names.RECEIVE_TAGS_SUCCESS:{
+export const tags = (state = [], action) => {
+  switch (action.type) {
+    case Names.RECEIVE_TAGS_SUCCESS: {
       return action.data || state;
     }
-    default : return state;
+    default: return state;
   }
 }
