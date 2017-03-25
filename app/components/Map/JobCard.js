@@ -5,7 +5,7 @@ import { bookmark, apply, openDiscussModal } from '../../actions';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
+import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 
 
@@ -17,9 +17,9 @@ const mapDispatchToProps = dispatch => ({
 export class JobCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {fullDesc: false};
+    this.state = { fullDesc: false };
   }
-  toggleDescription = () =>{ this.setState({fullDesc:!this.state.fullDesc})}
+  toggleDescription = () => { this.setState({ fullDesc: !this.state.fullDesc }) }
   render() {
     return (
       <Card>
@@ -27,23 +27,33 @@ export class JobCard extends React.Component {
           title={this.props.job.title}
           subtitle={this.props.job.company}
           avatar={`https://robohash.org/${this.props.job.company}`}
-          />
+        />
 
-        <CardTitle title="Description" subtitle={"Expire on: " + this.props.job.expire} />
+        <CardTitle subtitle={"Expire on: " + new Date(this.props.job.expire).toLocaleString('en-US')} />
         <CardText>
           {this.state.fullDesc ? this.props.job.description : `${this.props.job.description.substring(0, 100)}...`}
-          <RaisedButton label="Toggle" onClick={this.toggleDescription}> </RaisedButton>
+          {/* 
+            this.state.fullDesc ? this.props.job.description : `${this.props.job.description.substring(0, 100)}...`
+            <RaisedButton label="Toggle" onClick={this.toggleDescription}> </RaisedButton>
+          */}
         </CardText>
         <CardActions>
+          <IconButton tooltip="Go" tooltipPosition="top-right">
+            <FontIcon className="material-icons">subject</FontIcon>
+          </IconButton>
           {
-            this.props.job.bookmarked ? <div>You have bookmarked this job</div> :
-              <FloatingActionButton onClick={() => this.props.bookmark(this.props.job._id)}>
+              <IconButton disabled={this.props.job.bookmarked} tooltip={!this.props.job.bookmarked ? "Bookmark" : "Job bookmarked" } onTouchTap={() => this.props.bookmark(this.props.job._id)} tooltipPosition="top-right">
                 <FontIcon className="material-icons">fingerprint</FontIcon>
-              </FloatingActionButton>
+              </IconButton>
           }
-          <FlatButton label="Direction" href={`https://www.reittiopas.fi/reitti/YourLocation::${this.props.userLocation.lat},${this.props.userLocation.lng}/${this.props.job.company}::${this.props.jobLocation.lat},${this.props.jobLocation.lng}?time=1489846005&arriveBy=false`} />
+          <a target="_blank" href={`https://www.reittiopas.fi/reitti/YourLocation::${this.props.userLocation.lat},${this.props.userLocation.lng}/${this.props.job.company}::${this.props.jobLocation.lat},${this.props.jobLocation.lng}?time=1489846005&arriveBy=false`} >
+            <IconButton tooltip="Location" tooltipPosition="top-right">
+              <FontIcon className="material-icons">visibility</FontIcon>
+            </IconButton>
+          </a>
         </CardActions>
-      </Card>)
+      </Card>
+    )
   }
 }
 export default connect(null, mapDispatchToProps)(JobCard);

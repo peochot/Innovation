@@ -19,6 +19,8 @@ const mapDispatchToProps = dispatch => ({
 export class ApplicationList extends React.Component {
     constructor(props) {
         super(props);
+        console.log('props',props);
+        this.props = props;
     }
 
     componentWillMount() {
@@ -51,7 +53,7 @@ export class ApplicationList extends React.Component {
     render() {
         // const { appList } = this.props;
         // const appList = this.props.appList;
-        const appList = this.props.appList;
+        const appList = this.props.appList || [];
         return (
             <div>
                 {appList.map((app) => {

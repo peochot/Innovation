@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Multiselect from 'react-widgets/lib/Multiselect';
 import RaisedButton from 'material-ui/RaisedButton';
 import 'react-widgets/dist/css/react-widgets.css';
+
 // require('react-widgets/dist/css/react-widgets.css');
 
 import {
@@ -43,17 +44,17 @@ class ProfileForm extends Component {
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <div>
-                    <Field fullWidth="true" component={TextField} floatingLabelText="First Name" hintText="First Name" name="firstName" />
-                    <Field fullWidth="true" component={TextField} floatingLabelText="Last Name" hintText="Last Name" name="lastName" />
-                    <Field fullWidth="true" component={TextField} floatingLabelText="Title" hintText="Title" name="title" />
-                    <Field fullWidth="true" component={TextField} floatingLabelText="Company" hintText="Company" name="company" />
+                    <Field fullWidth={true} component={TextField} floatingLabelText="First Name" hintText="First Name" name="firstName" />
+                    <Field fullWidth={true} component={TextField} floatingLabelText="Last Name" hintText="Last Name" name="lastName" />
+                    <Field fullWidth={true} component={TextField} floatingLabelText="Title" hintText="Title" name="title" />
+                    <Field fullWidth={true} component={TextField} floatingLabelText="Company" hintText="Company" name="company" />
                     <label> TODO: Label styling </label>
                     <Field hintText="Preference" floatingLabelText="Preference" component={renderMultiselect}
                         floatingLabelText="Preference" name="preferences"
                         data={dataSource} />
                 </div>
                 <div>
-                    <RaisedButton primary={true} type="submit" label="Submit" fullWidth={true} disabled={pristine || submitting} />
+                    <RaisedButton primary={true} type="submit" label="Submit"  disabled={pristine || submitting} />
                 </div>
             </form>
         )
