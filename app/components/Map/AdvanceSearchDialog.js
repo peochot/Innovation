@@ -1,8 +1,10 @@
 import React from 'react';
 import MenuItem from 'material-ui/MenuItem';
+import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 
+// TODO : Actions ?
 export class ASDialog extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ export class ASDialog extends React.Component {
       <div>
         <Dialog
           title="Advanced Job Search"
-          actions={actions}
+          actions={[]}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
