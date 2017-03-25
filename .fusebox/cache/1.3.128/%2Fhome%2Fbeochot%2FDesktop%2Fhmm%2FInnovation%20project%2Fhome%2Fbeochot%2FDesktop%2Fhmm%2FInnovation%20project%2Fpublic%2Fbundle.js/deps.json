@@ -1,0 +1,1628 @@
+{
+  "tree": {
+    "react@15.4.2": {
+      "deps": {
+        "object-assign@4.1.0": {
+          "deps": {},
+          "name": "object-assign",
+          "version": "4.1.0"
+        },
+        "fbjs@0.8.8": {
+          "deps": {
+            "process@0.0.0": {
+              "deps": {
+                "object-assign-polyfill@0.0.0": {
+                  "deps": {},
+                  "name": "object-assign-polyfill",
+                  "version": "0.0.0"
+                }
+              },
+              "name": "process",
+              "version": "0.0.0"
+            }
+          },
+          "name": "fbjs",
+          "version": "0.8.8"
+        }
+      },
+      "name": "react",
+      "version": "15.4.2"
+    },
+    "react-dom@15.4.2": {
+      "deps": {},
+      "name": "react-dom",
+      "version": "15.4.2"
+    },
+    "react-redux@4.4.6": {
+      "deps": {
+        "redux@3.6.0": {
+          "deps": {
+            "lodash@4.17.4": {
+              "deps": {},
+              "name": "lodash",
+              "version": "4.17.4"
+            },
+            "symbol-observable@1.0.4": {
+              "deps": {},
+              "name": "symbol-observable",
+              "version": "1.0.4"
+            }
+          },
+          "name": "redux",
+          "version": "3.6.0"
+        },
+        "hoist-non-react-statics@1.2.0": {
+          "deps": {},
+          "name": "hoist-non-react-statics",
+          "version": "1.2.0"
+        },
+        "invariant@2.2.2": {
+          "deps": {},
+          "name": "invariant",
+          "version": "2.2.2"
+        }
+      },
+      "name": "react-redux",
+      "version": "4.4.6"
+    },
+    "react-router@2.8.1": {
+      "deps": {
+        "warning@3.0.0": {
+          "deps": {},
+          "name": "warning",
+          "version": "3.0.0"
+        },
+        "history@2.1.2": {
+          "deps": {
+            "warning@2.1.0": {
+              "deps": {},
+              "name": "warning",
+              "version": "2.1.0"
+            },
+            "deep-equal@1.0.1": {
+              "deps": {},
+              "name": "deep-equal",
+              "version": "1.0.1"
+            },
+            "query-string@3.0.3": {
+              "deps": {
+                "strict-uri-encode@1.1.0": {
+                  "deps": {},
+                  "name": "strict-uri-encode",
+                  "version": "1.1.0"
+                }
+              },
+              "name": "query-string",
+              "version": "3.0.3"
+            }
+          },
+          "name": "history",
+          "version": "2.1.2"
+        }
+      },
+      "name": "react-router",
+      "version": "2.8.1"
+    },
+    "react-router-redux@4.0.7": {
+      "deps": {},
+      "name": "react-router-redux",
+      "version": "4.0.7"
+    },
+    "material-ui@0.16.6": {
+      "deps": {
+        "babel-runtime@6.20.0": {
+          "deps": {
+            "core-js@2.4.1": {
+              "deps": {},
+              "name": "core-js",
+              "version": "2.4.1"
+            }
+          },
+          "name": "babel-runtime",
+          "version": "6.20.0"
+        },
+        "simple-assign@0.1.0": {
+          "deps": {},
+          "name": "simple-assign",
+          "version": "0.1.0"
+        },
+        "react-addons-create-fragment@15.4.2": {
+          "deps": {},
+          "name": "react-addons-create-fragment",
+          "version": "15.4.2"
+        },
+        "keycode@2.1.8": {
+          "deps": {},
+          "name": "keycode",
+          "version": "2.1.8"
+        },
+        "recompose@0.21.2": {
+          "deps": {},
+          "name": "recompose",
+          "version": "0.21.2"
+        },
+        "react-addons-transition-group@15.4.2": {
+          "deps": {},
+          "name": "react-addons-transition-group",
+          "version": "15.4.2"
+        },
+        "react-event-listener@0.4.1": {
+          "deps": {
+            "react-addons-shallow-compare@15.4.2": {
+              "deps": {},
+              "name": "react-addons-shallow-compare",
+              "version": "15.4.2"
+            }
+          },
+          "name": "react-event-listener",
+          "version": "0.4.1"
+        },
+        "lodash.throttle@4.1.1": {
+          "deps": {},
+          "name": "lodash.throttle",
+          "version": "4.1.1"
+        },
+        "lodash.merge@4.6.0": {
+          "deps": {},
+          "name": "lodash.merge",
+          "version": "4.6.0"
+        },
+        "inline-style-prefixer@2.0.5": {
+          "deps": {
+            "hyphenate-style-name@1.0.2": {
+              "deps": {},
+              "name": "hyphenate-style-name",
+              "version": "1.0.2"
+            },
+            "bowser@1.6.0": {
+              "deps": {},
+              "name": "bowser",
+              "version": "1.6.0"
+            }
+          },
+          "name": "inline-style-prefixer",
+          "version": "2.0.5"
+        }
+      },
+      "name": "material-ui",
+      "version": "0.16.6"
+    },
+    "isomorphic-fetch@2.2.1": {
+      "deps": {
+        "whatwg-fetch@2.0.1": {
+          "deps": {},
+          "name": "whatwg-fetch",
+          "version": "2.0.1"
+        }
+      },
+      "name": "isomorphic-fetch",
+      "version": "2.2.1"
+    },
+    "react-google-maps@6.0.1": {
+      "deps": {
+        "react-display-name@0.2.0": {
+          "deps": {},
+          "name": "react-display-name",
+          "version": "0.2.0"
+        }
+      },
+      "name": "react-google-maps",
+      "version": "6.0.1"
+    },
+    "redux-form@6.4.3": {
+      "deps": {
+        "array-findindex-polyfill@0.1.0": {
+          "deps": {},
+          "name": "array-findindex-polyfill",
+          "version": "0.1.0"
+        },
+        "is-promise@2.1.0": {
+          "deps": {},
+          "name": "is-promise",
+          "version": "2.1.0"
+        },
+        "es6-error@4.0.1": {
+          "deps": {},
+          "name": "es6-error",
+          "version": "4.0.1"
+        },
+        "shallowequal@0.2.2": {
+          "deps": {
+            "lodash.keys@3.1.2": {
+              "deps": {
+                "lodash._getnative@3.9.1": {
+                  "deps": {},
+                  "name": "lodash._getnative",
+                  "version": "3.9.1"
+                },
+                "lodash.isarguments@3.1.0": {
+                  "deps": {},
+                  "name": "lodash.isarguments",
+                  "version": "3.1.0"
+                },
+                "lodash.isarray@3.0.4": {
+                  "deps": {},
+                  "name": "lodash.isarray",
+                  "version": "3.0.4"
+                }
+              },
+              "name": "lodash.keys",
+              "version": "3.1.2"
+            }
+          },
+          "name": "shallowequal",
+          "version": "0.2.2"
+        }
+      },
+      "name": "redux-form",
+      "version": "6.4.3"
+    },
+    "react-widgets@3.4.5": {
+      "deps": {
+        "classnames@2.2.5": {
+          "deps": {},
+          "name": "classnames",
+          "version": "2.2.5"
+        },
+        "uncontrollable@4.0.3": {
+          "deps": {},
+          "name": "uncontrollable",
+          "version": "4.0.3"
+        },
+        "dom-helpers@2.4.0": {
+          "deps": {},
+          "name": "dom-helpers",
+          "version": "2.4.0"
+        }
+      },
+      "name": "react-widgets",
+      "version": "3.4.5"
+    },
+    "redux-form-material-ui@4.1.2": {
+      "deps": {},
+      "name": "redux-form-material-ui",
+      "version": "4.1.2"
+    },
+    "redux-thunk@2.1.0": {
+      "deps": {},
+      "name": "redux-thunk",
+      "version": "2.1.0"
+    },
+    "react-tap-event-plugin@2.0.1": {
+      "deps": {},
+      "name": "react-tap-event-plugin",
+      "version": "2.0.1"
+    },
+    "fusebox-hot-reload@0.0.0": {
+      "deps": {
+        "fusebox-websocket@0.0.0": {
+          "deps": {
+            "events@0.0.0": {
+              "deps": {},
+              "name": "events",
+              "version": "0.0.0"
+            }
+          },
+          "name": "fusebox-websocket",
+          "version": "0.0.0"
+        }
+      },
+      "name": "fusebox-hot-reload",
+      "version": "0.0.0"
+    }
+  },
+  "flat": {
+    "react@15.4.2": {
+      "name": "react",
+      "version": "15.4.2",
+      "files": [
+        "react.js",
+        "lib/React.js",
+        "lib/ReactChildren.js",
+        "lib/PooledClass.js",
+        "lib/reactProdInvariant.js",
+        "lib/ReactElement.js",
+        "lib/ReactCurrentOwner.js",
+        "lib/canDefineProperty.js",
+        "lib/ReactElementSymbol.js",
+        "lib/traverseAllChildren.js",
+        "lib/getIteratorFn.js",
+        "lib/KeyEscapeUtils.js",
+        "lib/ReactComponent.js",
+        "lib/ReactNoopUpdateQueue.js",
+        "lib/ReactPureComponent.js",
+        "lib/ReactClass.js",
+        "lib/ReactPropTypeLocationNames.js",
+        "lib/ReactDOMFactories.js",
+        "lib/ReactElementValidator.js",
+        "lib/ReactComponentTreeHook.js",
+        "lib/checkReactTypeSpec.js",
+        "lib/ReactPropTypesSecret.js",
+        "lib/ReactPropTypes.js",
+        "lib/ReactVersion.js",
+        "lib/onlyChild.js",
+        "lib/ReactFragment.js",
+        "lib/ReactTransitionGroup.js",
+        "lib/ReactTransitionChildMapping.js",
+        "lib/flattenChildren.js",
+        "lib/shallowCompare.js"
+      ]
+    },
+    "object-assign@4.1.0": {
+      "name": "object-assign@4.1.0",
+      "version": "4.1.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "fbjs@0.8.8": {
+      "name": "fbjs",
+      "version": "0.8.8",
+      "files": [
+        "lib/invariant.js",
+        "lib/warning.js",
+        "lib/emptyFunction.js",
+        "lib/emptyObject.js",
+        "lib/ExecutionEnvironment.js",
+        "lib/performanceNow.js",
+        "lib/performance.js",
+        "lib/createNodesFromMarkup.js",
+        "lib/createArrayFromMixed.js",
+        "lib/getMarkupWrap.js",
+        "lib/focusNode.js",
+        "lib/camelizeStyleName.js",
+        "lib/camelize.js",
+        "lib/hyphenateStyleName.js",
+        "lib/hyphenate.js",
+        "lib/memoizeStringOnly.js",
+        "lib/shallowEqual.js",
+        "lib/EventListener.js",
+        "lib/getUnboundedScrollPosition.js",
+        "lib/containsNode.js",
+        "lib/isTextNode.js",
+        "lib/isNode.js",
+        "lib/getActiveElement.js",
+        "lib/keyOf.js"
+      ]
+    },
+    "process@0.0.0": {
+      "name": "process",
+      "version": "0.0.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "object-assign-polyfill@0.0.0": {
+      "name": "object-assign-polyfill",
+      "version": "0.0.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "react-dom@15.4.2": {
+      "name": "react-dom",
+      "version": "15.4.2",
+      "files": [
+        "index.js",
+        "lib/ReactDOM.js",
+        "lib/ReactDOMComponentTree.js",
+        "lib/reactProdInvariant.js",
+        "lib/DOMProperty.js",
+        "lib/ReactDOMComponentFlags.js",
+        "lib/ReactDefaultInjection.js",
+        "lib/ARIADOMPropertyConfig.js",
+        "lib/BeforeInputEventPlugin.js",
+        "lib/EventPropagators.js",
+        "lib/EventPluginHub.js",
+        "lib/EventPluginRegistry.js",
+        "lib/EventPluginUtils.js",
+        "lib/ReactErrorUtils.js",
+        "lib/accumulateInto.js",
+        "lib/forEachAccumulated.js",
+        "lib/FallbackCompositionState.js",
+        "lib/PooledClass.js",
+        "lib/getTextContentAccessor.js",
+        "lib/SyntheticCompositionEvent.js",
+        "lib/SyntheticEvent.js",
+        "lib/SyntheticInputEvent.js",
+        "lib/ChangeEventPlugin.js",
+        "lib/ReactUpdates.js",
+        "lib/CallbackQueue.js",
+        "lib/ReactFeatureFlags.js",
+        "lib/ReactReconciler.js",
+        "lib/ReactRef.js",
+        "lib/ReactOwner.js",
+        "lib/ReactInstrumentation.js",
+        "lib/ReactDebugTool.js",
+        "lib/ReactInvalidSetStateWarningHook.js",
+        "lib/ReactHostOperationHistoryHook.js",
+        "lib/Transaction.js",
+        "lib/getEventTarget.js",
+        "lib/isEventSupported.js",
+        "lib/isTextInputElement.js",
+        "lib/DefaultEventPluginOrder.js",
+        "lib/EnterLeaveEventPlugin.js",
+        "lib/SyntheticMouseEvent.js",
+        "lib/SyntheticUIEvent.js",
+        "lib/ViewportMetrics.js",
+        "lib/getEventModifierState.js",
+        "lib/HTMLDOMPropertyConfig.js",
+        "lib/ReactComponentBrowserEnvironment.js",
+        "lib/DOMChildrenOperations.js",
+        "lib/DOMLazyTree.js",
+        "lib/DOMNamespaces.js",
+        "lib/setInnerHTML.js",
+        "lib/createMicrosoftUnsafeLocalFunction.js",
+        "lib/setTextContent.js",
+        "lib/escapeTextContentForBrowser.js",
+        "lib/Danger.js",
+        "lib/ReactDOMIDOperations.js",
+        "lib/ReactDOMComponent.js",
+        "lib/AutoFocusUtils.js",
+        "lib/CSSPropertyOperations.js",
+        "lib/CSSProperty.js",
+        "lib/dangerousStyleValue.js",
+        "lib/DOMPropertyOperations.js",
+        "lib/quoteAttributeValueForBrowser.js",
+        "lib/ReactBrowserEventEmitter.js",
+        "lib/ReactEventEmitterMixin.js",
+        "lib/getVendorPrefixedEventName.js",
+        "lib/ReactDOMInput.js",
+        "lib/LinkedValueUtils.js",
+        "lib/ReactPropTypesSecret.js",
+        "lib/ReactDOMOption.js",
+        "lib/ReactDOMSelect.js",
+        "lib/ReactDOMTextarea.js",
+        "lib/ReactMultiChild.js",
+        "lib/ReactComponentEnvironment.js",
+        "lib/ReactInstanceMap.js",
+        "lib/ReactChildReconciler.js",
+        "lib/instantiateReactComponent.js",
+        "lib/ReactCompositeComponent.js",
+        "lib/ReactNodeTypes.js",
+        "lib/checkReactTypeSpec.js",
+        "lib/ReactPropTypeLocationNames.js",
+        "lib/shouldUpdateReactComponent.js",
+        "lib/ReactEmptyComponent.js",
+        "lib/ReactHostComponent.js",
+        "lib/getNextDebugID.js",
+        "lib/KeyEscapeUtils.js",
+        "lib/traverseAllChildren.js",
+        "lib/ReactElementSymbol.js",
+        "lib/getIteratorFn.js",
+        "lib/flattenChildren.js",
+        "lib/ReactServerRenderingTransaction.js",
+        "lib/ReactServerUpdateQueue.js",
+        "lib/ReactUpdateQueue.js",
+        "lib/validateDOMNesting.js",
+        "lib/ReactDOMEmptyComponent.js",
+        "lib/ReactDOMTreeTraversal.js",
+        "lib/ReactDOMTextComponent.js",
+        "lib/ReactDefaultBatchingStrategy.js",
+        "lib/ReactEventListener.js",
+        "lib/ReactInjection.js",
+        "lib/ReactReconcileTransaction.js",
+        "lib/ReactInputSelection.js",
+        "lib/ReactDOMSelection.js",
+        "lib/getNodeForCharacterOffset.js",
+        "lib/SVGDOMPropertyConfig.js",
+        "lib/SelectEventPlugin.js",
+        "lib/SimpleEventPlugin.js",
+        "lib/SyntheticAnimationEvent.js",
+        "lib/SyntheticClipboardEvent.js",
+        "lib/SyntheticFocusEvent.js",
+        "lib/SyntheticKeyboardEvent.js",
+        "lib/getEventCharCode.js",
+        "lib/getEventKey.js",
+        "lib/SyntheticDragEvent.js",
+        "lib/SyntheticTouchEvent.js",
+        "lib/SyntheticTransitionEvent.js",
+        "lib/SyntheticWheelEvent.js",
+        "lib/ReactMount.js",
+        "lib/ReactDOMContainerInfo.js",
+        "lib/ReactDOMFeatureFlags.js",
+        "lib/ReactMarkupChecksum.js",
+        "lib/adler32.js",
+        "lib/ReactVersion.js",
+        "lib/findDOMNode.js",
+        "lib/getHostComponentFromComposite.js",
+        "lib/renderSubtreeIntoContainer.js",
+        "lib/ReactDOMUnknownPropertyHook.js",
+        "lib/ReactDOMNullInputValuePropHook.js",
+        "lib/ReactDOMInvalidARIAHook.js",
+        "lib/EventConstants.js"
+      ]
+    },
+    "react-redux@4.4.6": {
+      "name": "react-redux",
+      "version": "4.4.6",
+      "files": [
+        "lib/index.js",
+        "lib/components/Provider.js",
+        "lib/utils/storeShape.js",
+        "lib/utils/warning.js",
+        "lib/components/connect.js",
+        "lib/utils/shallowEqual.js",
+        "lib/utils/wrapActionCreators.js"
+      ]
+    },
+    "redux@3.6.0": {
+      "name": "redux",
+      "version": "3.6.0",
+      "files": [
+        "lib/index.js",
+        "lib/createStore.js",
+        "lib/combineReducers.js",
+        "lib/utils/warning.js",
+        "lib/bindActionCreators.js",
+        "lib/applyMiddleware.js",
+        "lib/compose.js"
+      ]
+    },
+    "lodash@4.17.4": {
+      "name": "lodash",
+      "version": "4.17.4",
+      "files": [
+        "isPlainObject.js",
+        "_baseGetTag.js",
+        "_Symbol.js",
+        "_root.js",
+        "_freeGlobal.js",
+        "_getRawTag.js",
+        "_objectToString.js",
+        "_getPrototype.js",
+        "_overArg.js",
+        "isObjectLike.js",
+        "flowRight.js",
+        "_createFlow.js",
+        "_LodashWrapper.js",
+        "_baseCreate.js",
+        "isObject.js",
+        "_baseLodash.js",
+        "_flatRest.js",
+        "flatten.js",
+        "_baseFlatten.js",
+        "_arrayPush.js",
+        "_isFlattenable.js",
+        "isArguments.js",
+        "_baseIsArguments.js",
+        "isArray.js",
+        "_overRest.js",
+        "_apply.js",
+        "_setToString.js",
+        "_baseSetToString.js",
+        "constant.js",
+        "_defineProperty.js",
+        "_getNative.js",
+        "_baseIsNative.js",
+        "isFunction.js",
+        "_isMasked.js",
+        "_coreJsData.js",
+        "_toSource.js",
+        "_getValue.js",
+        "identity.js",
+        "_shortOut.js",
+        "_getData.js",
+        "_metaMap.js",
+        "_WeakMap.js",
+        "noop.js",
+        "_getFuncName.js",
+        "_realNames.js",
+        "_isLaziable.js",
+        "_LazyWrapper.js",
+        "wrapperLodash.js",
+        "_wrapperClone.js",
+        "_copyArray.js",
+        "curry.js",
+        "_createWrap.js",
+        "_baseSetData.js",
+        "_createBind.js",
+        "_createCtor.js",
+        "_createCurry.js",
+        "_createHybrid.js",
+        "_composeArgs.js",
+        "_composeArgsRight.js",
+        "_countHolders.js",
+        "_createRecurry.js",
+        "_setData.js",
+        "_setWrapToString.js",
+        "_getWrapDetails.js",
+        "_insertWrapDetails.js",
+        "_updateWrapDetails.js",
+        "_arrayEach.js",
+        "_arrayIncludes.js",
+        "_baseIndexOf.js",
+        "_baseFindIndex.js",
+        "_baseIsNaN.js",
+        "_strictIndexOf.js",
+        "_getHolder.js",
+        "_reorder.js",
+        "_isIndex.js",
+        "_replaceHolders.js",
+        "_createPartial.js",
+        "_mergeData.js",
+        "toInteger.js",
+        "toFinite.js",
+        "toNumber.js",
+        "isSymbol.js",
+        "forEach.js",
+        "_baseEach.js",
+        "_baseForOwn.js",
+        "_baseFor.js",
+        "_createBaseFor.js",
+        "keys.js",
+        "_arrayLikeKeys.js",
+        "_baseTimes.js",
+        "isBuffer.js",
+        "stubFalse.js",
+        "isTypedArray.js",
+        "_baseIsTypedArray.js",
+        "isLength.js",
+        "_baseUnary.js",
+        "_nodeUtil.js",
+        "_baseKeys.js",
+        "_isPrototype.js",
+        "_nativeKeys.js",
+        "isArrayLike.js",
+        "_createBaseEach.js",
+        "_castFunction.js",
+        "bind.js",
+        "_baseRest.js",
+        "has.js",
+        "_baseHas.js",
+        "_hasPath.js",
+        "_castPath.js",
+        "_isKey.js",
+        "_stringToPath.js",
+        "_memoizeCapped.js",
+        "memoize.js",
+        "_MapCache.js",
+        "_mapCacheClear.js",
+        "_Hash.js",
+        "_hashClear.js",
+        "_nativeCreate.js",
+        "_hashDelete.js",
+        "_hashGet.js",
+        "_hashHas.js",
+        "_hashSet.js",
+        "_ListCache.js",
+        "_listCacheClear.js",
+        "_listCacheDelete.js",
+        "_assocIndexOf.js",
+        "eq.js",
+        "_listCacheGet.js",
+        "_listCacheHas.js",
+        "_listCacheSet.js",
+        "_Map.js",
+        "_mapCacheDelete.js",
+        "_getMapData.js",
+        "_isKeyable.js",
+        "_mapCacheGet.js",
+        "_mapCacheHas.js",
+        "_mapCacheSet.js",
+        "toString.js",
+        "_baseToString.js",
+        "_arrayMap.js",
+        "_toKey.js",
+        "reduce.js",
+        "_arrayReduce.js",
+        "_baseIteratee.js",
+        "_baseMatches.js",
+        "_baseIsMatch.js",
+        "_Stack.js",
+        "_stackClear.js",
+        "_stackDelete.js",
+        "_stackGet.js",
+        "_stackHas.js",
+        "_stackSet.js",
+        "_baseIsEqual.js",
+        "_baseIsEqualDeep.js",
+        "_equalArrays.js",
+        "_SetCache.js",
+        "_setCacheAdd.js",
+        "_setCacheHas.js",
+        "_arraySome.js",
+        "_cacheHas.js",
+        "_equalByTag.js",
+        "_Uint8Array.js",
+        "_mapToArray.js",
+        "_setToArray.js",
+        "_equalObjects.js",
+        "_getAllKeys.js",
+        "_baseGetAllKeys.js",
+        "_getSymbols.js",
+        "_arrayFilter.js",
+        "stubArray.js",
+        "_getTag.js",
+        "_DataView.js",
+        "_Promise.js",
+        "_Set.js",
+        "_getMatchData.js",
+        "_isStrictComparable.js",
+        "_matchesStrictComparable.js",
+        "_baseMatchesProperty.js",
+        "get.js",
+        "_baseGet.js",
+        "hasIn.js",
+        "_baseHasIn.js",
+        "property.js",
+        "_baseProperty.js",
+        "_basePropertyDeep.js",
+        "_baseReduce.js",
+        "mapKeys.js",
+        "_baseAssignValue.js",
+        "delay.js",
+        "_baseDelay.js",
+        "assign.js",
+        "_assignValue.js",
+        "_copyObject.js",
+        "_createAssigner.js",
+        "_isIterateeCall.js",
+        "toPath.js",
+        "merge.js",
+        "_baseMerge.js",
+        "_assignMergeValue.js",
+        "_baseMergeDeep.js",
+        "_cloneBuffer.js",
+        "_cloneTypedArray.js",
+        "_cloneArrayBuffer.js",
+        "_initCloneObject.js",
+        "isArrayLikeObject.js",
+        "toPlainObject.js",
+        "keysIn.js",
+        "_baseKeysIn.js",
+        "_nativeKeysIn.js",
+        "mapValues.js",
+        "some.js",
+        "_baseSome.js",
+        "isEqualWith.js"
+      ]
+    },
+    "symbol-observable@1.0.4": {
+      "name": "symbol-observable",
+      "version": "1.0.4",
+      "files": [
+        "index.js",
+        "lib/index.js",
+        "lib/ponyfill.js"
+      ]
+    },
+    "hoist-non-react-statics@1.2.0": {
+      "name": "hoist-non-react-statics",
+      "version": "1.2.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "invariant@2.2.2": {
+      "name": "invariant",
+      "version": "2.2.2",
+      "files": [
+        "browser.js"
+      ]
+    },
+    "react-router@2.8.1": {
+      "name": "react-router",
+      "version": "2.8.1",
+      "files": [
+        "lib/index.js",
+        "lib/RouteUtils.js",
+        "lib/PropTypes.js",
+        "lib/deprecateObjectProperties.js",
+        "lib/routerWarning.js",
+        "lib/InternalPropTypes.js",
+        "lib/PatternUtils.js",
+        "lib/Router.js",
+        "lib/createTransitionManager.js",
+        "lib/computeChangedRoutes.js",
+        "lib/TransitionUtils.js",
+        "lib/AsyncUtils.js",
+        "lib/isActive.js",
+        "lib/getComponents.js",
+        "lib/makeStateWithLocation.js",
+        "lib/matchRoutes.js",
+        "lib/RouterContext.js",
+        "lib/getRouteParams.js",
+        "lib/RouterUtils.js",
+        "lib/Link.js",
+        "lib/IndexLink.js",
+        "lib/withRouter.js",
+        "lib/IndexRedirect.js",
+        "lib/Redirect.js",
+        "lib/IndexRoute.js",
+        "lib/Route.js",
+        "lib/History.js",
+        "lib/Lifecycle.js",
+        "lib/RouteContext.js",
+        "lib/useRoutes.js",
+        "lib/RoutingContext.js",
+        "lib/match.js",
+        "lib/createMemoryHistory.js",
+        "lib/useRouterHistory.js",
+        "lib/applyRouterMiddleware.js",
+        "lib/browserHistory.js",
+        "lib/createRouterHistory.js",
+        "lib/hashHistory.js"
+      ]
+    },
+    "warning@3.0.0": {
+      "name": "warning@3.0.0",
+      "version": "3.0.0",
+      "files": [
+        "browser.js"
+      ]
+    },
+    "history@2.1.2": {
+      "name": "history",
+      "version": "2.1.2",
+      "files": [
+        "lib/createHashHistory.js",
+        "lib/Actions.js",
+        "lib/PathUtils.js",
+        "lib/ExecutionEnvironment.js",
+        "lib/DOMUtils.js",
+        "lib/DOMStateStorage.js",
+        "lib/createDOMHistory.js",
+        "lib/createHistory.js",
+        "lib/AsyncUtils.js",
+        "lib/createLocation.js",
+        "lib/runTransitionHook.js",
+        "lib/deprecate.js",
+        "lib/useQueries.js",
+        "lib/useBasename.js",
+        "lib/createMemoryHistory.js",
+        "lib/createBrowserHistory.js"
+      ]
+    },
+    "warning@2.1.0": {
+      "name": "warning",
+      "version": "2.1.0",
+      "files": [
+        "browser.js"
+      ]
+    },
+    "deep-equal@1.0.1": {
+      "name": "deep-equal",
+      "version": "1.0.1",
+      "files": [
+        "index.js",
+        "lib/keys.js",
+        "lib/is_arguments.js"
+      ]
+    },
+    "query-string@3.0.3": {
+      "name": "query-string",
+      "version": "3.0.3",
+      "files": [
+        "index.js"
+      ]
+    },
+    "strict-uri-encode@1.1.0": {
+      "name": "strict-uri-encode",
+      "version": "1.1.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "react-router-redux@4.0.7": {
+      "name": "react-router-redux",
+      "version": "4.0.7",
+      "files": [
+        "lib/index.js",
+        "lib/reducer.js",
+        "lib/actions.js",
+        "lib/sync.js",
+        "lib/middleware.js"
+      ]
+    },
+    "material-ui@0.16.6": {
+      "name": "material-ui",
+      "version": "0.16.6",
+      "files": [
+        "AppBar/index.js",
+        "AppBar/AppBar.js",
+        "IconButton/index.js",
+        "IconButton/IconButton.js",
+        "styles/transitions.js",
+        "utils/propTypes.js",
+        "internal/EnhancedButton.js",
+        "utils/childUtils.js",
+        "utils/events.js",
+        "internal/FocusRipple.js",
+        "utils/autoPrefix.js",
+        "internal/ScaleIn.js",
+        "internal/ScaleInChild.js",
+        "internal/TouchRipple.js",
+        "utils/dom.js",
+        "internal/CircleRipple.js",
+        "FontIcon/index.js",
+        "FontIcon/FontIcon.js",
+        "internal/Tooltip.js",
+        "svg-icons/navigation/menu.js",
+        "SvgIcon/index.js",
+        "SvgIcon/SvgIcon.js",
+        "Paper/index.js",
+        "Paper/Paper.js",
+        "svg-icons/navigation/close.js",
+        "FlatButton/index.js",
+        "FlatButton/FlatButton.js",
+        "utils/colorManipulator.js",
+        "FlatButton/FlatButtonLabel.js",
+        "Avatar/index.js",
+        "Avatar/Avatar.js",
+        "Card/index.js",
+        "Card/Card.js",
+        "Card/CardExpandable.js",
+        "svg-icons/hardware/keyboard-arrow-up.js",
+        "svg-icons/hardware/keyboard-arrow-down.js",
+        "Card/CardHeader.js",
+        "Card/CardTitle.js",
+        "Card/CardMedia.js",
+        "Card/CardText.js",
+        "Card/CardActions.js",
+        "RaisedButton/index.js",
+        "RaisedButton/RaisedButton.js",
+        "FloatingActionButton/index.js",
+        "FloatingActionButton/FloatingActionButton.js",
+        "Drawer/index.js",
+        "Drawer/Drawer.js",
+        "internal/Overlay.js",
+        "internal/AutoLockScrolling.js",
+        "MenuItem/index.js",
+        "MenuItem/MenuItem.js",
+        "Popover/Popover.js",
+        "internal/RenderToLayer.js",
+        "Popover/PopoverAnimationDefault.js",
+        "utils/iOSHelpers.js",
+        "svg-icons/navigation/check.js",
+        "List/ListItem.js",
+        "svg-icons/navigation/expand-less.js",
+        "svg-icons/navigation/expand-more.js",
+        "List/NestedList.js",
+        "List/List.js",
+        "Subheader/index.js",
+        "Subheader/Subheader.js",
+        "Menu/Menu.js",
+        "internal/ClickAwayListener.js",
+        "Menu/menuUtils.js",
+        "IconMenu/index.js",
+        "IconMenu/IconMenu.js",
+        "DropDownMenu/index.js",
+        "DropDownMenu/DropDownMenu.js",
+        "svg-icons/navigation/arrow-drop-down.js",
+        "internal/ClearFix.js",
+        "internal/BeforeAfterWrapper.js",
+        "Popover/PopoverAnimationVertical.js",
+        "TextField/index.js",
+        "TextField/TextField.js",
+        "TextField/EnhancedTextarea.js",
+        "TextField/TextFieldHint.js",
+        "TextField/TextFieldLabel.js",
+        "TextField/TextFieldUnderline.js",
+        "Toolbar/index.js",
+        "Toolbar/Toolbar.js",
+        "Toolbar/ToolbarGroup.js",
+        "Toolbar/ToolbarSeparator.js",
+        "Toolbar/ToolbarTitle.js",
+        "Tabs/index.js",
+        "Tabs/Tab.js",
+        "Tabs/Tabs.js",
+        "Tabs/TabTemplate.js",
+        "Tabs/InkBar.js",
+        "RadioButton/index.js",
+        "RadioButton/RadioButton.js",
+        "internal/EnhancedSwitch.js",
+        "svg-icons/toggle/radio-button-unchecked.js",
+        "svg-icons/toggle/radio-button-checked.js",
+        "RadioButton/RadioButtonGroup.js",
+        "DatePicker/index.js",
+        "DatePicker/DatePicker.js",
+        "DatePicker/dateUtils.js",
+        "DatePicker/DatePickerDialog.js",
+        "DatePicker/Calendar.js",
+        "DatePicker/CalendarActionButtons.js",
+        "DatePicker/CalendarMonth.js",
+        "DatePicker/DayButton.js",
+        "DatePicker/CalendarYear.js",
+        "DatePicker/YearButton.js",
+        "DatePicker/CalendarToolbar.js",
+        "svg-icons/navigation/chevron-left.js",
+        "svg-icons/navigation/chevron-right.js",
+        "internal/SlideIn.js",
+        "internal/SlideInChild.js",
+        "DatePicker/DateDisplay.js",
+        "Dialog/index.js",
+        "Dialog/Dialog.js",
+        "TimePicker/index.js",
+        "TimePicker/TimePicker.js",
+        "TimePicker/TimePickerDialog.js",
+        "TimePicker/Clock.js",
+        "TimePicker/TimeDisplay.js",
+        "TimePicker/ClockHours.js",
+        "TimePicker/ClockNumber.js",
+        "TimePicker/timeUtils.js",
+        "TimePicker/ClockPointer.js",
+        "TimePicker/ClockMinutes.js",
+        "Checkbox/index.js",
+        "Checkbox/Checkbox.js",
+        "svg-icons/toggle/check-box-outline-blank.js",
+        "svg-icons/toggle/check-box.js",
+        "Slider/index.js",
+        "Slider/Slider.js",
+        "utils/deprecatedPropType.js",
+        "Toggle/index.js",
+        "Toggle/Toggle.js",
+        "SelectField/index.js",
+        "SelectField/SelectField.js",
+        "AutoComplete/index.js",
+        "AutoComplete/AutoComplete.js",
+        "Menu/index.js",
+        "Divider/index.js",
+        "Divider/Divider.js",
+        "List/index.js",
+        "List/makeSelectable.js",
+        "svg-icons/action/info.js",
+        "svg-icons/file/folder.js",
+        "svg-icons/action/assignment.js",
+        "svg-icons/editor/insert-chart.js",
+        "styles/colors.js",
+        "styles/MuiThemeProvider.js",
+        "styles/getMuiTheme.js",
+        "styles/baseThemes/lightBaseTheme.js",
+        "styles/spacing.js",
+        "styles/zIndex.js",
+        "utils/autoprefixer.js",
+        "utils/callOnce.js",
+        "utils/rtl.js",
+        "styles/typography.js"
+      ]
+    },
+    "babel-runtime@6.20.0": {
+      "name": "babel-runtime",
+      "version": "6.20.0",
+      "files": [
+        "helpers/extends.js",
+        "core-js/object/assign.js",
+        "core-js/object/keys.js",
+        "helpers/objectWithoutProperties.js",
+        "core-js/object/get-prototype-of.js",
+        "helpers/classCallCheck.js",
+        "helpers/createClass.js",
+        "core-js/object/define-property.js",
+        "helpers/possibleConstructorReturn.js",
+        "helpers/typeof.js",
+        "core-js/symbol/iterator.js",
+        "core-js/symbol.js",
+        "helpers/inherits.js",
+        "core-js/object/set-prototype-of.js",
+        "core-js/object/create.js",
+        "helpers/toConsumableArray.js",
+        "core-js/array/from.js",
+        "helpers/toArray.js",
+        "core-js/json/stringify.js",
+        "helpers/defineProperty.js",
+        "helpers/slicedToArray.js",
+        "core-js/is-iterable.js",
+        "core-js/get-iterator.js"
+      ]
+    },
+    "core-js@2.4.1": {
+      "name": "core-js",
+      "version": "2.4.1",
+      "files": [
+        "library/fn/object/assign.js",
+        "library/modules/es6.object.assign.js",
+        "library/modules/_export.js",
+        "library/modules/_global.js",
+        "library/modules/_core.js",
+        "library/modules/_ctx.js",
+        "library/modules/_a-function.js",
+        "library/modules/_hide.js",
+        "library/modules/_object-dp.js",
+        "library/modules/_an-object.js",
+        "library/modules/_is-object.js",
+        "library/modules/_ie8-dom-define.js",
+        "library/modules/_descriptors.js",
+        "library/modules/_fails.js",
+        "library/modules/_dom-create.js",
+        "library/modules/_to-primitive.js",
+        "library/modules/_property-desc.js",
+        "library/modules/_object-assign.js",
+        "library/modules/_object-keys.js",
+        "library/modules/_object-keys-internal.js",
+        "library/modules/_has.js",
+        "library/modules/_to-iobject.js",
+        "library/modules/_iobject.js",
+        "library/modules/_cof.js",
+        "library/modules/_defined.js",
+        "library/modules/_array-includes.js",
+        "library/modules/_to-length.js",
+        "library/modules/_to-integer.js",
+        "library/modules/_to-index.js",
+        "library/modules/_shared-key.js",
+        "library/modules/_shared.js",
+        "library/modules/_uid.js",
+        "library/modules/_enum-bug-keys.js",
+        "library/modules/_object-gops.js",
+        "library/modules/_object-pie.js",
+        "library/modules/_to-object.js",
+        "library/fn/object/keys.js",
+        "library/modules/es6.object.keys.js",
+        "library/modules/_object-sap.js",
+        "library/fn/object/get-prototype-of.js",
+        "library/modules/es6.object.get-prototype-of.js",
+        "library/modules/_object-gpo.js",
+        "library/fn/object/define-property.js",
+        "library/modules/es6.object.define-property.js",
+        "library/fn/symbol/iterator.js",
+        "library/modules/es6.string.iterator.js",
+        "library/modules/_string-at.js",
+        "library/modules/_iter-define.js",
+        "library/modules/_library.js",
+        "library/modules/_redefine.js",
+        "library/modules/_iterators.js",
+        "library/modules/_iter-create.js",
+        "library/modules/_object-create.js",
+        "library/modules/_object-dps.js",
+        "library/modules/_html.js",
+        "library/modules/_set-to-string-tag.js",
+        "library/modules/_wks.js",
+        "library/modules/web.dom.iterable.js",
+        "library/modules/es6.array.iterator.js",
+        "library/modules/_add-to-unscopables.js",
+        "library/modules/_iter-step.js",
+        "library/modules/_wks-ext.js",
+        "library/fn/symbol/index.js",
+        "library/modules/es6.symbol.js",
+        "library/modules/_meta.js",
+        "library/modules/_wks-define.js",
+        "library/modules/_keyof.js",
+        "library/modules/_enum-keys.js",
+        "library/modules/_is-array.js",
+        "library/modules/_object-gopn-ext.js",
+        "library/modules/_object-gopn.js",
+        "library/modules/_object-gopd.js",
+        "library/modules/es6.object.to-string.js",
+        "library/modules/es7.symbol.async-iterator.js",
+        "library/modules/es7.symbol.observable.js",
+        "library/fn/object/set-prototype-of.js",
+        "library/modules/es6.object.set-prototype-of.js",
+        "library/modules/_set-proto.js",
+        "library/fn/object/create.js",
+        "library/modules/es6.object.create.js",
+        "library/fn/array/from.js",
+        "library/modules/es6.array.from.js",
+        "library/modules/_iter-call.js",
+        "library/modules/_is-array-iter.js",
+        "library/modules/_create-property.js",
+        "library/modules/core.get-iterator-method.js",
+        "library/modules/_classof.js",
+        "library/modules/_iter-detect.js",
+        "library/fn/json/stringify.js",
+        "library/fn/is-iterable.js",
+        "library/modules/core.is-iterable.js",
+        "library/fn/get-iterator.js",
+        "library/modules/core.get-iterator.js"
+      ]
+    },
+    "simple-assign@0.1.0": {
+      "name": "simple-assign",
+      "version": "0.1.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "react-addons-create-fragment@15.4.2": {
+      "name": "react-addons-create-fragment",
+      "version": "15.4.2",
+      "files": [
+        "index.js"
+      ]
+    },
+    "keycode@2.1.8": {
+      "name": "keycode",
+      "version": "2.1.8",
+      "files": [
+        "index.js"
+      ]
+    },
+    "recompose@0.21.2": {
+      "name": "recompose",
+      "version": "0.21.2",
+      "files": [
+        "shallowEqual.js",
+        "pure.js",
+        "shouldUpdate.js",
+        "createHelper.js",
+        "wrapDisplayName.js",
+        "getDisplayName.js",
+        "createEagerFactory.js",
+        "utils/createEagerElementUtil.js",
+        "isReferentiallyTransparentFunctionComponent.js",
+        "isClassComponent.js",
+        "compose.js"
+      ]
+    },
+    "react-addons-transition-group@15.4.2": {
+      "name": "react-addons-transition-group",
+      "version": "15.4.2",
+      "files": [
+        "index.js"
+      ]
+    },
+    "react-event-listener@0.4.1": {
+      "name": "react-event-listener",
+      "version": "0.4.1",
+      "files": [
+        "lib/index.js",
+        "lib/supports.js",
+        "lib/define-property.js"
+      ]
+    },
+    "react-addons-shallow-compare@15.4.2": {
+      "name": "react-addons-shallow-compare",
+      "version": "15.4.2",
+      "files": [
+        "index.js"
+      ]
+    },
+    "lodash.throttle@4.1.1": {
+      "name": "lodash.throttle",
+      "version": "4.1.1",
+      "files": [
+        "index.js"
+      ]
+    },
+    "lodash.merge@4.6.0": {
+      "name": "lodash.merge",
+      "version": "4.6.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "inline-style-prefixer@2.0.5": {
+      "name": "inline-style-prefixer",
+      "version": "2.0.5",
+      "files": [
+        "lib/Prefixer.js",
+        "lib/static/prefixAll.js",
+        "lib/static/prefixProps.js",
+        "lib/utils/capitalizeString.js",
+        "lib/utils/sortPrefixedStyle.js",
+        "lib/utils/isPrefixedProperty.js",
+        "lib/static/plugins/position.js",
+        "lib/static/plugins/calc.js",
+        "lib/utils/joinPrefixedValue.js",
+        "lib/utils/isPrefixedValue.js",
+        "lib/static/plugins/cursor.js",
+        "lib/static/plugins/flex.js",
+        "lib/static/plugins/sizing.js",
+        "lib/static/plugins/gradient.js",
+        "lib/static/plugins/transition.js",
+        "lib/static/plugins/flexboxIE.js",
+        "lib/static/plugins/flexboxOld.js",
+        "lib/utils/getBrowserInformation.js",
+        "lib/utils/getPrefixedKeyframes.js",
+        "lib/prefixProps.js",
+        "lib/plugins/position.js",
+        "lib/utils/getPrefixedValue.js",
+        "lib/plugins/calc.js",
+        "lib/plugins/zoomCursor.js",
+        "lib/plugins/grabCursor.js",
+        "lib/plugins/flex.js",
+        "lib/plugins/sizing.js",
+        "lib/plugins/gradient.js",
+        "lib/plugins/transition.js",
+        "lib/utils/unprefixProperty.js",
+        "lib/plugins/flexboxIE.js",
+        "lib/plugins/flexboxOld.js"
+      ]
+    },
+    "hyphenate-style-name@1.0.2": {
+      "name": "hyphenate-style-name",
+      "version": "1.0.2",
+      "files": [
+        "index.js"
+      ]
+    },
+    "bowser@1.6.0": {
+      "name": "bowser",
+      "version": "1.6.0",
+      "files": [
+        "src/bowser.js"
+      ]
+    },
+    "isomorphic-fetch@2.2.1": {
+      "name": "isomorphic-fetch",
+      "version": "2.2.1",
+      "files": [
+        "fetch-npm-browserify.js"
+      ]
+    },
+    "whatwg-fetch@2.0.1": {
+      "name": "whatwg-fetch",
+      "version": "2.0.1",
+      "files": [
+        "fetch.js"
+      ]
+    },
+    "react-google-maps@6.0.1": {
+      "name": "react-google-maps",
+      "version": "6.0.1",
+      "files": [
+        "lib/index.js",
+        "lib/withGoogleMap.js",
+        "lib/constants.js",
+        "lib/GoogleMap.js",
+        "lib/enhanceElement.js",
+        "lib/Marker.js",
+        "lib/Rectangle.js",
+        "lib/Polyline.js",
+        "lib/Polygon.js",
+        "lib/Circle.js",
+        "lib/KmlLayer.js",
+        "lib/DirectionsRenderer.js",
+        "lib/HeatmapLayer.js",
+        "lib/InfoWindow.js",
+        "lib/OverlayView.js",
+        "lib/utils/OverlayViewHelper.js"
+      ]
+    },
+    "react-display-name@0.2.0": {
+      "name": "react-display-name",
+      "version": "0.2.0",
+      "files": [
+        "lib/getDisplayName.js"
+      ]
+    },
+    "redux-form@6.4.3": {
+      "name": "redux-form",
+      "version": "6.4.3",
+      "files": [
+        "lib/index.js",
+        "lib/createAll.js",
+        "lib/reducer.js",
+        "lib/actionTypes.js",
+        "lib/deleteInWithCleanUp.js",
+        "lib/reduxForm.js",
+        "lib/util/getDisplayName.js",
+        "lib/actions.js",
+        "lib/handleSubmit.js",
+        "lib/SubmissionError.js",
+        "lib/events/silenceEvent.js",
+        "lib/events/isEvent.js",
+        "lib/events/silenceEvents.js",
+        "lib/asyncValidation.js",
+        "lib/defaultShouldAsyncValidate.js",
+        "lib/defaultShouldValidate.js",
+        "lib/structure/plain/index.js",
+        "lib/structure/plain/splice.js",
+        "lib/structure/plain/getIn.js",
+        "lib/structure/plain/setIn.js",
+        "lib/structure/plain/deepEqual.js",
+        "lib/structure/plain/deleteIn.js",
+        "lib/generateValidator.js",
+        "lib/selectors/isValid.js",
+        "lib/hasError.js",
+        "lib/Field.js",
+        "lib/ConnectedField.js",
+        "lib/createFieldProps.js",
+        "lib/events/onChangeValue.js",
+        "lib/events/getValue.js",
+        "lib/isReactNative.js",
+        "lib/util/eventConsts.js",
+        "lib/util/shallowCompare.js",
+        "lib/util/prefixName.js",
+        "lib/Fields.js",
+        "lib/ConnectedFields.js",
+        "lib/FieldArray.js",
+        "lib/ConnectedFieldArray.js",
+        "lib/createFieldArrayProps.js",
+        "lib/formValueSelector.js",
+        "lib/values.js",
+        "lib/selectors/getFormValues.js",
+        "lib/selectors/getFormSyncErrors.js",
+        "lib/selectors/getFormAsyncErrors.js",
+        "lib/selectors/getFormSubmitErrors.js",
+        "lib/selectors/isDirty.js",
+        "lib/selectors/isPristine.js",
+        "lib/selectors/isInvalid.js",
+        "lib/selectors/isSubmitting.js",
+        "lib/selectors/hasSubmitSucceeded.js",
+        "lib/selectors/hasSubmitFailed.js",
+        "lib/Form.js",
+        "lib/FormSection.js",
+        "lib/propTypes.js"
+      ]
+    },
+    "array-findindex-polyfill@0.1.0": {
+      "name": "array-findindex-polyfill",
+      "version": "0.1.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "is-promise@2.1.0": {
+      "name": "is-promise",
+      "version": "2.1.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "es6-error@4.0.1": {
+      "name": "es6-error",
+      "version": "4.0.1",
+      "files": [
+        "lib/index.js"
+      ]
+    },
+    "shallowequal@0.2.2": {
+      "name": "shallowequal",
+      "version": "0.2.2",
+      "files": [
+        "modules/index.js"
+      ]
+    },
+    "lodash.keys@3.1.2": {
+      "name": "lodash.keys",
+      "version": "3.1.2",
+      "files": [
+        "index.js"
+      ]
+    },
+    "lodash._getnative@3.9.1": {
+      "name": "lodash._getnative",
+      "version": "3.9.1",
+      "files": [
+        "index.js"
+      ]
+    },
+    "lodash.isarguments@3.1.0": {
+      "name": "lodash.isarguments",
+      "version": "3.1.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "lodash.isarray@3.0.4": {
+      "name": "lodash.isarray",
+      "version": "3.0.4",
+      "files": [
+        "index.js"
+      ]
+    },
+    "react-widgets@3.4.5": {
+      "name": "react-widgets",
+      "version": "3.4.5",
+      "files": [
+        "lib/Multiselect.js",
+        "lib/util/_.js",
+        "lib/Widget.js",
+        "lib/Popup.js",
+        "lib/util/configuration.js",
+        "lib/util/dom/animate.js",
+        "lib/util/compat.js",
+        "lib/MultiselectInput.js",
+        "lib/util/propTypes.js",
+        "lib/util/localizers.js",
+        "lib/util/filter.js",
+        "lib/MultiselectTagList.js",
+        "lib/util/widgetHelpers.js",
+        "lib/util/dataHelpers.js",
+        "lib/util/interaction.js",
+        "lib/mixins/PureRenderMixin.js",
+        "lib/mixins/AriaDescendantMixin.js",
+        "lib/List.js",
+        "lib/ListOption.js",
+        "lib/mixins/ListMovementMixin.js",
+        "lib/ListGroupable.js",
+        "lib/util/validateListInterface.js",
+        "lib/mixins/TimeoutMixin.js",
+        "lib/mixins/DataFilterMixin.js",
+        "lib/mixins/PopupScrollToMixin.js",
+        "lib/mixins/RtlParentContextMixin.js",
+        "lib/mixins/FocusMixin.js",
+        "dist/css/react-widgets.css"
+      ]
+    },
+    "classnames@2.2.5": {
+      "name": "classnames",
+      "version": "2.2.5",
+      "files": [
+        "index.js"
+      ]
+    },
+    "uncontrollable@4.0.3": {
+      "name": "uncontrollable",
+      "version": "4.0.3",
+      "files": [
+        "index.js",
+        "createUncontrollable.js",
+        "utils.js"
+      ]
+    },
+    "dom-helpers@2.4.0": {
+      "name": "dom-helpers",
+      "version": "2.4.0",
+      "files": [
+        "style/index.js",
+        "util/camelizeStyle.js",
+        "util/camelize.js",
+        "util/hyphenateStyle.js",
+        "util/hyphenate.js",
+        "style/getComputedStyle.js",
+        "util/babelHelpers.js",
+        "style/removeStyle.js",
+        "query/height.js",
+        "query/offset.js",
+        "query/contains.js",
+        "util/inDOM.js",
+        "query/isWindow.js",
+        "ownerDocument.js",
+        "events/on.js",
+        "events/off.js",
+        "transition/properties.js",
+        "util/scrollTo.js",
+        "query/scrollParent.js",
+        "query/scrollTop.js",
+        "util/requestAnimationFrame.js"
+      ]
+    },
+    "redux-form-material-ui@4.1.2": {
+      "name": "redux-form-material-ui",
+      "version": "4.1.2",
+      "files": [
+        "lib/index.js",
+        "lib/RadioButtonGroup.js",
+        "lib/createComponent.js",
+        "lib/mapError.js",
+        "lib/TextField.js",
+        "lib/DatePicker.js",
+        "lib/TimePicker.js",
+        "lib/Checkbox.js",
+        "lib/Slider.js",
+        "lib/Toggle.js",
+        "lib/SelectField.js",
+        "lib/AutoComplete.js"
+      ]
+    },
+    "redux-thunk@2.1.0": {
+      "name": "redux-thunk",
+      "version": "2.1.0",
+      "files": [
+        "lib/index.js"
+      ]
+    },
+    "react-tap-event-plugin@2.0.1": {
+      "name": "react-tap-event-plugin",
+      "version": "2.0.1",
+      "files": [
+        "src/injectTapEventPlugin.js",
+        "src/defaultClickRejectionStrategy.js",
+        "src/TapEventPlugin.js",
+        "src/TouchEventUtils.js"
+      ]
+    },
+    "fusebox-hot-reload@0.0.0": {
+      "name": "fusebox-hot-reload",
+      "version": "0.0.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "fusebox-websocket@0.0.0": {
+      "name": "fusebox-websocket",
+      "version": "0.0.0",
+      "files": [
+        "index.js"
+      ]
+    },
+    "events@0.0.0": {
+      "name": "events",
+      "version": "0.0.0",
+      "files": [
+        "index.js"
+      ]
+    }
+  }
+}
