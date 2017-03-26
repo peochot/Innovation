@@ -1,0 +1,3 @@
+# Welcome to Smart career documentation
+
+Keccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc

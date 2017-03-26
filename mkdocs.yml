@@ -1,0 +1,4 @@
+site_name: Smart Career Documentation
+pages:
+    - Home: index.md
+theme: 'material'
