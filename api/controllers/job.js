@@ -4,23 +4,26 @@ import Bookmark from '../models/bookmark';
 import MailService from '../services/UserMail';
 import libmime from 'libmime';
 
-function list(req,res){
+function list(req, res) {
     //cach ngu rat ngu , TODO : Refucktor
     const Promise = require('bluebird');
     Promise.all([
         Application.find({owner: req.user._id}).lean().distinct('job'),
         Bookmark.find({owner: req.user._id}).lean().distinct('job'),
         Job.getJobs(req.query).lean()
-    ]).spread(function(bookmarks, applications,jobs) {
-        bookmarks=bookmarks.map((bookmark)=>(bookmark.toString()));
-        applications=applications.map((application)=>(application.toString()));
-        jobs=jobs.map((job)=>{
-          if(bookmarks.indexOf(job._id.toString())!=-1){
+    ]).spread(function(bookmarks, applications, jobs) {
+        bookmarks=bookmarks.map((bookmark) => (bookmark.toString()));
+        applications=applications.map((application) => (application.toString()));
+
+        jobs = jobs.map((job) => {
+          if(bookmarks.indexOf(job._id.toString()) != -1) {
             job['bookmarked']=true;
           }
-          if(applications.indexOf(job._id.toString())!=-1){
+
+          if(applications.indexOf(job._id.toString()) != -1) {
             job['applied']=true;
           }
+
           return job;
         });
         res.json({
@@ -31,20 +34,22 @@ function list(req,res){
     });
   };
 
-function ownList(req,res){
-  if(req.query.type=="application"){
-    Application.find({owner:req.user._id})
+function ownList(req, res){
+  if(req.query.type == "application"){
+    Application.find({owner: req.user._id})
           .populate('job')
-          .then((jobRefs)=>{
-            let jobs=[];
-            jobRefs.map((jobRef)=>{
+          .then((jobRefs) => {
+            let jobs = [];
+
+            jobRefs.map((jobRef) => {
               jobs.push(jobRef.job);
             });
-            res.json({data:jobs});
+
+            res.json({data: jobs});
           });
   }
 
-// Tri
+// Tri => Trong application.js co cai function index lam cai nay roi
 const myApplicationList = (req, res) => {
     if( rep.query.type == 'application') {
         Application.find({ owner:req.user._id})
@@ -52,7 +57,7 @@ const myApplicationList = (req, res) => {
             .then( (jobRefs) => {
                 let jobResult = [];
 
-                jobRefs.map( (jobRef) => {
+                jobRefs.map((jobRef) => {
 
                 })
 
@@ -61,23 +66,23 @@ const myApplicationList = (req, res) => {
     }
 }
 
-Bookmark.find({owner:req.user._id})
+Bookmark.find({owner: req.user._id})
         .populate('job')
-        .then((jobRefs)=>{
+        .then((jobRefs) => {
           let jobs=[];
-          jobRefs.map((jobRef)=>{
+          jobRefs.map((jobRef) => {
             jobs.push(jobRef.job);
           });
-          res.json({data:jobs});
+          res.json({data: jobs});
         });
 };
 
-function doAction(req,res){
+function doAction(req, res){
   Job.findById(req.params.jobId)
     .then((job) => {
         switch (req.params.action) {
             case "apply":
-                return apply(job,req.user);
+                return apply(job, req.user);
             case "close":
                 return close(job, req.user);
             case "bookmark":
@@ -95,14 +100,17 @@ function doAction(req,res){
         res.status(400).json({ message: err });
     });
 };
-function applyWithFile(req,res){
-    const user =req.user;
-    const fileData= req.file.buffer.toString('base64');
+
+function applyWithFile(req, res){
+    const user = req.user;
+    const fileData = req.file.buffer.toString('base64');
+
     if(!user.google.accessToken){
       res.status(401).json({message:"Account is not linked with google"});
     }
+
     Job.findById(req.params.jobId)
-        .then((job)=>{
+        .then((job) => {
           return MailService.send(
                           user.google.accessToken,
                           "beochot@gmail.com",
@@ -114,29 +122,33 @@ function applyWithFile(req,res){
                           fileData
                         );
     })
-        .then((response)=>{
+        .then((response) => {
           console.log(response);
           res.json({message:"ok"})
         },
-        (err)=>{
+        (err) => {
           console.log(err);
           res.status(403).json({message:err});
         });
 }
-function apply(job,user){
+
+function apply(job, user){
 
 };
-function close(job,user){
+
+function close(job, user){
   return Application.remove({ job: job._id,owner:user._id});
 };
-function bookmark(job,user){
+
+function bookmark(job, user){
     return Bookmark.create({
       owner:user._id,
       job:job._id
     });
 };
-function unBookmark(job,user){
-    return Bookmark.remove({ job: job._id,owner:user._id});
+
+function unBookmark(job, user){
+    return Bookmark.remove({ job: job._id, owner:user._id});
 };
 
-export default {list,ownList,doAction,applyWithFile}
+export default {list, ownList, doAction, applyWithFile}

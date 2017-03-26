@@ -4,7 +4,7 @@ import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 
-// TODO : Actions ?
+// TODO : Actions ? ec son
 export class ASDialog extends React.Component {
   constructor(props) {
     super(props);
@@ -23,9 +23,10 @@ export class ASDialog extends React.Component {
           onRequestClose={this.handleClose}
         >
           {
-            this.props.searchKey.map((obj) => {
+            //this.props.searchKey.map((obj) => {
 
-            })
+            //})
+
           }
         </Dialog>
       </div>

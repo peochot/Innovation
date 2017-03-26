@@ -11,7 +11,7 @@ let bookmarkSchema = db.Schema({
       ref:'Job',
       required: true
   },
-  watch:{
+  watch:  {
      type: Boolean
   },
   created: {
@@ -20,7 +20,7 @@ let bookmarkSchema = db.Schema({
   }
 });
 
-bookmarkSchema.index({ job: 1,owner:1,watch:1}, { unique: true });
-const Bookmark =db.model('Bookmark',bookmarkSchema);
+bookmarkSchema.index({ job: 1, owner: 1, watch: 1}, { unique: true });
+const Bookmark = db.model('Bookmark', bookmarkSchema);
 
 module.exports = Bookmark;

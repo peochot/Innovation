@@ -42,7 +42,6 @@ export default class JobToolbar extends React.Component {
             }
           </DropDownMenu>
           <TextField
-                errorText="error"
                 hintText="Keyword"
                 fullWidth={true}
                 style={{width:"20em"}}

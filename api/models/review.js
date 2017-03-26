@@ -2,12 +2,12 @@ const db = require('../config/db.js');
 
 let reviewSchema = db.Schema({
   owner: {
-      type:db.SchemaTypes.ObjectId,
-      ref:'User',
+      type: db.SchemaTypes.ObjectId,
+      ref: 'User',
       required: true
   },
   content: {
-      type:String,
+      type: String,
       required: true
   },
   created: {
@@ -16,6 +16,6 @@ let reviewSchema = db.Schema({
   }
 });
 
-const Review =db.model('Review',reviewSchema);
+const Review = db.model('Review', reviewSchema);
 
 module.exports = Review;

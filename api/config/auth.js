@@ -1,12 +1,16 @@
-var url ="http://localhost:3000/";
-if(process.env.PORT){
+var url = "http://localhost:3000/";
+
+if (process.env.PORT) {
     url = "https://hidden-peak-51879.herokuapp.com/";
 }
-module.exports={
+
+//Move this to heroku config
+
+module.exports = {
   'facebookAuth' : {
-      API_ID:"601802039996133",
-      API_SECRET:"d1594a016f8fa2cf14970ac60c28f9f3",
-      CALLBACK_URL:url+"facebook/callback"
+      API_ID: "601802039996133",
+      API_SECRET: "d1594a016f8fa2cf14970ac60c28f9f3",
+      CALLBACK_URL: url + "facebook/callback"
    },
    'twitterAuth' : {
        'consumerKey'       : 'your-consumer-key-here',

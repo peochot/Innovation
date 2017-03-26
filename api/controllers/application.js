@@ -1,15 +1,15 @@
 import Job from '../models/job';
 import Application from '../models/application';
 
-function index(req,res){
+function index(req, res) {
   Application.find({owner: req.user._id}).populate('job')
-          .then((applications)=>{
+          .then((applications) => {
             //let jobs = refs.map((job)=>job.job);
             res.json({data:applications});
           });
 };
 
-function create(req,res){
+function create(req, res) {
 
 }
-export default {index,create}
+export default {index, create}

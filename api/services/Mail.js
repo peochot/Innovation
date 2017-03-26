@@ -28,6 +28,4 @@ const MailService = function() {
     }
 }();
 
-
-
 module.exports=MailService;

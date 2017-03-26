@@ -46,8 +46,6 @@ function init() {
     const currentTimestamp = Math.floor(Date.now() / 1000);
 
     if (user.exp > currentTimestamp) {
-      console.log(user.exp)
-      console.log(currentTimestamp)
       const authData = {
         token,
         user,

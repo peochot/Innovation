@@ -1,14 +1,14 @@
 import Company from '../models/company';
 
-function index(req,res){
+function index(req, res) {
   Company.find()
-          .then((companies)=>{
+          .then((companies) => {
             //let jobs = refs.map((job)=>job.job);
-            res.json({data:companies});
+            res.json({data: companies});
           });
 };
 
-function create(req,res){
+function create(req, res){
 
 }
-export default {index,create}
+export default {index, create}

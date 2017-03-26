@@ -32,7 +32,6 @@ passport.use(new LocalStrategy({
               }
             ));
 passport.use(new FacebookStrategy({
-
         // pull in our app id and secret from our auth.js file
         clientID        : config.facebookAuth.API_ID,
         clientSecret    : config.facebookAuth.API_SECRET,
@@ -122,28 +121,8 @@ const googleStrategy =new GoogleStrategy({
         });
 
     });
+
 passport.use(googleStrategy);
 refresh.use(googleStrategy);
-
-/*
-
-Use later
-if(reason.code === 401) {
-          // Access token expired.
-          // Try to fetch a new one.
-          refresh.requestNewAccessToken('google', user.refreshToken, function(err, accessToken) {
-            if(err || !accessToken) { return send401Response(); }
-
-            // Save the new accessToken for future use
-            user.save({ accessToken: accessToken }, function() {
-             // Retry the request.
-             makeRequest();
-            });
-          });
-
-        }
-
-*/
-
 
 module.exports = passport;
