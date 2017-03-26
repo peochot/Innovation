@@ -19,6 +19,6 @@ let companySchema = db.Schema({
   }]
 });
 
-const Company =db.model('Company',companySchema);
+const Company =db.model('Company', companySchema);
 
 module.exports = Company;

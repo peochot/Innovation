@@ -15,6 +15,7 @@ const MolService = function() {
       };
       return rp(requestOptions);
     }
+    
     var getJobLists = function(area) {
         return _request(server,{
               alueet: area,
@@ -23,6 +24,7 @@ const MolService = function() {
               ilmoitettuPvm:"1"
             });
     }
+
     var getJobDetail = function(id) {
         return _request(server.concat("/",id),{});
     }

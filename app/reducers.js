@@ -26,6 +26,7 @@ let initGeoJobs = {
   jobList: [],
   isLatest: false
 }
+
 export const geoJob = (state = initGeoJobs, action) => {
   switch (action.type) {
     case Names.RECEIVE_JOBS:
@@ -70,6 +71,7 @@ export const selectedJob = (state = null, action) => {
       return state;
   }
 };
+
 export const bookmark = (state = [], action) => {
   switch (action.type) {
     case Names.RECEIVE_BOOKMARKS:
@@ -80,6 +82,7 @@ export const bookmark = (state = [], action) => {
       return state;
   }
 };
+
 export const application = (state = [], action) => {
   switch (action.type) {
     case Names.RECEIVE_APPLICATIONS:
@@ -90,6 +93,7 @@ export const application = (state = [], action) => {
       return state;
   }
 };
+
 export const letter = (state = [], action) => {
   switch (action.type) {
     case Names.RECEIVE_LETTERS:

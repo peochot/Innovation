@@ -1,19 +1,19 @@
 import Job from '../models/job';
 import Bookmark from '../models/bookmark';
 
-function index(req,res){
+function index(req, res) {
   Bookmark.find({owner: req.user._id}).populate('job')
           .then((bookmarks)=>{
             //let jobs = refs.map((job)=>job.job);
-            res.json({data:bookmarks});
+            res.json({ data: bookmarks });
           });
 };
-function create(req,res){
+function create(req, res) {
   Job.findById(req.params.jobId)
     .then((job) => {
       return Bookmark.create({
-        owner:req.user._id,
-        job:job._id
+        owner: req.user._id,
+        job: job._id
       });
     }).then((object) => {
         res.json({ data: object });

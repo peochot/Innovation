@@ -24,10 +24,10 @@ let attachmentSchema = db.Schema({
       required: true
   }
 });
-attachmentSchema.statics.saveAttachments = function(files,callback) {
-    return Promise.map(files,callback);
+attachmentSchema.statics.saveAttachments = function(files, callback) {
+    return Promise.map(files, callback);
 };
 
-const Attachment =db.model('Attachment',attachmentSchema);
+const Attachment = db.model('Attachment', attachmentSchema);
 
 module.exports = Attachment;

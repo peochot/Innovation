@@ -6,7 +6,7 @@ import File from '../models/attachment';
 
 let dUri = new Datauri();
 cloudinary.config(config.cloudinary);
-export default function(file){
+export default function(file) {
       dUri.format(path.extname(file.originalname).toString(), file.buffer);
       return cloudinary.uploader
           .upload(dUri.content)

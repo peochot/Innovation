@@ -68,7 +68,7 @@ let jobSchema = db.Schema({
 jobSchema.statics.getQuery = function(params,ids=null) {
     var today = new Date();
     //let criteria = [{ expire: { $gte: today } },{coords: {$exists: true}}];
-    let criteria = [{coords: {$exists: true,$ne: null }}];
+    let criteria = [{coords: {$exists: true, $ne: null }}];
     for (let key in params) {
         if(params[key]){
             switch (key) {
@@ -92,23 +92,30 @@ jobSchema.statics.getQuery = function(params,ids=null) {
     }
     return query;
 }
+
 jobSchema.statics.getOrder = function(str) {
     if (!str) {
         return { "created": -1 }
     }
+
     let orderBy = {};
     let orders = str.split("|");
-    orders.map((order)=>{
+
+    orders.map((order) => {
         const o=order.split("*");
         orderBy[o[0]]=(o[1]=="asc")?1:-1;
         return;
     });
+
     return orderBy;
 }
+
 jobSchema.statics.getJobs = function(query) {
     const criteria = this.getQuery(query);
     const orderBy = this.getOrder(query.order);
     return this.find(criteria).sort(orderBy).select("-__v");
 }
-const Job =db.model('Job',jobSchema);
+
+const Job = db.model('Job', jobSchema);
+
 module.exports = Job;

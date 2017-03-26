@@ -1,0 +1,4 @@
+DateTime==4.1.1
+lxml==3.7.2
+pymongo==3.4.0
+requests==2.12.4

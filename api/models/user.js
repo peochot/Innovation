@@ -68,6 +68,7 @@ let userSchema = db.Schema({
 userSchema.virtual('name').get(function () {
     return this.firstName + " " + this.lastName;
 });
+
 userSchema.methods.generateJWT = function () {
     var expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
@@ -79,6 +80,7 @@ userSchema.methods.generateJWT = function () {
         exp: parseInt(expiry.getTime() / 1000),
     }, process.env.JWT_SECRET);
 };
+
 userSchema.methods.validPassword = function (password) {
     return bcrypt.compareSync(password, this.passhash);
 };

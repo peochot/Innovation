@@ -18,8 +18,7 @@ let chEntrySchema = db.Schema({
         type:db.SchemaTypes.ObjectId,
         ref:'User',
     }
-
 });
 
-const ChatEntry =db.model('Chat Entry',chEntrySchema);
+const ChatEntry = db.model('Chat Entry', chEntrySchema);
 module.exports = ChatEntry;

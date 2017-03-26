@@ -18,7 +18,6 @@ let letterSchema = db.Schema({
   }
 });
 
-
-const Letter =db.model('Letter',letterSchema);
+const Letter =db.model('Letter', letterSchema);
 
 module.exports = Letter;

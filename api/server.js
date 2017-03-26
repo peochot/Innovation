@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import {Server} from 'http';
 import {ioListener} from './config/socket';
-import MolCrawler from './services/MolCrawler';
 import MailService from './services/Mail';
 import UserMailService from './services/UserMail';
 // import {CronJob} from 'cron';
@@ -16,16 +15,16 @@ const app = express();
 const server = Server(app);
 ioListener(server);
 
-app.set('port',(process.env.PORT||3000));
+app.set('port', (process.env.PORT||3000));
 app.use(express.static(path.join(__dirname, '../public')));
-app.use('/api',bodyParser.json({limit: '3mb'}));
+app.use('/api', bodyParser.json({limit: '3mb'}));
 app.use(passport.initialize());
-app.use('/api',auth);
+app.use('/api', auth);
 app.use('/api', routesApi);
-app.get('/facebook',authController.facebook);
-app.get('/facebook/callback',authController.facebookCallback);
-app.get('/google',authController.google);
-app.get('/google/callback',authController.googleCallback);
+app.get('/facebook', authController.facebook);
+app.get('/facebook/callback', authController.facebookCallback);
+app.get('/google', authController.google);
+app.get('/google/callback', authController.googleCallback);
 
 
 app.get('*', function(req, res) {
@@ -41,8 +40,7 @@ app.get('*', function(req, res) {
 //   true, /* Start the job right now */
 //   "Europe/Helsinki" /* Time zone of this job. */
 // );
-server.listen(app.get('port'),function(){
-  //MolCrawler.crawl();
+server.listen(app.get('port'), function(){
   /*const fileData =UserMailService.readFile();
   UserMailService.send("ya29.Ci9pA6GTWXwnqwxJYaBRIH3qftggZl4xTkj4kApEf7-pieS06-YaZgW_gVsAb99_uA",
                       "beochot@gmail.com",'Huy Phan <huyphan1493@gmail.com>',"Yo what up ya ?",
@@ -53,6 +51,7 @@ server.listen(app.get('port'),function(){
                   (err)=>{
                     console.log(err);
                   });*/
-  console.log('app is running on port '+app.get('port'));
+  console.log('app is running on port '+ app.get('port'));
 });
+
 export default server;
