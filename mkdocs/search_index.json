@@ -1,0 +1,14 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to Smart career documentation\n\n\nKeccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-smart-career-documentation",
+            "text": "Keccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "title": "Welcome to Smart career documentation"
+        }
+    ]
+}
