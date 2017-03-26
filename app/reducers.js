@@ -1,5 +1,11 @@
 import * as Names from './store/constants';
 
+
+/**
+ * @Tri: Too messy 
+ * Please use the state tree as Container-wise level , other wise this will be very difficult to maintain
+ * Each reducers should define their initialState , not for preventing 'undefined' , but to let others aware of its structure 
+ */
 let initAuth = {
   token: null,
   user: null,
@@ -63,6 +69,9 @@ export const geoJob = (state = initGeoJobs, action) => {
   }
 };
 
+let initCurrentJob = {
+
+}
 export const selectedJob = (state = null, action) => {
   switch (action.type) {
     case Names.SELECT_JOB:
