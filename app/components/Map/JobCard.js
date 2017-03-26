@@ -21,6 +21,8 @@ export class JobCard extends React.Component {
   }
   toggleDescription = () => { this.setState({ fullDesc: !this.state.fullDesc }) }
   render() {
+    const now = new Date().getTime() / 1000;
+    const direction = `https://www.reittiopas.fi/reitti/YourLocation::${this.props.userLocation.lat},${this.props.userLocation.lng}/${this.props.job.company}::${this.props.jobLocation.lat},${this.props.jobLocation.lng}?time=${now}&arriveBy=false`
     return (
       <Card>
         <CardHeader
@@ -32,7 +34,7 @@ export class JobCard extends React.Component {
         <CardTitle subtitle={"Expire on: " + new Date(this.props.job.expire).toLocaleString('en-US')} />
         <CardText>
           {this.state.fullDesc ? this.props.job.description : `${this.props.job.description.substring(0, 100)}...`}
-          {/* 
+          {/*
             this.state.fullDesc ? this.props.job.description : `${this.props.job.description.substring(0, 100)}...`
             <RaisedButton label="Toggle" onClick={this.toggleDescription}> </RaisedButton>
           */}
@@ -46,7 +48,7 @@ export class JobCard extends React.Component {
               <FontIcon className="material-icons">fingerprint</FontIcon>
             </IconButton>
           }
-          <a target="_blank" href={`https://www.reittiopas.fi/reitti/YourLocation::${this.props.userLocation.lat},${this.props.userLocation.lng}/${this.props.job.company}::${this.props.jobLocation.lat},${this.props.jobLocation.lng}?time=1489846005&arriveBy=false`} >
+          <a target="_blank" href={direction} >
             <IconButton tooltip="Location" tooltipPosition="top-right">
               <FontIcon className="material-icons">visibility</FontIcon>
             </IconButton>
@@ -57,4 +59,3 @@ export class JobCard extends React.Component {
   }
 }
 export default connect(null, mapDispatchToProps)(JobCard);
-
