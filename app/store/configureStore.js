@@ -27,7 +27,6 @@ export default (initialState = {}) => {
     autoRehydrate(), // Tri : Auto-rehydrate state from storage
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
-  persistStore(store);
+  persistStore(store, {blacklist: ['auth']});
   return store;
 };
-
