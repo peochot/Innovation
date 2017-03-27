@@ -40,7 +40,6 @@ export class JobCard extends React.Component {
           subtitle={this.props.job.company}
           avatar={`https://robohash.org/${this.props.job.company}`}
         />
-
         <CardTitle subtitle={"Expire on: " + moment(this.props.job.expire).format('LL')} />
         <CardText>
           {this.state.fullDesc ? this.props.job.description : `${this.props.job.description.substring(0, 100)}...`}
