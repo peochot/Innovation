@@ -13,6 +13,8 @@ const mapDispatchToProps = dispatch => ({
   fetchJobs: () => dispatch(fetchJobs())
 });
 
+const pollingAction = () => {};
+
 export class GeoJob extends Component {
   componentWillMount() {
   }
@@ -21,8 +23,16 @@ export class GeoJob extends Component {
     // this.props.fetchJobs();
   }
 
+  componentWillReceiveProps( newProps ) {
+    console.log('GeoJob willReceiveProps',newProps);
+  }
+
+  componentWillUnmount() {
+    console.log('GeoJob component Will unmount');
+    // TODO: Stop polling ?
+  }
+
   render() {
-    console.log('GeoJob', this.props.geoJob);
     let height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
     const divStyle = {
       height: height < 500 ? height : height * 0.85
@@ -43,10 +53,7 @@ export class GeoJob extends Component {
               <div style={{ height: `100%` }} >
               </div>
             }
-            //       onMapLoad={()=>{}}
-            //       onMapClick={()=>{}}
             jobs={this.props.geoJob.jobList}
-          //       onMarkerRightClick={()=>{}}
           />
           <RefreshButton
             onRefreshClick={this.props.fetchJobs.bind(this)}
