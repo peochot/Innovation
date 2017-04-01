@@ -8,6 +8,8 @@ import {Server} from 'http';
 import {ioListener} from './config/socket';
 import MailService from './services/Mail';
 import UserMailService from './services/UserMail';
+import compression from 'compression';
+
 // import {CronJob} from 'cron';
 import auth from './middlewares/auth';
 
@@ -18,6 +20,7 @@ ioListener(server);
 app.set('port', (process.env.PORT||3000));
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/api', bodyParser.json({limit: '3mb'}));
+app.use(compression());
 app.use(passport.initialize());
 app.use('/api', auth);
 app.use('/api', routesApi);

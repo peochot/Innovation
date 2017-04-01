@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "build": "node fuse.js",
-    "postinstall": "node fuse-prod.js",
-    "dedochobiet": "watchify app/app.js -d -o public/bundle.js -t [ babelify --presets [ react es2015 ] ]",
-    "dungxaidedothoi": "browserify -d -t [ babelify --presets [  react es2015 ] ] -p [minifyify --map bundle.map.json --output public/bundle.map.json] app/app.js > public/bundle.js"
+    "postinstall": "node fuse-prod.js"
   },
   "engines": {
     "node": "~6.4.0",
@@ -22,6 +20,7 @@
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
+    "compression": "^1.6.2",
     "cron": "^1.1.0",
     "dotenv": "^2.0.0",
     "es6-promise": "^4.0.5",
@@ -32,7 +31,7 @@
     "libmime": "^2.1.0",
     "md5": "^2.2.1",
     "mocha": "^3.1.2",
-    "moment": "^2.15.1",
+    "moment": "^2.18.1",
     "mongoose": "^4.5.10",
     "multer": "^1.2.0",
     "nodemailer": "^2.5.0",
@@ -59,9 +58,9 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
-    "fuse-box": "^1.3.128",
     "babelify": "^7.2.0",
     "browserify": "^13.1.0",
+    "fuse-box": "^1.3.128",
     "material-ui": "^0.16.6",
     "minifyify": "^7.3.3",
     "node-sass": "^3.13.0",
@@ -75,7 +74,7 @@
     "redux": "^3.6.0",
     "redux-form": "^6.4.3",
     "redux-form-material-ui": "^4.1.2",
-    "redux-thunk": "^2.1.0",
-    "redux-persist": "^4.5.0"
+    "redux-persist": "^4.5.0",
+    "redux-thunk": "^2.1.0"
   }
 }

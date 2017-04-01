@@ -24,7 +24,7 @@ export const auth = (state = initAuth, action) => {
 
 let initGeoJobs = {
   jobList: [],
-  isLatest: false
+  lastUpdated: new Date().toISOString()
 }
 
 export const geoJob = (state = initGeoJobs, action) => {
@@ -35,11 +35,11 @@ export const geoJob = (state = initGeoJobs, action) => {
         return {
           ...state,
           jobList: action.data,
-          isLatest: true
+          lastUpdated: new Date().toISOString()
         }
       }
     case Names.BOOKMARK_JOB:
-      return state.map((job) => {
+      return state.jobList.map((job) => {
         if (action.jobId == job._id) {
           return {
             ...job,
@@ -49,7 +49,7 @@ export const geoJob = (state = initGeoJobs, action) => {
         return job;
       });
     case Names.APPLY_JOB:
-      return state.map((job) => {
+      return state.jobList.map((job) => {
         if (action.jobId == job._id) {
           return {
             ...job,
