@@ -131,9 +131,11 @@ export function createLetters(data) {
     }
 }
 
+
+// TODO : Fetch job by version
 export function fetchJobs() {
     return (dispatch, state) => {
-        //      dispatch(fetchingJobs());
+
         return request('/api/job')
             .then(response => {
                 dispatch(receiveJobs(response.data));
