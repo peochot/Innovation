@@ -3,17 +3,6 @@ import Toolbar from './Toolbar';
 import Snackbar from 'material-ui/Snackbar';
 import { connect } from 'react-redux';
 
-
-// TODO: Remove this
-const App = ({ children }) => {
-  return (<div style={{ marginBottom: '0px' }}>
-    <header className="container" style={{ marginBottom: '0px', paddingTop: '0px' }}>
-      <Toolbar />
-    </header>
-    {children}
-  </div>);
-};
-
 class Main extends React.Component {
   static propTypes = {
     children: React.PropTypes.node

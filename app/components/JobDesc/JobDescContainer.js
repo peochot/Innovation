@@ -8,14 +8,26 @@ import FontIcon from 'material-ui/FontIcon';
 // Redux
 import { connect } from 'react-redux';
 import { Tab, Tabs } from 'material-ui/Tabs';
+
+// Reducers
+import { jobDesc } from './../../reducers';
+import { fetchJobDesc } from './../../actions';
+
 // TODO
-const mapStateToProps = null;
-const mapDispatchToProps = null;
+const mapStateToProps = ({ jobDesc }) => ({ jobDesc });
+const mapDispatchToProps = (dispatch) => ({
+    getJobDesc: (jobId) => dispatch(fetchJobDesc(jobId))
+})
 
 class JobDescContainer extends React.Component {
 
+    constructor(props) {
+        super(props);
+        console.log('JobDescCOntainer jobId', props.params.jobId);
+    }
     componentWillMount() {
-
+        // this.props.getJobDesc()
+        this.props.getJobDesc(this.props.params.jobId);
     }
 
     componentDidMount() {
@@ -30,31 +42,33 @@ class JobDescContainer extends React.Component {
 
     }
 
-    handleActive = () => {
-        console.log('active', this);
+    handleActive = (tab) => {
+        console.log('active tab ', tab);
     }
 
     render() {
         const { handleActive } = this;
-        console.log(handleActive());
+        const { jobInfo } = this.props.jobDesc;
+
+        console.log(jobInfo);
         return (
             <div>
                 <Card>
                     <CardHeader
-                        title="JobDesc"
-                        subtitle="JobDesc subtitle"
+                        title={jobInfo.title}
+                        subtitle={jobInfo.company}
                     />
                     <CardText>
                         <Tabs>
                             <Tab
                                 label="Job Description"
+                                onActive={handleActive}
                                 icon={<FontIcon className="material-icons">work</FontIcon>} >
                                 <div>
-                                    <h2>Tab One</h2>
-                                    <p>This is an example tab.</p>
-                                    <p>You can put any sort of HTML or react component in here. It even keeps the component state!
-                        </p>
-                                    <Slider name="slider0" defaultValue={0.5} />
+                                    <p>
+                                        {jobInfo.description}
+                                    </p>
+                                    <p>Expire at: {jobInfo.expire}</p>
                                 </div>
                             </Tab>
                             <Tab
@@ -62,15 +76,16 @@ class JobDescContainer extends React.Component {
                                 onActive={handleActive}
                                 icon={<FontIcon className="material-icons">business</FontIcon>} >
                                 <div>
-                                    <h2>Tab Two</h2>
-                                    <p>This is another example tab.</p>
+                                    <p> Address : {jobInfo.address} </p>
+                                    <p> Website : {jobInfo.website}</p>
+                                    <p> Contact person: {jobInfo.email} </p>
                                 </div>
                             </Tab>
                         </Tabs>
                     </CardText>
                     <CardActions>
-                        <FlatButton label="Action1" />
-                        <FlatButton label="Action2" />
+                        <FlatButton label="Apply" />
+                        <FlatButton label="Save for later" />
                     </CardActions>
                 </Card>
             </div>

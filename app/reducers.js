@@ -1,4 +1,4 @@
-import * as Names from './store/constants';
+import * as Message from './store/constants';
 
 
 /**
@@ -16,9 +16,9 @@ let initAuth = {
 
 export const auth = (state = initAuth, action) => {
   switch (action.type) {
-    case Names.LOGIN_USER_SUCCESS:
+    case Message.LOGIN_USER_SUCCESS:
       return action.auth;
-    case Names.LOGOUT:
+    case Message.LOGOUT:
       return {
         ...initAuth,
         isLogout: true
@@ -35,16 +35,16 @@ let initGeoJobs = {
 
 export const geoJob = (state = initGeoJobs, action) => {
   switch (action.type) {
-    case Names.RECEIVE_JOBS:
+    case Message.RECEIVE_JOBS:
       {
-        console.log('Reducer receiving jobs',action);
+        console.log('Reducer receiving jobs', action);
         return {
           ...state,
           jobList: action.data,
           lastUpdated: new Date().toISOString()
         }
       }
-    case Names.BOOKMARK_JOB:
+    case Message.BOOKMARK_JOB:
       return state.jobList.map((job) => {
         if (action.jobId == job._id) {
           return {
@@ -54,7 +54,7 @@ export const geoJob = (state = initGeoJobs, action) => {
         }
         return job;
       });
-    case Names.APPLY_JOB:
+    case Message.APPLY_JOB:
       return state.jobList.map((job) => {
         if (action.jobId == job._id) {
           return {
@@ -74,7 +74,7 @@ let initCurrentJob = {
 }
 export const selectedJob = (state = null, action) => {
   switch (action.type) {
-    case Names.SELECT_JOB:
+    case Message.SELECT_JOB:
       return action.jobId;
     default:
       return state;
@@ -83,9 +83,9 @@ export const selectedJob = (state = null, action) => {
 
 export const bookmark = (state = [], action) => {
   switch (action.type) {
-    case Names.RECEIVE_BOOKMARKS:
+    case Message.RECEIVE_BOOKMARKS:
       return action.data || state;
-    case Names.ADD_BOOKMARK:
+    case Message.ADD_BOOKMARK:
       return state.concat([action.data]);
     default:
       return state;
@@ -94,9 +94,9 @@ export const bookmark = (state = [], action) => {
 
 export const application = (state = [], action) => {
   switch (action.type) {
-    case Names.RECEIVE_APPLICATIONS:
+    case Message.RECEIVE_APPLICATIONS:
       return action.data || state;
-    case Names.ADD_APPLICATION:
+    case Message.ADD_APPLICATION:
       return state.concat([action.data]);
     default:
       return state;
@@ -105,9 +105,9 @@ export const application = (state = [], action) => {
 
 export const letter = (state = [], action) => {
   switch (action.type) {
-    case Names.RECEIVE_LETTERS:
+    case Message.RECEIVE_LETTERS:
       return action.data || state;
-    case Names.ADD_LETTER:
+    case Message.ADD_LETTER:
       return state.concat([action.data]);
     default:
       return state;
@@ -116,22 +116,50 @@ export const letter = (state = [], action) => {
 
 export const profile = (state = {}, action) => {
   switch (action.type) {
-    case Names.UPDATE_PROFILE_SUCCESS:
+    case Message.UPDATE_PROFILE_SUCCESS:
       return action.data || state;
-    case Names.RECEIVE_PROFILE_SUCCESS:
+    case Message.RECEIVE_PROFILE_SUCCESS:
       return action.data || state;
     default:
       return state;
-    // case Names.UPDATE_PROFILE_FAILED:
-    // case Names.RECEIVE_PROFILE_FAILED:
+    // case Message.UPDATE_PROFILE_FAILED:
+    // case Message.RECEIVE_PROFILE_FAILED:
   }
 }
 
 export const tags = (state = [], action) => {
   switch (action.type) {
-    case Names.RECEIVE_TAGS_SUCCESS: {
+    case Message.RECEIVE_TAGS_SUCCESS: {
       return action.data || state;
     }
     default: return state;
   }
 }
+
+const initJobDesc = {
+  jobInfo: {
+    address: ' Somewhere below the rainbow',
+    salary: 'Non-negotiable',
+    phone: 'No phone',
+    region: 'Helsinki',
+    title: 'Customer Representative',
+    description: 'No desc',
+    website: 'http://nojob.com',
+    email: 'nojob@helsinki.fi'
+  }
+}
+
+export const jobDesc = (state = initJobDesc, action) => {
+  switch (action.type) {
+    case Message.RECEIVE_JOB_DESC_SUCCESS: {
+      console.log('receive job desc succes',action);
+      return {
+        ...state,
+        jobInfo: action.data
+      }
+    }
+    default: return state;
+  }
+
+}
+
