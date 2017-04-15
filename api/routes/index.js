@@ -19,6 +19,7 @@ router.post('/register', authController.register);
 
 
 router.get('/job', jobController.list);
+router.get('/job/:jobId',jobController.one)
 router.get('/myJob', jobController.ownList);
 
 

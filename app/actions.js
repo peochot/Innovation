@@ -131,6 +131,26 @@ export function createLetters(data) {
     }
 }
 
+export function fetchJobDesc(jobId) {
+    // console.log('fetching job with id', jobId);
+    return (dispatch, state) => {
+        return request(`/api/job/${jobId}`)
+            .then(res => {
+                dispatch(receivedJobDesc(res.data))
+            })
+            .catch(err => {
+                console.error('fetchJobDesc err', err);
+            })
+    }
+}
+
+
+function receivedJobDesc(data) {
+    return {
+        type: Action.RECEIVE_JOB_DESC_SUCCESS,
+        data: data
+    }
+}
 
 // TODO : Fetch job by version
 export function fetchJobs() {
@@ -152,9 +172,10 @@ export function fetchJobs() {
     }
 }
 
+// TODO !!
 export function fetchTags() {
     return (dispatch, state) => {
-        dispatch(receiveTags(['developer','thai','ohjelmointi','kehittaja']));
+        dispatch(receiveTags(['developer', 'thai', 'ohjelmointi', 'kehittaja']));
     }
 }
 
@@ -309,7 +330,7 @@ export function fetchProfile() {
 export function setProfile(data) {
     return (dispatch, state) => {
         // TODO: PUT/ POST
-        request('api/profile',data,'POST').then(res => {
+        request('api/profile', data, 'POST').then(res => {
             return dispatch(setProfileSuccess);
         }).catch(err => {
             return dispatch(setProfileFailed);

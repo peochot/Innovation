@@ -1,4 +1,5 @@
 import express from 'express';
+import compress from 'compression';
 import routesApi from './routes/index';
 import authController from './controllers/authenthication';
 import passport from './config/passport';
@@ -18,6 +19,7 @@ const server = Server(app);
 ioListener(server);
 
 app.set('port', (process.env.PORT||3000));
+app.use(compress());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/api', bodyParser.json({limit: '3mb'}));
 app.use(compression());

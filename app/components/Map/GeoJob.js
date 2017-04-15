@@ -13,9 +13,18 @@ const mapDispatchToProps = dispatch => ({
   fetchJobs: () => dispatch(fetchJobs())
 });
 
-const pollingAction = () => {};
+const pollingAction = () => { };
 
 export class GeoJob extends Component {
+
+  constructor(props) {
+    super(props);
+    // TODO: Initial state , if any
+    this.state = {};
+
+    console.log('GeoJob', props);
+  }
+
   componentWillMount() {
   }
 
@@ -23,8 +32,8 @@ export class GeoJob extends Component {
     // this.props.fetchJobs();
   }
 
-  componentWillReceiveProps( newProps ) {
-    console.log('GeoJob willReceiveProps',newProps);
+  componentWillReceiveProps(newProps) {
+    console.log('GeoJob willReceiveProps', newProps);
   }
 
   componentWillUnmount() {
@@ -54,6 +63,7 @@ export class GeoJob extends Component {
               </div>
             }
             jobs={this.props.geoJob.jobList}
+            callSnackbar={this.props.callSnackbar}
           />
           <RefreshButton
             onRefreshClick={this.props.fetchJobs.bind(this)}

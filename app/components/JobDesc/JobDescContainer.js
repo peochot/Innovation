@@ -1,74 +1,96 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Slider from 'material-ui/Slider';
+import FontIcon from 'material-ui/FontIcon';
 // Lower-order components
-
 
 // Redux
 import { connect } from 'react-redux';
 import { Tab, Tabs } from 'material-ui/Tabs';
+
+// Reducers
+import { jobDesc } from './../../reducers';
+import { fetchJobDesc } from './../../actions';
+
 // TODO
-const mapStateToProps = null;
-const mapDispatchToProps = null;
+const mapStateToProps = ({ jobDesc }) => ({ jobDesc });
+const mapDispatchToProps = (dispatch) => ({
+    getJobDesc: (jobId) => dispatch(fetchJobDesc(jobId))
+})
 
-export default class JobDescContainer extends React.Component {
+class JobDescContainer extends React.Component {
 
+    constructor(props) {
+        super(props);
+        console.log('JobDescCOntainer jobId', props.params.jobId);
+    }
+    componentWillMount() {
+        // this.props.getJobDesc()
+        this.props.getJobDesc(this.props.params.jobId);
+    }
 
-    handleActive(tab) {
-    alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
+    componentDidMount() {
+
+    }
+
+    componentWillReceiveProps(newProps) {
+
+    }
+
+    componentWillUnmount() {
+
+    }
+
+    handleActive = (tab) => {
+        console.log('active tab ', tab);
     }
 
     render() {
-        return(
-        <div>
-            <Card>
-                <CardHeader
-                    title="JobDesc"
-                    subtitle="JobDesc subtitle"
-                    avatar=""
-                />
-                <CardText>
-                    <Tabs>
-                        <Tab label="Item One" >
-                        <div>
-                            <h2>Tab One</h2>
-                            <p>
-                            This is an example tab.
-                            </p>
-                            <p>
-                            You can put any sort of HTML or react component in here. It even keeps the component state!
-                            </p>
-                            <Slider name="slider0" defaultValue={0.5} />
-                        </div>
-                        </Tab>
-                        <Tab label="Item Two" >
-                        <div>
-                            <h2>Tab Two</h2>
-                            <p>
-                            This is another example tab.
-                            </p>
-                        </div>
-                        </Tab>
-                        <Tab
-                        label="onActive"
-                        data-route="/home"
-                        onActive={handleActive}
-                        >
-                        <div>
-                            <h2>Tab Three</h2>
-                            <p>
-                            This is a third example tab.
-                            </p>
-                        </div>
-                        </Tab>
-                    </Tabs>
-                </CardText>
-                <CardActions>
-                    <FlatButton label="Action1" />
-                    <FlatButton label="Action2" />
-                </CardActions>
-            </Card>
-        </div>
-    )}
+        const { handleActive } = this;
+        const { jobInfo } = this.props.jobDesc;
+
+        console.log(jobInfo);
+        return (
+            <div>
+                <Card>
+                    <CardHeader
+                        title={jobInfo.title}
+                        subtitle={jobInfo.company}
+                    />
+                    <CardText>
+                        <Tabs>
+                            <Tab
+                                label="Job Description"
+                                onActive={handleActive}
+                                icon={<FontIcon className="material-icons">work</FontIcon>} >
+                                <div>
+                                    <p>
+                                        {jobInfo.description}
+                                    </p>
+                                    <p>Expire at: {jobInfo.expire}</p>
+                                </div>
+                            </Tab>
+                            <Tab
+                                label="Company Info"
+                                onActive={handleActive}
+                                icon={<FontIcon className="material-icons">business</FontIcon>} >
+                                <div>
+                                    <p> Address : {jobInfo.address} </p>
+                                    <p> Website : {jobInfo.website}</p>
+                                    <p> Contact person: {jobInfo.email} </p>
+                                </div>
+                            </Tab>
+                        </Tabs>
+                    </CardText>
+                    <CardActions>
+                        <FlatButton label="Apply" />
+                        <FlatButton label="Save for later" />
+                    </CardActions>
+                </Card>
+            </div>
+        )
+    }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(JobDescContainer);

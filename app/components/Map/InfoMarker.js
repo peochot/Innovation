@@ -27,7 +27,7 @@ export const InfoMarker = props => {
         <InfoWindow
           options={{ maxWidth: 400 }}
           onCloseClick={() => props.selectJob(null)}>
-          <JobCard job={props.job} index={props.index} userLocation={props.userLocation} jobLocation={marker.position}/>
+          <JobCard callSnackbar={props.callSnackbar} job={props.job} index={props.index} userLocation={props.userLocation} jobLocation={marker.position}/>
         </InfoWindow>
       )}
     </Marker>
