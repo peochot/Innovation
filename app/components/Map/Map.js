@@ -11,18 +11,33 @@ navigator.geolocation.getCurrentPosition(function (location) {
   defaultLon = location.coords.longitude;
 });
 
-export const Map = props => (
-  <GoogleMap
-    ref={props.onMapLoad}
-    defaultZoom={10}
-    defaultCenter={{ lat: defaultLat, lng: defaultLon  }}
-    //onClick={this.props.onMapClick}
-    >
-    {
-      props.jobs.map((job) => (
-        <InfoMarker job={job} key={job._id} userLocation={{ lat: defaultLat, lng: defaultLon  }} />
-      ))
-    }
-  </GoogleMap>
-);
+export class Map extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  componentWillMount() {
+    
+  }
+
+  render() {
+    const { props } = this;
+    return (
+      <GoogleMap
+        ref={props.onMapLoad}
+        defaultZoom={10}
+        defaultCenter={{ lat: defaultLat, lng: defaultLon }}
+      //onClick={this.props.onMapClick}
+      >
+        {
+          props.jobs.map((job) => (
+            <InfoMarker callSnackbar={props.callSnackbar} job={job} key={job._id} userLocation={{ lat: defaultLat, lng: defaultLon }} />
+          ))
+        }
+      </GoogleMap>
+    )
+  }
+
+};
 export default withGoogleMap(Map);
