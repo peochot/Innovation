@@ -8,25 +8,31 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import { connect } from 'react-redux';
+import { fetchJobs } from '../../actions';
 
-export default class JobToolbar extends React.Component {
+const mapDispatchToProps = dispatch => ({
+  getJobs: (keyword) => dispatch(fetchJobs(keyword))
+});
+
+export class JobToolbar extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      value: 3,
+      keyword: ''
     };
   }
 
   handleChange = (event, index, value) => this.setState({value});
-  openAdvanceSearch = () => this.setState({value});
+  onKeywordChange = (e) => { this.state.keyword = e.target.value; };
+  onEnterdown = (e) => {
+    if (e.keyCode == 13) {
+      this.props.getJobs(this.state.keyword);
+    }
+  };
 
   render() {
-    let searchKey=[{key:"title",label:"By Title"},
-                  {key:"description",label:"By Description"},
-                  {key:"company",label:"By Company"},
-                  {key:"region",label:"By Region"},
-                  {key:"tag",label:"By Tag"}]
     return (
       <Toolbar>
         <ToolbarGroup firstChild={true}>
@@ -34,34 +40,21 @@ export default class JobToolbar extends React.Component {
             label="Jobs"
             onTouchTap={this.props.handleDrawer}
           />
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-            {
-              searchKey.map((obj)=>{
-                <MenuItem value={obj.key} primaryText={obj.label} />
-            })
-            }
-          </DropDownMenu>
           <TextField
                 hintText="Keyword"
                 fullWidth={true}
                 style={{width:"20em"}}
-                onChange={()=>console.log("popop")}
+                style = {{width: 500}}
+                onKeyDown={this.onEnterdown}
+                onChange={this.onKeywordChange}
                 />
         </ToolbarGroup>
         <ToolbarGroup>
-          <RaisedButton label="Search" primary={true} />
-          <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
-          >
-            <MenuItem primaryText="Advance Search" onClick/>
-            <MenuItem primaryText="More Info" />
-          </IconMenu>
+          <RaisedButton label="Search" primary={true} onClick={() => this.props.getJobs(this.state.keyword)}/>
         </ToolbarGroup>
       </Toolbar>
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(JobToolbar);

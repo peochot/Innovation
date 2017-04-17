@@ -1,10 +1,6 @@
 const db = require('../config/db.js');
 
 let jobSchema = db.Schema({
-    __v: {
-      type: Number,
-      select: false
-    },
     mol_id: { //ilmoitusnumero
         type: String,
         unique: true,
@@ -65,7 +61,10 @@ let jobSchema = db.Schema({
     },
 });
 
-jobSchema.statics.getQuery = function(params,ids=null) {
+jobSchema.index({ title: 'text', description: 'text', company: 'text' },
+     {name: 'title_text_description_text_company_text', weights: {title: 7, description: 5, company: 1}});
+
+jobSchema.statics.getQuery = function(params, ids=null) {
     var today = new Date();
     //let criteria = [{ expire: { $gte: today } },{coords: {$exists: true}}];
     let criteria = [{coords: {$exists: true, $ne: null }}];
@@ -79,6 +78,9 @@ jobSchema.statics.getQuery = function(params,ids=null) {
                     break;
                 case "description":
                     criteria.push({ 'description': new RegExp('.*' + params[key] + '.*', "i") });
+                    break;
+                case "text":
+                    criteria.push({$text: {$search: params[key]}});
                     break;
                 case "ids":
                     criteria.push({ '_id': { $in: params[key]}});
@@ -112,8 +114,15 @@ jobSchema.statics.getOrder = function(str) {
 
 jobSchema.statics.getJobs = function(query) {
     const criteria = this.getQuery(query);
+    if ('text' in query) {
+        return this.find(criteria, {score : {$meta: "textScore"}}).sort({ score : { $meta : 'textScore' } });
+    } 
     const orderBy = this.getOrder(query.order);
-    return this.find(criteria).sort(orderBy).select("-__v");
+    return this.find(criteria).sort(orderBy);
+}
+
+jobSchema.statics.searchText = function(str) {
+    return this.find({$text: {$search: str}});
 }
 
 const Job = db.model('Job', jobSchema);

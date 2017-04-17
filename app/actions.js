@@ -153,21 +153,19 @@ function receivedJobDesc(data) {
 }
 
 // TODO : Fetch job by version
-export function fetchJobs() {
-    return (dispatch, state) => {
+export function fetchJobs(keyword) {
+    let uri = '/api/job';
+    if (keyword) {
+        uri += `?text=${keyword}`
+    }
 
-        return request('/api/job')
+    return (dispatch, state) => {
+        return request(uri)
             .then(response => {
                 dispatch(receiveJobs(response.data));
             })
             .catch(error => {
-                console.log(error);
-                /*
-                  if(error.response.status === 401) {
-                    dispatch(loginUserFailure(error));
-                    dispatch(push('/login'))
-                  }
-                  */
+                console.error(error);
             });
     }
 }
