@@ -28,35 +28,38 @@ let jobSchema = db.Schema({
         required:true
     },
     coords: {type: [Number], index: '2dsphere'},
-    email:{//yhteystiedotSahkoposti
+    email: {//yhteystiedotSahkoposti
         type: String,
-        required:true
+        required: true
     },
-    phone:{//yhteystiedotPuhelin
+    phone: {//yhteystiedotPuhelin
         type: String
     },
-    description:{//kuvausteksti     //below belong to detail
-        type:String,
+    description: {//kuvausteksti     //below belong to detail
+        type: String,
     },
-    address:{//tyopaikanOsoite
-        type:String,
+    address: {//tyopaikanOsoite
+        type: String,
     },
     representative: { //yhteystiedot
+        type: String,
+    },
+    expire: {//hakuPaattyy
+        type: Date,
+    },
+    last_modified: {
+        type: Date,
+    },
+    website: {//tyonantajanWwwOsoite
         type:String,
     },
-    expire:{//hakuPaattyy
-        type:Date,
-    },
-    website:{//tyonantajanWwwOsoite
+    apply_email: {//hakemusLahetetaan
         type:String,
     },
-    apply_email:{//hakemusLahetetaan
+    salary: {//palkkausteksti
         type:String,
     },
-    salary:{//palkkausteksti
-        type:String,
-    },
-    duration:{//tyonKestoTekstiYhdistetty
+    duration: {//tyonKestoTekstiYhdistetty
        type:String,
     },
 });
