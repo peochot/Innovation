@@ -20,21 +20,19 @@ export class JobToolbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 3,
       keyword: ''
     };
   }
 
   handleChange = (event, index, value) => this.setState({value});
   onKeywordChange = (e) => { this.state.keyword = e.target.value; };
-  openAdvanceSearch = () => this.setState({value});
+  onEnterdown = (e) => {
+    if (e.keyCode == 13) {
+      this.props.getJobs(this.state.keyword);
+    }
+  };
 
   render() {
-    let searchKey=[{key:"title",label:"By Title"},
-                  {key:"description",label:"By Description"},
-                  {key:"company",label:"By Company"},
-                  {key:"region",label:"By Region"},
-                  {key:"tag",label:"By Tag"}]
     return (
       <Toolbar>
         <ToolbarGroup firstChild={true}>
@@ -42,32 +40,17 @@ export class JobToolbar extends React.Component {
             label="Jobs"
             onTouchTap={this.props.handleDrawer}
           />
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-            {
-              searchKey.map((obj)=>{
-                <MenuItem value={obj.key} primaryText={obj.label} />
-            })
-            }
-          </DropDownMenu>
           <TextField
                 hintText="Keyword"
                 fullWidth={true}
                 style={{width:"20em"}}
+                style = {{width: 500}}
+                onKeyDown={this.onEnterdown}
                 onChange={this.onKeywordChange}
                 />
         </ToolbarGroup>
         <ToolbarGroup>
           <RaisedButton label="Search" primary={true} onClick={() => this.props.getJobs(this.state.keyword)}/>
-          <IconMenu
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            }
-          >
-            <MenuItem primaryText="Advance Search" onClick/>
-            <MenuItem primaryText="More Info" />
-          </IconMenu>
         </ToolbarGroup>
       </Toolbar>
     );
