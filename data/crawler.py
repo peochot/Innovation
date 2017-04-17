@@ -5,6 +5,7 @@ import time
 from lxml import etree
 from pymongo import MongoClient
 import pymongo
+from pymongo import TEXT
 from urllib.parse import urlparse
 from datetime import datetime
 from datetime import timedelta
@@ -78,6 +79,18 @@ def main():
     client = MongoClient('mongodb://localhost:27017/')
     db = client['cooking']
     jobsCollection = db['jobs']
+    jobsCollection.create_index(
+        [
+            ('title', TEXT),
+            ('description', TEXT),
+            ('company', TEXT)
+        ],
+        weights={
+            'title': 7,
+            'description': 5,
+            'company': 1
+        }
+    )
     companiesCollection = db['companies']
     jobsData=getJobs()
     jobs=[]

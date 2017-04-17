@@ -8,17 +8,25 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import { connect } from 'react-redux';
+import { fetchJobs } from '../../actions';
 
-export default class JobToolbar extends React.Component {
+const mapDispatchToProps = dispatch => ({
+  getJobs: (keyword) => dispatch(fetchJobs(keyword))
+});
+
+export class JobToolbar extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       value: 3,
+      keyword: ''
     };
   }
 
   handleChange = (event, index, value) => this.setState({value});
+  onKeywordChange = (e) => { this.state.keyword = e.target.value; };
   openAdvanceSearch = () => this.setState({value});
 
   render() {
@@ -45,11 +53,11 @@ export default class JobToolbar extends React.Component {
                 hintText="Keyword"
                 fullWidth={true}
                 style={{width:"20em"}}
-                onChange={()=>console.log("popop")}
+                onChange={this.onKeywordChange}
                 />
         </ToolbarGroup>
         <ToolbarGroup>
-          <RaisedButton label="Search" primary={true} />
+          <RaisedButton label="Search" primary={true} onClick={() => this.props.getJobs(this.state.keyword)}/>
           <IconMenu
             iconButtonElement={
               <IconButton touch={true}>
@@ -65,3 +73,5 @@ export default class JobToolbar extends React.Component {
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(JobToolbar);
