@@ -43,7 +43,7 @@ export class JobCard extends React.Component {
 
   render() {
     const now = new Date().getTime() / 1000;
-    const direction = `https://www.reittiopas.fi/reitti/YourLocation::${this.props.userLocation.lat},${this.props.userLocation.lng}/${this.props.job.company}::${this.props.jobLocation.lat},${this.props.jobLocation.lng}?time=${now}&arriveBy=false`
+    const direction = `https://www.reittiopas.fi/reitti/Your%20Location::${this.props.userLocation.lat},${this.props.userLocation.lng}/${this.props.job.company}::${this.props.jobLocation.lat},${this.props.jobLocation.lng}?time=${now}&arriveBy=false`
     return (
       <Card>
         <CardHeader
