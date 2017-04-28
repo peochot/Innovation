@@ -3,6 +3,9 @@ import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'm
 import FlatButton from 'material-ui/FlatButton';
 import Slider from 'material-ui/Slider';
 import FontIcon from 'material-ui/FontIcon';
+import JobDescComment from './JobDescComment';
+
+import moment from 'moment';
 // Lower-order components
 
 // Redux
@@ -49,8 +52,26 @@ class JobDescContainer extends React.Component {
     render() {
         const { handleActive } = this;
         const { jobInfo } = this.props.jobDesc;
-
-        console.log(jobInfo);
+        jobInfo.comments = [
+            {
+                user: {
+                    firstName: 'test',
+                    lastName: 'testtilainen',
+                    _id: 123,
+                    title: 'Software Developer'
+                },
+                content: 'I very love working here, nice experience !'
+            },
+            {
+                user: {
+                    firstName: 'Indida',
+                    lastName: 'testtilainen',
+                    _id: 123,
+                    title: 'Indian Software Developer'
+                },
+                content: 'I hate working here, I need more money !'
+            }
+        ]
         return (
             <div>
                 <Card>
@@ -68,7 +89,7 @@ class JobDescContainer extends React.Component {
                                     <p>
                                         {jobInfo.description}
                                     </p>
-                                    <p>Expire at: {jobInfo.expire}</p>
+                                    <p>Expire at: {moment(jobInfo.expire).format('ll')}</p>
                                 </div>
                             </Tab>
                             <Tab
@@ -76,9 +97,12 @@ class JobDescContainer extends React.Component {
                                 onActive={handleActive}
                                 icon={<FontIcon className="material-icons">business</FontIcon>} >
                                 <div>
-                                    <p> Address : {jobInfo.address} </p>
-                                    <p> Website : {jobInfo.website || "No website found"}</p>
-                                    <p> Contact person: {jobInfo.email} </p>
+                                    <p> Address</p>
+                                    <p> {jobInfo.address} </p>
+                                    <p> Website</p>
+                                    <p> {jobInfo.website || "No website found"}</p>
+                                    <p> Contact person </p>
+                                    <p>{jobInfo.email} </p>
                                 </div>
                             </Tab>
                             <Tab
@@ -86,8 +110,9 @@ class JobDescContainer extends React.Component {
                                 onActive={handleActive}
                                 icon={<FontIcon className="material-icons">work</FontIcon>} >
                                 <div>
-                                    <p> COmment </p>
-                                    <p> Comment 2 </p>
+                                    {
+                                        jobInfo.comments.map(comment => <JobDescComment jobComment={comment} />)
+                                    }
                                 </div>
                             </Tab>
                         </Tabs>

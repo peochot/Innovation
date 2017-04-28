@@ -22,6 +22,8 @@ export class ProfilePage extends React.Component {
     constructor(props) {
         super(props);
 
+        console.log('ProfilePage',props);
+
         this.state = {
             tabValue: 'basic'
         }
@@ -67,7 +69,9 @@ export class ProfilePage extends React.Component {
                         icon={<FontIcon className="material-icons">phone</FontIcon>}
                         label="Basic Information"
                         value="basic">
-                        <ProfileForm onSubmit={this.onProfileSubmit.bind(this)}></ProfileForm>
+                        <ProfileForm
+                            onSubmit={this.onProfileSubmit.bind(this)}
+                        />
                     </Tab>
                     <Tab
                         icon={<FontIcon className="material-icons">favorite</FontIcon>}

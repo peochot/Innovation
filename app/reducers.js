@@ -152,7 +152,7 @@ const initJobDesc = {
 export const jobDesc = (state = initJobDesc, action) => {
   switch (action.type) {
     case Message.RECEIVE_JOB_DESC_SUCCESS: {
-      console.log('receive job desc succes',action);
+      // console.log('receive job desc succes',action);
       return {
         ...state,
         jobInfo: action.data

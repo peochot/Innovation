@@ -23,7 +23,7 @@ import {
 class ProfileForm extends Component {
     constructor(props) {
         super(props);
-        console.log('ProfileForm', props);
+        console.log('ProfileForm', props.callSnackBar);
     }
 
     componentWillMount() {
@@ -34,9 +34,10 @@ class ProfileForm extends Component {
 
     }
 
-    handleSubmit(value) {
+    handleSubmit = (value) => {
         console.log('handleSubmit', value);
-        this.props.onSubmit()
+
+        this.props.onSubmit();
     }
 
     render() {
@@ -48,13 +49,12 @@ class ProfileForm extends Component {
                     <Field fullWidth={true} component={TextField} floatingLabelText="Last Name" hintText="Last Name" name="lastName" />
                     <Field fullWidth={true} component={TextField} floatingLabelText="Title" hintText="Title" name="title" />
                     <Field fullWidth={true} component={TextField} floatingLabelText="Company" hintText="Company" name="company" />
-                    <label> TODO: Label styling </label>
-                    <Field hintText="Preference" floatingLabelText="Preference" component={renderMultiselect}
+                    <Field hintText="Preference" component={renderMultiselect}
                         floatingLabelText="Preference" name="preferences"
                         data={dataSource} />
                 </div>
                 <div>
-                    <RaisedButton primary={true} type="submit" label="Submit"  disabled={pristine || submitting} />
+                    <RaisedButton primary={true} type="submit" label="Submit" disabled={pristine || submitting} />
                 </div>
             </form>
         )
