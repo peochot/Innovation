@@ -1,4 +1,5 @@
 site_name: Smart Career Documentation
 pages:
     - Home: index.md
+    - Api: api.md
 theme: 'material'

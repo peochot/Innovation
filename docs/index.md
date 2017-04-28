@@ -1,3 +1,1 @@
-# Welcome to Smart career documentation
-
-Keccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+# Welcome to Smart Career API Documentation
