@@ -77,8 +77,17 @@ class JobDescContainer extends React.Component {
                                 icon={<FontIcon className="material-icons">business</FontIcon>} >
                                 <div>
                                     <p> Address : {jobInfo.address} </p>
-                                    <p> Website : {jobInfo.website}</p>
+                                    <p> Website : {jobInfo.website || "No website found"}</p>
                                     <p> Contact person: {jobInfo.email} </p>
+                                </div>
+                            </Tab>
+                            <Tab
+                                label="Comment"
+                                onActive={handleActive}
+                                icon={<FontIcon className="material-icons">work</FontIcon>} >
+                                <div>
+                                    <p> COmment </p>
+                                    <p> Comment 2 </p>
                                 </div>
                             </Tab>
                         </Tabs>
