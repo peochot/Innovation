@@ -163,3 +163,13 @@ export const jobDesc = (state = initJobDesc, action) => {
 
 }
 
+export const applyFormToggler = (state = false, action) => {
+  console.log(state, action);
+  switch (action.type) {
+    case Message.TOGGLE_APPLY_FORM_SUCCESS: {
+      return !state;
+    }
+    default: return state;
+  }
+}
+

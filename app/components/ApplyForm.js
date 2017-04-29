@@ -1,52 +1,47 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import { reduxForm, reset, change as changeFieldValue } from 'redux-form';
-import {apply} from '../actions';
-const mapStateToProps = ({selectedJob,jobs,letters}) => ({auth,jobs});
+import {apply, toggleApplyForm} from '../actions';
+const mapStateToProps = ({applyFormToggler}) => ({applyFormToggler});
 
 const mapDispatchToProps = dispatch => ({
-  apply :(body) => dispatch(apply(body))
+  apply :(body) => dispatch(apply(body)),
+  toggleApplyForm :() => dispatch(toggleApplyForm())
 });
 
-class ApplyForm extends Component {
+class ApplyForm extends React.Component {
   render() {
-
+    console.log('form rendered', this.props);
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={this.props.toggleApplyForm}
+      />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.props.apply}
+      />,
+    ];
     return (
-      <form onSubmit={this.props.handleSubmit(this.props.apply)}>
-        <Input s={4} placeholder="Cover letter" { ...size } />
-        <ColorInput s={4} action={ colorObj => this.props.changeFieldValue('ApplyForm', 'color', colorObj.hex) } />
-        
-       <RaisedButton type="submit" label="submit"/>
-     </form>
-     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Letter template</label>
-        <div>
-          <Field name="favoriteColor" component="select">
-            <option></option>
-            <option value="ff0000">Red</option>
-            <option value="00ff00">Green</option>
-            <option value="0000ff">Blue</option>
-          </Field>
-        </div>
-      </div>
-      <div>
-        <label>Letter content</label>
-        <div>
-          <Field name="notes" component="textarea"/>
-        </div>
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-      </div>
-    </form>
+      <Dialog
+        title="Apply job"
+        actions={actions}
+        modal={false}
+        open={this.props.applyFormToggler}
+      >
+      form
+      </Dialog>
     );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addFurniture, changeFieldValue }, dispatch);
-}
-export default reduxForm({
-  form: 'ApplyForm',
-  fields: ['itemName', 'price', 'description', 'url', 'size', 'color'],
-}, mapStateToProps, mapDispatchToProps)(ApplyForm);
+// export default reduxForm({
+//   form: 'ApplyForm',
+// }, mapStateToProps, mapDispatchToProps)(ApplyForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ApplyForm);

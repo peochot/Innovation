@@ -404,3 +404,10 @@ const updateProfileFailed = (message) => {
         message
     }
 }
+
+export const toggleApplyForm = () => {
+    console.log("in action");
+    return {
+        type: Action.TOGGLE_APPLY_FORM_SUCCESS
+    }
+}

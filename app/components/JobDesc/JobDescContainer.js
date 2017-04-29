@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Slider from 'material-ui/Slider';
 import FontIcon from 'material-ui/FontIcon';
 import JobDescComment from './JobDescComment';
+import ApplyForm from '../ApplyForm';
 
 import moment from 'moment';
 // Lower-order components
@@ -14,12 +15,13 @@ import { Tab, Tabs } from 'material-ui/Tabs';
 
 // Reducers
 import { jobDesc } from './../../reducers';
-import { fetchJobDesc } from './../../actions';
+import { fetchJobDesc, toggleApplyForm } from './../../actions';
 
 // TODO
 const mapStateToProps = ({ jobDesc }) => ({ jobDesc });
 const mapDispatchToProps = (dispatch) => ({
-    getJobDesc: (jobId) => dispatch(fetchJobDesc(jobId))
+    getJobDesc: (jobId) => dispatch(fetchJobDesc(jobId)),
+    toggleApplyForm: () => dispatch(toggleApplyForm())
 })
 
 class JobDescContainer extends React.Component {
@@ -74,6 +76,7 @@ class JobDescContainer extends React.Component {
         ]
         return (
             <div>
+                <ApplyForm/>
                 <Card>
                     <CardHeader
                         title={jobInfo.title}
@@ -118,7 +121,7 @@ class JobDescContainer extends React.Component {
                         </Tabs>
                     </CardText>
                     <CardActions>
-                        <FlatButton label="Apply" />
+                        <FlatButton label="Apply" onTouchTap={this.props.toggleApplyForm}/>
                         <FlatButton label="Save for later" />
                     </CardActions>
                 </Card>
