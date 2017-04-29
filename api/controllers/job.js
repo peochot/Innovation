@@ -5,6 +5,7 @@ import MailService from '../services/UserMail';
 import libmime from 'libmime';
 
 function list(req, res) {
+    
     //cach ngu rat ngu , TODO : Refucktor
     const Promise = require('bluebird');
     Promise.all([
