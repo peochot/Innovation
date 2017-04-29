@@ -5,14 +5,14 @@ import MailService from '../services/UserMail';
 import libmime from 'libmime';
 
 function list(req, res) {
-    
+
     //cach ngu rat ngu , TODO : Refucktor
     const Promise = require('bluebird');
     Promise.all([
         Application.find({ owner: req.user._id }).lean().distinct('job'),
         Bookmark.find({ owner: req.user._id }).lean().distinct('job'),
         Job.getJobs(req.query).lean()
-    ]).spread(function (bookmarks, applications, jobs) {
+    ]).spread(function (applications, bookmarks, jobs) {
         bookmarks = bookmarks.map((bookmark) => (bookmark.toString()));
         applications = applications.map((application) => (application.toString()));
 
@@ -59,20 +59,20 @@ function ownList(req, res) {
 
                 res.json({ data: jobs });
             });
-    } else if(req.query.type = "bookmark") {
+    } else if (req.query.type = "bookmark") {
         Bookmark.find({ owner: req.user._id })
-        .populate('job')
-        .then((jobRefs) => {
-            let jobs = [];
-            jobRefs.map((jobRef) => {
-                jobs.push(jobRef.job);
+            .populate('job')
+            .then((jobRefs) => {
+                let jobs = [];
+                jobRefs.map((jobRef) => {
+                    jobs.push(jobRef.job);
+                });
+                res.json({ data: jobs });
             });
-            res.json({ data: jobs });
-        });
     } else {
         res.json({});
     }
-    
+
 };
 
 function doAction(req, res) {
@@ -132,21 +132,21 @@ function applyWithFile(req, res) {
 
 function apply(job, user, letter, fileData) {
     return MailService.send(
-                user.google.accessToken,
-                "beochot@gmail.com",
-                user,
-                libmime.encodeWord(job.title, 'Q'),
-                letter,
-                "application/pdf",
-                "resume.pdf",
-                fileData
-            ).then((response) => {
-                 return Application.create({
-                    owner: user._id,
-                    job: job._id
-                });
-            });
-   
+        user.google.accessToken,
+        "beochot@gmail.com",
+        user,
+        libmime.encodeWord(job.title, 'Q'),
+        letter,
+        "application/pdf",
+        "resume.pdf",
+        fileData
+    ).then((response) => {
+        return Application.create({
+            owner: user._id,
+            job: job._id
+        });
+    });
+
 }
 
 function close(job, user) {
