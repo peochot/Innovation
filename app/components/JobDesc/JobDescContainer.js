@@ -22,7 +22,7 @@ import { apply, fetchJobDesc, toggleApplyForm, addCommentToCompany } from './../
 const mapStateToProps = ({ jobDesc }) => ({ jobDesc });
 const mapDispatchToProps = (dispatch) => ({
     getJobDesc: (jobId) => dispatch(fetchJobDesc(jobId)),
-    toggleApplyForm: () => dispatch(toggleApplyForm())
+    toggleApplyForm: () => dispatch(toggleApplyForm()),
     apply: (jobId) => dispatch(applyAtJobDesc(jobId)),
     addComment: (jobId, comment) => dispatch(addCommentToCompany(jobId, comment))
 })

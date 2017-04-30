@@ -13,6 +13,7 @@ import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import CreateTemplate from '../CreateTemplate';
 import ContentSend from 'material-ui/svg-icons/content/send';
+import Dialog from 'material-ui/Dialog';
 
 import { blue500, yellow600 } from 'material-ui/styles/colors';
 
@@ -24,9 +25,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class TemplateList extends React.Component {
-
+    constructor(props){
+        super(props)
+        this.state = {
+            isDialogOpen: false,
+            dialogContent: ""
+        };
+        this.onItemSelected = this.onItemSelected.bind(this);
+    }
     onItemSelected(e) {
         console.log(e);
+        this.setState({dialogContent: e, isDialogOpen: true})
     }
 
     componentWillMount() {
@@ -44,17 +53,26 @@ class TemplateList extends React.Component {
             <div>
             <List>
                 {letter.map((l)=>{
+                    // trim milliseconds
+                    l.created = l.created.split(".")[0]
                    return <ListItem
                         key={l._id}
                         leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={blue500} />}
                         rightIcon={<ActionInfo />}
                         primaryText={l.letterName}
                         secondaryText={l.created}
-                        onTouchTap={this.onItemSelected.bind(this)}
+                        onTouchTap={()=>this.onItemSelected(l.content)}
                     />
                 })}
                 <ListItem primaryText="Create template" leftIcon={<ContentSend />} onTouchTap={this.props.toggleTemplateForm} />
             </List>
+              <Dialog
+                title="Template content"
+                modal={false}
+                open={this.state.isDialogOpen}
+                onRequestClose={()=>this.setState({isDialogOpen: false})}>
+                {this.state.dialogContent}
+              </Dialog>
             <CreateTemplate/>
             </div>
         )
