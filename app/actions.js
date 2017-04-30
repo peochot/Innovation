@@ -305,10 +305,29 @@ export function bookmark(jobId) {
     }
 }
 export function apply(jobId, index) {
-        console.log(arguments)
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
         return request(`/api/job/${jobId}/apply`, undefined, "POST")
+            .then(response => {
+                dispatch(addApplication(response.data));
+                dispatch(applyJob(jobId));
+            })
+            .catch(error => {
+                console.log(error);
+                /*
+                  if(error.response.status === 401) {
+                    dispatch(loginUserFailure(error));
+                    dispatch(push('/login'))
+                  }
+                  */
+            });
+    }
+}
+
+export function applyWithFile(jobId, formData) {
+    return (dispatch, state) => {
+        //      dispatch(fetchingJobs());
+        return postFormData(`/api/job/${jobId}/applyWithFile`, formData, "POST")
             .then(response => {
                 dispatch(addApplication(response.data));
                 dispatch(applyJob(jobId));

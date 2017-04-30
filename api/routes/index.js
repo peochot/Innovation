@@ -23,7 +23,7 @@ router.get('/job/:jobId',jobController.one)
 router.get('/myJob', jobController.ownList);
 
 
-router.post('/job/:jobId/applyWithFile', upload.single('document'), jobController.applyWithFile);
+router.post('/job/:jobId/applyWithFile', upload.single('file'), jobController.applyWithFile);
 router.post('/job/:jobId/:action', jobController.doAction);
 
 router.get('/application',applicationController.index);
