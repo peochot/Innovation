@@ -102,6 +102,13 @@ export function addApplication(data) {
     }
 }
 
+// export function addComment(companyId) {
+//     return {
+//         type: Action.ADD_COMMENT,
+//         companyId
+//     }
+// }
+
 export function receiveBookmarks(data) {
     return {
         type: Action.RECEIVE_BOOKMARKS,
@@ -129,6 +136,25 @@ export function createLetters(data) {
         }).catch(err => {
             console.error(err);
         })
+    }
+}
+
+export function addCommentToCompany(companyId, comment) {
+    return (dispatch, state) => {
+        return postFormData(``, comment) // TODO: {companyId}
+            .then(res => {
+                dispatch(commentAdded(res))// TODO
+            })
+            .catch(err => {
+                console.error('Comment adding failed')
+            })
+    }
+}
+
+export function commentAdded(comment) {
+    return {
+        type: Action.ADD_COMMENT_SUCCESS,
+        comment
     }
 }
 
@@ -299,20 +325,32 @@ export function apply(jobId, index) {
     }
 }
 
-let mockProfile = {
-    firstName: 'Tri',
-    lastName: 'Nguyen',
-    title: 'Student',
-    company: 'Metropolia Oy',
-    experiences: [
+export function applyAtJobDesc(jobId) {
+    return (dispatch, state) => {
+        return request(``, undefined, 'POST')
+            .then(res => {
+                // TODO : 
+                // dispatch()
+                dispatch(applyAtJobDescSuccess(res));
+            })
+            .catch(err => {
+                dispatch(applyAtJobDescFailed(err));
+            })
+    }
+}
 
-    ],
-    applications: [
-        1, 2, 3, 4
-    ],
-    templates: [
-        1, 2
-    ]
+function applyAtJobDescSuccess(data) {
+    return {
+        type: Action.APPLY_JOB_AT_JOBDESC_SUCCESS,
+        data
+    }
+}
+
+function applyAtJobDescFailed(reason) {
+    return {
+        type: Action.APPLY_JOB_AT_JOBDESC_FAILED,
+        reason
+    }
 }
 
 export function fetchProfile() {

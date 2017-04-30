@@ -45,7 +45,8 @@ export const geoJob = (state = initGeoJobs, action) => {
         }
       }
     case Message.BOOKMARK_JOB:
-      return state.jobList.map((job) => {
+      console.log('bookmark job curState', state);
+      let newJobList = state.jobList.map((job) => {
         if (action.jobId == job._id) {
           return {
             ...job,
@@ -54,6 +55,10 @@ export const geoJob = (state = initGeoJobs, action) => {
         }
         return job;
       });
+      return {
+        ...state,
+        jobList: newJobList
+      }
     case Message.APPLY_JOB:
       return state.jobList.map((job) => {
         if (action.jobId == job._id) {

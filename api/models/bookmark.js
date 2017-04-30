@@ -20,7 +20,7 @@ let bookmarkSchema = db.Schema({
   }
 });
 
-bookmarkSchema.index({ job: 1, owner: 1, watch: 1}, { unique: true });
+bookmarkSchema.index({ job: 1, owner: 1}, { unique: true });
 const Bookmark = db.model('Bookmark', bookmarkSchema);
 
 module.exports = Bookmark;
