@@ -122,8 +122,9 @@ export function receiveLetters(data) {
 }
 
 export function createLetters(data) {
+    console.log('asd',data);
     return (dispatch, state) => {
-        return postFormData('/api/letter', data).then(res => {
+        return request('/api/letter', data, "POST").then(res => {
             console.log(res);
         }).catch(err => {
             console.error(err);
@@ -278,6 +279,7 @@ export function bookmark(jobId) {
     }
 }
 export function apply(jobId, index) {
+        console.log(arguments)
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
         return request(`/api/job/${jobId}/apply`, undefined, "POST")
@@ -406,8 +408,20 @@ const updateProfileFailed = (message) => {
 }
 
 export const toggleApplyForm = () => {
-    console.log("in action");
     return {
         type: Action.TOGGLE_APPLY_FORM_SUCCESS
     }
 }
+
+export const toggleTemplateForm = () => {
+    return {
+        type: Action.TOGGLE_TEMPLATE_FORM_SUCCESS
+    }
+}
+
+export const updateTemplateBody = () => {
+    return {
+
+    }
+}
+

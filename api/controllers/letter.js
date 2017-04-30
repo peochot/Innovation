@@ -10,12 +10,15 @@ function index(req, res){
 
 function create(req, res){
    Letter.create({
-     owner: req.user._id,
-     content: req.body.content,
-     category: req.body.category
-   }).then((letter) => {
-     res.json({letter: letter});
-   });
+      owner: req.user._id,
+      content: req.body.content,
+      letterName: req.body.templateName
+   }).then((object) => {
+          res.json({ data: object });
+      })
+      .catch((err) => {
+          res.status(400).json({ message: err });
+      });;
 }
 
 function update(req, res){

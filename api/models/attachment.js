@@ -20,12 +20,13 @@ let attachmentSchema = db.Schema({
   },
   owner: {
       type:db.SchemaTypes.ObjectId,
-      ref:'User',
+      ref:'Letter',
       required: true
   }
 });
+
 attachmentSchema.statics.saveAttachments = function(files, callback) {
-    return Promise.map(files, callback);
+  // return cloudinary(file);
 };
 
 const Attachment = db.model('Attachment', attachmentSchema);

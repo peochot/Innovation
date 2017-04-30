@@ -5,12 +5,13 @@ let letterSchema = db.Schema({
       type:db.SchemaTypes.ObjectId,
       ref:'User'
   },
-  content: {
+  letterName: {
       type: String,
       required: true
   },
-  category: {
-      type:String
+  content: {
+      type: String,
+      required: true
   },
   created: {
       type: Date,
