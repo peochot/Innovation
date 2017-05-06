@@ -106,9 +106,11 @@ function applyWithFile(req, res) {
     if (!user.google.accessToken) {
         res.status(401).json({ message: "Account is not linked with google" });
     }
+    var jobData = {};
 
     Job.findById(req.params.jobId)
         .then((job) => {
+            jobData = job;
             return MailService.send(
                 user.google.accessToken,
                 "beochot@gmail.com",
@@ -120,8 +122,13 @@ function applyWithFile(req, res) {
                 fileData
             );
         })
+        .then((res) => {
+            return Application.create({
+                owner: user._id,
+                job: jobData._id
+            });
+        })
         .then((response) => {
-            console.log(response);
             res.json({ message: "ok" })
         },
         (err) => {

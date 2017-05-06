@@ -129,7 +129,6 @@ export function receiveLetters(data) {
 }
 
 export function createLetters(data) {
-    console.log('asd', data);
     return (dispatch, state) => {
         return request('/api/letter', data, "POST").then(res => {
             console.log(res);
@@ -159,7 +158,6 @@ export function commentAdded(comment) {
 }
 
 export function fetchJobDesc(jobId) {
-    // console.log('fetching job with id', jobId);
     return (dispatch, state) => {
         return request(`/api/job/${jobId}`)
             .then(res => {
@@ -282,9 +280,10 @@ const mockApplication = [
 
 export function fetchApplications() {
     return (dispatch, state) => {
-        return request('/api/myJob?type=application')
+        return request('/api/application')
             .then(response => {
-                dispatch(receiveApplications());
+                dispatch(receiveApplications(response.data));
+
             })
             .catch(error => {
                 console.log(error);
