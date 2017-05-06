@@ -129,7 +129,7 @@ export function receiveLetters(data) {
 }
 
 export function createLetters(data) {
-    console.log('asd',data);
+    console.log('asd', data);
     return (dispatch, state) => {
         return request('/api/letter', data, "POST").then(res => {
             console.log(res);
@@ -141,9 +141,9 @@ export function createLetters(data) {
 
 export function addCommentToCompany(companyId, comment) {
     return (dispatch, state) => {
-        return postFormData(``, comment) // TODO: {companyId}
+        return request(`/api/company/${companyId}/review`, { content: comment }, 'POST')
             .then(res => {
-                dispatch(commentAdded(res))// TODO
+                dispatch(commentAdded(res.data))
             })
             .catch(err => {
                 console.error('Comment adding failed')
@@ -153,7 +153,7 @@ export function addCommentToCompany(companyId, comment) {
 
 export function commentAdded(comment) {
     return {
-        type: Action.ADD_COMMENT_SUCCESS,
+        type: Action.ADD_REVIEW_SUCCESS,
         comment
     }
 }
@@ -168,6 +168,32 @@ export function fetchJobDesc(jobId) {
             .catch(err => {
                 console.error('fetchJobDesc err', err);
             })
+    }
+}
+
+export function fetchJobReview(companyId) {
+    return (dispatch, state) => {
+        return request(`/api/company/${companyId}/review`)
+            .then(res => {
+                dispatch(receivedCompanyComment(res.data))
+            })
+            .catch(err => {
+                dispatch(receivedCompanyCommentFailed())
+            })
+    }
+}
+
+function receivedCompanyComment(data) {
+    return {
+        type: Action.RECEIVE_REVIEW_SUCCESS,
+        data: data
+    }
+}
+
+function receivedCompanyCommentFailed() {
+    return {
+        type: Action.RECEIVE_REVIEW_FAILED,
+        data: []
     }
 }
 
@@ -256,20 +282,12 @@ const mockApplication = [
 
 export function fetchApplications() {
     return (dispatch, state) => {
-        //      dispatch(fetchingJobs());
         return request('/api/myJob?type=application')
             .then(response => {
-                // dispatch(receiveApplications(response.data));
                 dispatch(receiveApplications());
             })
             .catch(error => {
                 console.log(error);
-                /*
-                  if(error.response.status === 401) {
-                    dispatch(loginUserFailure(error));
-                    dispatch(push('/login'))
-                  }
-                  */
             });
     }
 }
@@ -282,12 +300,6 @@ export function fetchLetters() {
             })
             .catch(error => {
                 console.log(error);
-                /*
-                  if(error.response.status === 401) {
-                    dispatch(loginUserFailure(error));
-                    dispatch(push('/login'))
-                  }
-                  */
             });
     }
 }

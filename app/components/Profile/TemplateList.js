@@ -33,8 +33,8 @@ class TemplateList extends React.Component {
         };
         this.onItemSelected = this.onItemSelected.bind(this);
     }
+    
     onItemSelected(e) {
-        console.log(e);
         this.setState({dialogContent: e, isDialogOpen: true})
     }
 

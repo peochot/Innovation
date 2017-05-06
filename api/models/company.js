@@ -15,6 +15,7 @@ let companySchema = db.Schema({
   },
   reviews:[{
         type: db.SchemaTypes.ObjectId,
+        default: [],
         ref: 'Review',
   }]
 });
