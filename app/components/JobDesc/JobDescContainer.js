@@ -16,14 +16,15 @@ import { Tab, Tabs } from 'material-ui/Tabs';
 
 // Reducers
 import { jobDesc } from './../../reducers';
-import { apply, fetchJobDesc, toggleApplyForm, addCommentToCompany } from './../../actions';
+import { apply, fetchJobDesc, toggleApplyForm, addCommentToCompany, fetchJobReview } from './../../actions';
 
 // TODO
-const mapStateToProps = ({ jobDesc }) => ({ jobDesc });
+const mapStateToProps = ({ companyId, jobDesc }) => ({ companyId, jobDesc });
 const mapDispatchToProps = (dispatch) => ({
     getJobDesc: (jobId) => dispatch(fetchJobDesc(jobId)),
     toggleApplyForm: () => dispatch(toggleApplyForm()),
     apply: (jobId) => dispatch(applyAtJobDesc(jobId)),
+    getJobReview: (companyId) => dispatch(fetchJobReview(companyId)),
     addComment: (jobId, comment) => dispatch(addCommentToCompany(jobId, comment))
 })
 
@@ -39,14 +40,14 @@ class JobDescContainer extends React.Component {
     componentWillMount() {
         // this.props.getJobDesc()
         this.props.getJobDesc(this.props.params.jobId);
+        this.props.getJobReview(this.props.params.companyId);
     }
 
     componentDidMount() {
-
+        
     }
 
     componentWillReceiveProps(newProps) {
-
     }
 
     componentWillUnmount() {
@@ -84,33 +85,9 @@ class JobDescContainer extends React.Component {
     render() {
         const { handleActive, handleApply } = this;
         const { jobInfo } = this.props.jobDesc;
-        // TODO : Comments get , Add Comment
-        jobInfo.comments = [
-            {
-                _id: 'afsdfsfsdaf',
-                user: {
-                    firstName: 'test',
-                    lastName: 'testtilainen',
-                    _id: 123,
-                    title: 'Software Developer'
-                },
-                content: 'I very love working here, nice experience !'
-            },
-            {
-                _id: 'asdfadfasdf',
-                user: {
-                    firstName: 'Indida',
-                    lastName: 'testtilainen',
-                    _id: 123,
-                    title: 'Indian Software Developer'
-                },
-                content: 'I hate working here, I need more money !'
-            }
-        ]
-        // console.log(jobInfo);
         return (
             <div>
-                <ApplyForm/>
+                <ApplyForm />
                 <Card>
                     <CardHeader
                         title={jobInfo.title}
@@ -162,7 +139,7 @@ class JobDescContainer extends React.Component {
                         </Tabs>
                     </CardText>
                     <CardActions>
-                        <FlatButton label="Apply" onTouchTap={this.props.toggleApplyForm}/>
+                        <FlatButton label="Apply" onTouchTap={this.props.toggleApplyForm} />
                         <FlatButton label="Save for later" />
                     </CardActions>
                 </Card>

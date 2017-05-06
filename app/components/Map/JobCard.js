@@ -16,12 +16,7 @@ import moment from 'moment';
 const mapDispatchToProps = dispatch => ({
   bookmark: (jobId) => dispatch(bookmark(jobId)),
   apply: (jobId) => dispatch(apply(jobId)),
-  goTo: (jobId) => {
-    console.log('goTo', jobId);
-    return dispatch(go('jobdesc/' + jobId))
-  },
-  openDiscussModal: () => dispatch(openDiscussModal()),
-
+  openDiscussModal: () => dispatch(openDiscussModal())
 });
 export class JobCard extends React.Component {
 
@@ -38,7 +33,7 @@ export class JobCard extends React.Component {
     this.props.bookmark(jobId);
 
     // console.log(this);
-    this.props.callSnackbar('Job bookmarked',5000);
+    this.props.callSnackbar('Job bookmarked', 5000);
   }
 
   render() {
@@ -56,7 +51,7 @@ export class JobCard extends React.Component {
           {this.state.fullDesc ? this.props.job.description : `${this.props.job.description.substring(0, 100)}...`}
         </CardText>
         <CardActions>
-          <Link to={'/jobdesc/' + this.props.job._id}>
+          <Link to={'/jobdesc/' + this.props.job._id + '/' + this.props.job.cid}>
             <IconButton tooltip="Go" tooltipPosition="top-right">
               <FontIcon className="material-icons">subject</FontIcon>
             </IconButton>

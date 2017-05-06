@@ -19,10 +19,9 @@ export default class JobDescComment extends React.Component {
                 <ListItem
                     leftAvatar={<Avatar src="images/uxceo-128.jpg" />}
                     // rightIconButton={rightIconMenu}
-                    primaryText={`${jobComment.user.firstName} ${jobComment.user.lastName}`}
+                    primaryText={`Anonymous User`}
                     secondaryText={
                         <p>
-                            <span>{jobComment.user.title}</span><br />
                             {jobComment.content}
                         </p>
                     }

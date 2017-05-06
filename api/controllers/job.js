@@ -123,14 +123,12 @@ function applyWithFile(req, res) {
             );
         })
         .then((res) => {
-            console.log('job', jobData);
             return Application.create({
                 owner: user._id,
                 job: jobData._id
             });
         })
         .then((response) => {
-            console.log(response);
             res.json({ message: "ok" })
         },
         (err) => {

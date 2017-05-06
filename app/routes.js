@@ -25,7 +25,7 @@ export default function({dispatch,getState}){
       <IndexRoute component={Home}/>
       <Route path='map(/:jobId)' component={GeoJob} onEnter={onEnter}/>
       <Route path='job/:jobId/apply' component={Application} onEnter={onEnter}/>
-      <Route path='jobdesc/:jobId' component={JobDescContainer} onEnter={onEnter} />
+      <Route path='jobdesc/:jobId/:companyId' component={JobDescContainer} onEnter={onEnter} />
       <Route path='profile' component={ProfilePage} onEnter={onEnter} />
       <Route path='' />
       <Route path='*' component={NotFound} />
