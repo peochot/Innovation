@@ -75,7 +75,7 @@ export class ProfilePage extends React.Component {
                     </Tab>
                     <Tab
                         icon={<FontIcon className="material-icons">favorite</FontIcon>}
-                        label="Pending Application"
+                        label="Submitted Applications"
                         value="application">
 
                         <ApplicationList appList={applications} />
