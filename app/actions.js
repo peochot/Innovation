@@ -257,10 +257,9 @@ const mockApplication = [
 export function fetchApplications() {
     return (dispatch, state) => {
         //      dispatch(fetchingJobs());
-        return request('/api/myJob?type=application')
+        return request('/api/application')
             .then(response => {
-                // dispatch(receiveApplications(response.data));
-                dispatch(receiveApplications());
+                dispatch(receiveApplications(response.data));
             })
             .catch(error => {
                 console.log(error);

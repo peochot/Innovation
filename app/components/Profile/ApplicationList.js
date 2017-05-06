@@ -9,7 +9,7 @@ import { fetchApplications } from './../../actions';
 
 
 // TODO : NOt this map
-const mapStateToProps = ({ auth, profile }) => ({ auth, profile });
+const mapStateToProps = ({ application }) => ({ application });
 const mapDispatchToProps = dispatch => ({
     fetchApplications: () => dispatch(fetchApplications()),
     discardApplication: () => dispatch(discardApplication()),
@@ -23,59 +23,27 @@ export class ApplicationList extends React.Component {
     }
 
     componentWillMount() {
-        // TODO : LOAD here
-    }
-
-    componentDidMount() {
-
-    }
-
-    componentWillReceiveProps(newProps) {
-        console.log('ApplicationList newProps', newProps);
         this.props.fetchApplications();
     }
 
-    onApplicationDiscard(appId) {
-        console.log('application discard', appId);
-        this.props.discardApplication(appId);
-    }
-
-    onApplicationSend(appId) {
-        console.log('application send', appId);
-        this.props.sendApplication(appId);
-    }
-
-    onDiscardClick(e) {
-
-    }
-
     render() {
-        // const { appList } = this.props;
-        // const appList = this.props.appList;
-        const appList = this.props.appList || [];
+        const appList = this.props.application || [];
         return (
             <div>
                 {appList.map((app) => {
-                    let applyButton;
-                    if (app.status === 'Pending') applyButton = <FlatButton onTouchTap={this.onApplicationSend.bind(this, app.id)} label="Something" primary={true} />;
-                    else applyButton = null;
-                    return (
-                        <Card key={app.id}>
+                    app.job.expire = app.job.expire.split("T")[0]
+                   return <Card key={app._id}>
                             <CardHeader
-                                title={`${app.jobReference.position} at ${app.jobReference.companyName}`}
-                                subtitle={app.status}
+                                title={`${app.job.title} at ${app.job.company}`}
+                                subtitle={`Expiry date: ${app.job.expire}`}
                                 actAsExpander={true}
                                 showExpandableButton={true}
+                                titleStyle={{fontWeight: 900}}
                                 />
-                            <CardActions>
-                                <FlatButton onTouchTap={this.onApplicationDiscard.bind(this, app.id)} label="Discard" secondary={true} />
-                                {applyButton}
-                            </CardActions>
                             <CardText expandable={true}>
-                                {app.jobReference.shortDescription}
+                                {app.job.description}
                             </CardText>
                         </Card>
-                    )
                 })}
             </div>
         )
