@@ -40,6 +40,7 @@ export function request(endpoint, body, method = "GET") {
 }
 export function postFormData(endpoint, body, method = "POST") {
     // TODO : If no token , please do something
+    console.log('post', body);
     return fetch(`${endpoint}`, {
         headers: { 'Authorization': localStorage.getItem("token") },
         method,

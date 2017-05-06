@@ -109,6 +109,7 @@ export const application = (state = [], action) => {
 };
 
 export const letter = (state = [], action) => {
+  // console.log('letter reducer', state, action)
   switch (action.type) {
     case Message.RECEIVE_LETTERS:
       return action.data || state;
@@ -166,5 +167,23 @@ export const jobDesc = (state = initJobDesc, action) => {
     default: return state;
   }
 
+}
+
+export const applyFormToggler = (state = false, action) => {
+  switch (action.type) {
+    case Message.TOGGLE_APPLY_FORM_SUCCESS: {
+      return !state;
+    }
+    default: return state;
+  }
+}
+
+export const templateFormToggler = (state = false, action) => {
+  switch (action.type) {
+    case Message.TOGGLE_TEMPLATE_FORM_SUCCESS: {
+      return !state;
+    }
+    default: return state;
+  }
 }
 

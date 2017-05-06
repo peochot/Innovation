@@ -1,52 +1,145 @@
-import { reduxForm, reset, change as changeFieldValue } from 'redux-form';
-import {apply} from '../actions';
-const mapStateToProps = ({selectedJob,jobs,letters}) => ({auth,jobs});
+import React from 'react';
+import { connect } from 'react-redux';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import {applyWithFile, toggleApplyForm} from '../actions';
+import { Field, reduxForm } from 'redux-form'
+import {
+    TextField
+} from 'redux-form-material-ui';
+
+const mapStateToProps = ({applyFormToggler, letter, jobDesc}) => {
+  return {
+    applyFormToggler: applyFormToggler,
+    letter: letter,
+    jobDesc: jobDesc,
+    initialValues: {
+      email: jobDesc.jobInfo.email
+    }
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
-  apply :(body) => dispatch(apply(body))
+  applyWithFile :(jobId, body) => dispatch(applyWithFile(jobId, body)),
+  toggleApplyForm :() => dispatch(toggleApplyForm())
 });
 
-class ApplyForm extends Component {
+const adaptFileEventToValue = delegate =>
+  e => delegate(e.target.files[0])
+
+const styles = {
+  textareaStyle: {
+    width: '100%',
+    marginBottom: '20px',
+    minHeight: '120px'
+  }
+};
+
+const FileInput = ({
+  input: {
+    value: omitValue,
+    onChange,
+    onBlur,
+    ...inputProps,
+  },
+  meta: omitMeta,
+  ...props,
+}) =>
+
+  <input
+    onChange={adaptFileEventToValue(onChange)}
+    onBlur={adaptFileEventToValue(onBlur)}
+    type="file"
+    {...inputProps}
+    {...props}
+  />
+  
+class ApplyForm extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      emailBody: "" // initialValues doesn't work
+    }
+  }
+
+  handleSubmit = (fileContainer) => {
+    var formData = new FormData();
+    formData.append('letter', this.state.emailBody);
+    formData.append('file', fileContainer.file);
+    this.props.applyWithFile(this.props.jobDesc.jobInfo._id, formData);
+  }
+
+  handleChange = (e) => {
+    console.log('change', e.target.value);
+    var emailBody = "";
+    for(var i = 0; i<this.props.letter.length; i++){
+      if(this.props.letter[i]._id == e.target.value) {
+        emailBody = this.props.letter[i].content
+      }
+    }
+    this.setState({emailBody: emailBody});
+  }
+
+  handleTextChange = (e) => {
+    this.setState({emailBody: e.target.value});
+  }
+
   render() {
+    const { handleSubmit, letter} = this.props
+    const { jobInfo } = this.props.jobDesc;
+    console.log('desc', jobInfo)
 
     return (
-      <form onSubmit={this.props.handleSubmit(this.props.apply)}>
-        <Input s={4} placeholder="Cover letter" { ...size } />
-        <ColorInput s={4} action={ colorObj => this.props.changeFieldValue('ApplyForm', 'color', colorObj.hex) } />
-        
-       <RaisedButton type="submit" label="submit"/>
-     </form>
-     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Letter template</label>
+      <Dialog
+        title="Apply job"
+        modal={false}
+        open={this.props.applyFormToggler}
+      >
+      <form onSubmit={handleSubmit(this.handleSubmit)}>
+        <h3>To</h3>
+        <b>{this.props.initialValues.email}</b>
+        <br/>
+        <br/>
+        <select onChange={this.handleChange}>
+          <option value="">Select a template...</option>
+          {letter.map(l =>
+          <option value={l._id} key={l._id}>{l.letterName}</option>)}
+        </select>
+        <h3>Email body</h3>
+        <textarea style={styles.textareaStyle} value={this.state.emailBody} onChange={this.handleTextChange}/>
+        <h3>Upload attachment</h3>
+          <Field
+            component={FileInput}
+            name="file"
+          />
+        <br/>
+        <br/>
         <div>
-          <Field name="favoriteColor" component="select">
-            <option></option>
-            <option value="ff0000">Red</option>
-            <option value="00ff00">Green</option>
-            <option value="0000ff">Blue</option>
-          </Field>
+          <FlatButton
+            label="Cancel"
+            primary={true}
+            onTouchTap={this.props.toggleApplyForm}
+          />
+          <FlatButton
+            label="Submit"
+            primary={true}
+            type="submit"
+          />
         </div>
-      </div>
-      <div>
-        <label>Letter content</label>
-        <div>
-          <Field name="notes" component="textarea"/>
-        </div>
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-      </div>
-    </form>
+      </form>
+      </Dialog>
     );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addFurniture, changeFieldValue }, dispatch);
-}
+ApplyForm = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ApplyForm);
+
 export default reduxForm({
   form: 'ApplyForm',
-  fields: ['itemName', 'price', 'description', 'url', 'size', 'color'],
-}, mapStateToProps, mapDispatchToProps)(ApplyForm);
+  enableReinitialize: true
+})(ApplyForm);
+

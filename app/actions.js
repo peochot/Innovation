@@ -129,8 +129,9 @@ export function receiveLetters(data) {
 }
 
 export function createLetters(data) {
+    console.log('asd',data);
     return (dispatch, state) => {
-        return postFormData('/api/letter', data).then(res => {
+        return request('/api/letter', data, "POST").then(res => {
             console.log(res);
         }).catch(err => {
             console.error(err);
@@ -323,6 +324,26 @@ export function apply(jobId, index) {
     }
 }
 
+export function applyWithFile(jobId, formData) {
+    return (dispatch, state) => {
+        //      dispatch(fetchingJobs());
+        return postFormData(`/api/job/${jobId}/applyWithFile`, formData, "POST")
+            .then(response => {
+                dispatch(addApplication(response.data));
+                dispatch(applyJob(jobId));
+            })
+            .catch(error => {
+                console.log(error);
+                /*
+                  if(error.response.status === 401) {
+                    dispatch(loginUserFailure(error));
+                    dispatch(push('/login'))
+                  }
+                  */
+            });
+    }
+}
+
 export function applyAtJobDesc(jobId) {
     return (dispatch, state) => {
         return request(``, undefined, 'POST')
@@ -442,3 +463,22 @@ const updateProfileFailed = (message) => {
         message
     }
 }
+
+export const toggleApplyForm = () => {
+    return {
+        type: Action.TOGGLE_APPLY_FORM_SUCCESS
+    }
+}
+
+export const toggleTemplateForm = () => {
+    return {
+        type: Action.TOGGLE_TEMPLATE_FORM_SUCCESS
+    }
+}
+
+export const updateTemplateBody = () => {
+    return {
+
+    }
+}
+
