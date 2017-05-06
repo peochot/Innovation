@@ -143,6 +143,7 @@ export const tags = (state = [], action) => {
 }
 
 const initJobDesc = {
+  companyId: null,
   jobInfo: {
     address: ' Somewhere below the rainbow',
     salary: 'Non-negotiable',
@@ -151,17 +152,46 @@ const initJobDesc = {
     title: 'Customer Representative',
     description: 'No desc',
     website: 'http://nojob.com',
-    email: 'nojob@helsinki.fi'
+    email: 'nojob@helsinki.fi',
+    comments: []
   }
 }
 
 export const jobDesc = (state = initJobDesc, action) => {
   switch (action.type) {
     case Message.RECEIVE_JOB_DESC_SUCCESS: {
-      // console.log('receive job desc succes',action);
+      console.log('receive job desc succes', action);
+
+      action.data.comments = [];
+
+      return {
+        jobInfo: action.data
+      }
+    }
+    case Message.RECEIVE_REVIEW_SUCCESS: {
+      let oldJobInfo = state.jobInfo;
+      console.log('receive_review', action);
+      let newJobInfo = {
+        ...oldJobInfo,
+        comments: action.data
+      };
       return {
         ...state,
-        jobInfo: action.data
+        jobInfo: newJobInfo
+      }
+    }
+    case Message.ADD_REVIEW_SUCCESS: {
+      console.log('add_review_success', action);
+
+      let newJobInfo = {
+        ...state.jobInfo,
+        comments: action.comment
+      }
+
+
+      return {
+        ...state,
+        jobInfo: newJobInfo
       }
     }
     default: return state;

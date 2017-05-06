@@ -40,7 +40,7 @@ router.post('/profile', profileController.updateProfile);
 router.get('/company',companyController.index);
 
 router.get('/company/:companyId/review',reviewController.index);
-router.post('/company/:companyid/review',reviewController.create);
+router.post('/company/:companyId/review',reviewController.create);
 router.put('/review/:reviewId',reviewController.update);
 
 module.exports = router;
