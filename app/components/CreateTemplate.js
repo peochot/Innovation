@@ -32,6 +32,7 @@ class CreateTemplate extends React.Component {
   handleSubmit = (value) => {
     console.log('handleSubmit', value);
     this.props.createLetters(value);
+    this.forceUpdate();
   }
 
   render() {
@@ -59,6 +60,7 @@ class CreateTemplate extends React.Component {
             primary={true}
             type="submit"
             keyboardFocused={true}
+            onTouchTap={this.props.toggleTemplateForm}
           />
         </div>
       </form>

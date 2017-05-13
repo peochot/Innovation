@@ -89,17 +89,23 @@ class JobDescContainer extends React.Component {
             <div>
                 <ApplyForm />
                 <Card>
-                    <CardHeader
+                    {/*<CardHeader
                         title={jobInfo.title}
                         subtitle={jobInfo.company}
-                    />
+                    />*/}
                     <CardText>
                         <Tabs>
                             <Tab
                                 label="Job Description"
                                 onActive={handleActive}
                                 icon={<FontIcon className="material-icons">work</FontIcon>} >
+                                <CardHeader
+                        title={jobInfo.title}
+                        subtitle={jobInfo.company}
+                    />
                                 <div>
+                                    {/*<h2>{jobInfo.title}</h2>
+                                    <h4>{jobInfo.company}</h4>*/}
                                     <p>
                                         {jobInfo.description}
                                     </p>

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');
+
+html,
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.v-home {
+  background-image: url(http://www.gannett-cdn.com/-mm-/8a8b967484fa6572d54f0746d324f45b480d5932/c=0-150-3008-1849&r=1280x720&r=x1803&c=3200x1800/local/-/media/2015/03/27/USATODAY/USATODAY/635630625436138172-retirement-jobs.jpg);
+  background-size: 150%;
+  background-repeat: no-repeat;
+  background-position: top;
+  -webkit-animation: slide 10s ease;
+  animation-iteration-count: infinite;
+  transform: translate3d(0, 0, 0);
+  height: 100vh;
+}
+
+.v-home:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(89, 120, 193, .7)
+}
+
+@-webkit-keyframes slide {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
+.v-home h1 {
+  font-size: 50px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.v-home .banner {
+  padding: 200px 100px;
+  max-width: 310px;
+  z-index: 101;
+  position: relative;
+}
+
+.btn {
+  background: rgb(0, 188, 212);
+  color: white;
+  text-decoration: none;
+  padding: 10px 40px;
+  margin: 20px 0;
+  display: inline-block;
+  border-radius: 0px;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: white;
+  color: rgb(0, 188, 212);
+  border: solid 1px;
+  border-color: rgb(0, 188, 212);
+}
+
+.card-view {
+  padding: 2em;
+  width: 20em;
+  height: 12em;
+  transition: 0.3s ease-in-out;
+}
+
+.card-view:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, .5);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-view:hover h1 {
+  color: black;
+}
