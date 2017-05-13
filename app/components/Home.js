@@ -17,7 +17,7 @@ class Home extends Component {
         </div>
         {/*Feature*/}
         <div className="c-feature">
-
+        
         </div>
 
         {/*Team members*/}
