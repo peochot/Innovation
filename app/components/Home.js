@@ -8,11 +8,26 @@ class Home extends Component {
     // const myStyles = Object.assign({},styles.homeView,styles['homeView:before']);
     return (
       <div className="v-home">
-        <div className="content">
+        {/*Banner*/}
+        <div className="c-banner">
           <div className="card-view">
             <h1>Welcome to Smart Career</h1>
             <a className="btn" href="/google">Get Started</a>
           </div>
+        </div>
+        {/*Feature*/}
+        <div className="c-feature">
+
+        </div>
+
+        {/*Team members*/}
+        <div className="c-members">
+
+        </div>
+
+        {/*Footer*/}
+        <div className="c-footer">
+
         </div>
       </div>
     );

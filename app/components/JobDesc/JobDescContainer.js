@@ -44,7 +44,7 @@ class JobDescContainer extends React.Component {
     }
 
     componentDidMount() {
-        
+
     }
 
     componentWillReceiveProps(newProps) {
@@ -85,6 +85,7 @@ class JobDescContainer extends React.Component {
     render() {
         const { handleActive, handleApply } = this;
         const { jobInfo } = this.props.jobDesc;
+        // console.log("object", jobInfo.description);
         return (
             <div>
                 <ApplyForm />
@@ -99,11 +100,12 @@ class JobDescContainer extends React.Component {
                                 label="Job Description"
                                 onActive={handleActive}
                                 icon={<FontIcon className="material-icons">work</FontIcon>} >
+
                                 <CardHeader
-                        title={jobInfo.title}
-                        subtitle={jobInfo.company}
-                    />
-                                <div>
+                                    title={jobInfo.title}
+                                    subtitle={jobInfo.company}
+                                />
+                                <div style={{whiteSpace: 'pre-line'}}>
                                     {/*<h2>{jobInfo.title}</h2>
                                     <h4>{jobInfo.company}</h4>*/}
                                     <p>
