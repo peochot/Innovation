@@ -1,33 +1,127 @@
 import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
+// import { GridList, GridTile } from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+
 import './home.css';
 
 class Home extends Component {
 
+  /*featureItem() {
+    const features = [
+      { title: 'Job map', img: 'job-map.png', link: '/map' },
+      { title: 'Easy Sign in', img: 'one-click.png', link: '/google' },
+      { title: 'Material Design', img: 'material-ui.png', link: '/' },
+    ]
+
+    const myFeatures = features.map(item => {
+      return (
+        <div className="u-flex-item-30 u-flex u-flex-column u-flex-vertical-center">
+          <a href="{item.link}">
+            <img src="./images/{item.img}"></img>
+            <h2>{item.title}</h2>
+          </a>
+        </div>
+      )
+    })
+    return myFeatures;
+  }*/
+
   render() {
-    // const myStyles = Object.assign({},styles.homeView,styles['homeView:before']);
+    const features = [
+      { title: 'Easy Sign in', img: './images/one-click.jpg', link: '/#', description: '' },
+      { title: 'Company Feedback', img: './images/feedback.jpg', link: '/#', description: '' },
+      { title: 'Material Design', img: './images/material-ui.png', link: '/#', description: '' },
+      { title: 'Job Map', img: './images/job-map.png', link: '/map', description: '' },
+      { title: 'Professinal Profile', img: './images/profile.png', link: '/profile', description: '' },
+      { title: 'Email Template', img: './images/template.png', link: '/#', description: '' },
+    ]
+
+    const myFeatures = features.map((item, index) => {
+      return (
+        <div key={index.toString()} className="u-flex-item-30 u-flex u-flex-column u-flex-vertical-center">
+          <a href={item.link}>
+            <img src={item.img}></img>
+            <h3>{item.title}</h3>
+          </a>
+        </div>
+      )
+    })
+
+    /*const myFeatures = features.map((item, index) => {
+      return (
+        <div key={index.toString()} className="c-feature-item u-flex u-flex-space-between">
+          <img className="c-feature-img" src={item.img}></img>
+          <div className="c-feature-description">
+            <h2>{item.title}</h2>
+            <p>{item.description}</p>
+          </div>
+
+        </div>
+      )
+    })*/
+
+    const members = [
+      { name: 'Huy Phan', avatar: './images/members/huy.jpg', git: 'https://github.com/peochot', linkedin: 'https://www.linkedin.com/in/huyfin/' },
+      { name: 'Tri Nguyen', avatar: './images/members/tri.jpg', git: 'https://github.com/peochot', linkedin: 'https://www.linkedin.com/in/triminh94/' },
+      { name: 'Bang Nguyen', avatar: './images/members/bang.jpg', git: 'https://github.com/peochot', linkedin: 'https://www.linkedin.com/in/bangnguyen1992/' },
+      { name: 'Minh Cao', avatar: './images/members/minh.jpg', git: 'https://github.com/peochot', linkedin: 'https://www.linkedin.com/in/minh-cao-587a2bb4/' },
+      { name: 'Chuong Truong', avatar: './images/members/chuong.jpg', git: 'https://github.com/peochot', linkedin: 'https://www.linkedin.com/in/tpc290893/' },
+    ]
+
+    const myMembers = members.map((item, index) => {
+      return (
+        <div key={index.toString()} className="u-flex-item-30 u-flex u-flex-column u-flex-vertical-center">
+          <img className="img-circle" src={item.avatar}></img>
+          <h2>{item.name}</h2>
+        </div>
+      )
+    })
+
     return (
       <div className="v-home">
         {/*Banner*/}
-        <div className="c-banner">
+        <div className="c-banner u-flex u-flex-vertical-center">
           <div className="card-view">
             <h1>Welcome to Smart Career</h1>
             <a className="btn" href="/google">Get Started</a>
           </div>
         </div>
-        {/*Feature*/}
-        <div className="c-feature">
-        
+        {/*About us*/}
+        <div className="c-about-us u-flex u-flex-vertical-center u-flex-horizon-center">
+          <h1>Smart Career</h1>
+          <p>Smart Career is a group project of student in Helsinki Metropolia. Our goal is to create a novel job market solution, which will help students and job seekers to share their knowledge, experiences, feedback about the jobs and companies. Furthermore, building their own connection and social network.</p>
+        </div>
+
+        {/*Features*/}
+        <div className="c-features u-flex u-flex-column u-flex-vertical-center">
+          <h1>Main Features</h1>
+          <div className="c-feature-container u-flex u-flex-horizon-center">
+            {myFeatures}
+            {/*<div className="c-feature-item u-flex u-flex-space-between">
+              <img className="c-feature-img" src="images/job-map.png"></img>
+              <div className="c-feature-description">
+
+              </div>
+
+            </div>*/}
+
+          </div>
         </div>
 
         {/*Team members*/}
-        <div className="c-members">
-
-        </div>
+        {/*<div className="c-members u-flex u-flex-column u-flex-vertical-center">
+          <h1>Team members</h1>
+          <div className="c-members-container u-flex u-flex-nowrap">
+            {myMembers}
+          </div>
+          
+        </div>*/}
 
         {/*Footer*/}
-        <div className="c-footer">
-
+        <div className="c-footer u-flex u-flex-horizon-center u-flex-vertical-center">
+        2017 - Smart Career project
         </div>
       </div>
     );
@@ -35,37 +129,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-
-// const styles = {
-//   homeView: {
-//     backgroundImage: 'url(http://www.gannett-cdn.com/-mm-/8a8b967484fa6572d54f0746d324f45b480d5932/c=0-150-3008-1849&r=1280x720&r=x1803&c=3200x1800/local/-/media/2015/03/27/USATODAY/USATODAY/635630625436138172-retirement-jobs.jpg)',
-//     backgroundSize: '150%',
-//     backgroundRepeat: 'no-repeat',
-//     backgroundPosition: 'top',
-//     webkitAnimation: 'slide 10s ease',
-//     animationIterationCount: 'infinite',
-//     transform: 'translate3d(0, 0, 0)',
-//     height: '100vh'
-//   },
-//   'homeView:before': {
-//     'content': "",
-//     position: 'absolute',
-//     zIndex: '1',
-//     width: '100%',
-//     height: '100%',
-//     background: 'rgba(89, 120, 193, .7)'
-//   },
-//   '@-webkit-keyframes slide': {
-//     '0%': {
-//       'background-position': 'left',
-//     },
-//     '50%': {
-//       'background-position': 'right',
-//     },
-//     '100%': {
-//       'background-position': 'left'
-//     }
-//   }
-
-// } 

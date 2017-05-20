@@ -29,17 +29,17 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const styles = {
-  iconStyle: {
-    backgroundColor: 'rgb(0, 188, 212)',
-    color: '#ffffff',
-    width: '1.5em',
-    height: '1.5em',
-    borderRadius: '50%',
-    textAlign: 'center',
-    lineHeight: '1.5',
-    margin: '10px 15px',
-    verticalAlign: 'middle'
-  }
+    iconStyle: {
+        backgroundColor: 'rgb(0, 188, 212)',
+        color: '#ffffff',
+        width: '1.5em',
+        height: '1.5em',
+        borderRadius: '50%',
+        textAlign: 'center',
+        lineHeight: '1.5',
+        margin: '10px 15px',
+        verticalAlign: 'middle'
+    }
 };
 
 class JobDescContainer extends React.Component {
@@ -145,9 +145,7 @@ class JobDescContainer extends React.Component {
                                 onActive={handleActive}
                                 icon={<FontIcon className="material-icons">comment</FontIcon>} >
                                 <div>
-                                    {
-                                        jobInfo.comments.map(comment => <JobDescComment jobComment={comment} />)
-                                    }
+                                    {jobInfo.comments.map(comment => <JobDescComment jobComment={comment} />)}
                                     <TextField
                                         value={this.state.commentInput}
                                         onChange={this.onCommentChange}

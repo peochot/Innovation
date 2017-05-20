@@ -18,33 +18,33 @@ const styles = {
     cursor: 'pointer',
   },
 };
-const mapStateToProps = ({auth}) => ({auth});
+const mapStateToProps = ({ auth }) => ({ auth });
 const mapDispatchToProps = dispatch => ({
-  logout: ()=>dispatch(logout())
+  logout: () => dispatch(logout())
 });
 
 const Toolbar = (props) => {
   let AccountManagement;
-  if(props.auth.isAuthenticated){
+  if (props.auth.isAuthenticated) {
     AccountManagement =
-                <div id="userManagement" style={{display: 'flex', alignItems: 'center'}}>
-                    <FlatButton
-                      containerElement={<Link to="/" />}
-                      label='Home'/>
-                    <FlatButton
-                      containerElement={<Link to="/map" />}
-                      label='Job Map'/>
-                    <FlatButton style={{color:'#FFFFFF'}} label={props.auth.user.firstName}
-                                secondary={true}
-                                icon={<Avatar size={30} src={`https://robohash.org/${props.auth.user.firstName}`} ></Avatar>}
-                                containerElement={<Link to="/profile"/> } />
-                    <FlatButton style={{color:'#FFFFFF'}} onTouchTap={()=>props.logout()} label='Sign out'/>
-                </div>;
+      <div id="userManagement" style={{ display: 'flex', alignItems: 'center' }}>
+        <FlatButton
+          containerElement={<Link to="/" />}
+          label='Home' />
+        <FlatButton
+          containerElement={<Link to="/map" />}
+          label='Job Map' />
+        <FlatButton style={{ color: '#FFFFFF' }} label={props.auth.user.firstName}
+          secondary={true}
+          icon={<Avatar size={30} src={`https://robohash.org/${props.auth.user.firstName}`} ></Avatar>}
+          containerElement={<Link to="/profile" />} />
+        <FlatButton style={{ color: '#FFFFFF' }} onTouchTap={() => props.logout()} label='Sign out' />
+      </div>;
   } else {
     AccountManagement =
-                <div id="userManagement" style={{display: 'flex', alignItems: 'center'}}>
-                    <FlatButton style={{color:'#FFFFFF'}} href="/google" label='Sign in'/>
-                </div>;
+      <div id="userManagement" style={{ display: 'flex', alignItems: 'center' }}>
+        <FlatButton style={{ color: '#FFFFFF' }} href="/google" label='Sign in' />
+      </div>;
   }
 
   return (
@@ -53,8 +53,8 @@ const Toolbar = (props) => {
       onTitleTouchTap={handleTouchTap}
       iconClassNameRight="muidocs-icon-navigation-expand-more">
       {AccountManagement}
-      </AppBar>
+    </AppBar>
   );
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Toolbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);
