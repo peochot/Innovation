@@ -12,3 +12,4 @@ yarn.lock
 .tern-project
 .fusebox
 *.swp
+.DS_Store

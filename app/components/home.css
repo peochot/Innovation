@@ -1,0 +1,243 @@
+/*@import url('https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet');*/
+
+html,
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #424242;
+}
+
+a:-webkit-any-link {
+  color: #424242;
+  text-decoration: none;
+}
+
+.v-home {
+  background: linear-gradient(rgba(46, 171, 250, 0.5), rgba(46, 171, 250, 0.5)), url(./images/body-bg.png) no-repeat center center;
+  background-size: cover;
+  background-position: top;
+  -webkit-animation: slide 10s ease;
+  /*animation-iteration-count: infinite;*/
+  transform: translate3d(0, 0, 0);
+  margin-top: -64px;
+  height: 100vh;
+}
+
+@media screen and (max-width: 1000px) {
+  .v-home {
+    background-size: cover;
+  }
+}
+
+.v-home:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /*background: rgba(0, 0, 0, .4)*/
+  /*background: rgba(46, 171, 250, 0.75);*/
+}
+
+@-webkit-keyframes slide {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
+
+.btn {
+  background: rgb(0, 188, 212);
+  color: white;
+  text-decoration: none;
+  padding: 10px 40px;
+  margin: 20px 0;
+  display: inline-block;
+  border-radius: 0px;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: white;
+  color: rgb(0, 188, 212);
+  border: solid 1px;
+  border-color: rgb(0, 188, 212);
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-flex-vertical-center {
+  align-items: center;
+}
+
+.u-flex-horizon-center {
+  justify-content: center;
+}
+
+.u-flex-space-between {
+  justify-content: space-between;
+}
+
+.v-home .c-banner {
+  padding-left: 5em;
+  /* max-width: 310px; */
+  z-index: 101;
+  position: relative;
+  height: 100vh;
+}
+
+.v-home .c-banner h1 {
+  font-size: 50px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.v-home .c-banner .card-view {
+  padding: 2em;
+  width: 20em;
+  height: 12em;
+  transition: 0.3s ease-in-out;
+}
+
+.v-home .c-banner .card-view:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, .5);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.v-home .c-banner .card-view:hover h1 {
+  color: #424242;
+}
+
+.c-about-us {
+  background-color: white;
+  background-size: 200%;
+  background-repeat: no-repeat;
+  color: #424242;
+  text-align: center;
+  flex-direction: column;
+  width: 100%;
+  height: 50%;
+  padding: 7em 0em;
+}
+
+.c-about-us p {
+  padding: 0 10em;
+  line-height: 2em;
+}
+
+.c-about-us h1 {
+  font-size: 3em;
+  /*padding: 1em;*/
+}
+
+.c-features {
+  background: linear-gradient(rgba(46, 171, 250, 0.75), rgba(46, 171, 250, 0.85)), url(./images/body-bg.png) no-repeat center center;
+  padding: 1em;
+  flex-direction: column;
+  color: white;
+}
+
+.c-features h1 {
+  font-size: 3em;
+  padding: 1em;
+}
+
+.c-features .c-feature-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  text-align: center;
+  /*background-color: #E9EBEE;*/
+}
+
+.c-feature-item{
+  padding: 1em;
+  margin: 0.5em;
+  width: 80%;
+  height: 15em;
+  background-color: white;
+  transition: 0.3s ease-in-out;
+}
+
+.c-feature-item:hover {
+  transform: translateY(-2px);
+  /*background: rgba(255, 255, 255, 1);*/
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.c-feature-img{
+  width: 20%;
+  height: auto;
+  object-fit: cover;
+}
+
+.c-feature-description{
+  width: 65%;
+  color: #424242;
+}
+
+.u-flex-item-30 {
+  /*flex-basis: 25%;*/
+  background-color: white;
+  width: 25%;
+  height: auto;
+  margin: 1em;
+  padding: 1.5em;
+  transition: 0.3s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, .5);
+}
+
+.u-flex-item-30:hover {
+  transform: translateY(-2px);
+  /*background: rgba(255, 255, 255, .5);*/
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.u-flex-item-30 img {
+  object-fit: fill;
+  max-width: 70%;
+  height: auto;
+}
+
+.u-flex-column {
+  flex-direction: column;
+}
+
+.u-flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.c-members {
+  background-color: #f2f2f2;
+}
+
+.c-members .c-members-container {
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+  overflow: scroll;
+}
+
+.c-members .c-members-container .u-flex-item-30 {
+  min-width: 10em;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.c-footer{
+  height: 5em;
+  text-align: center;
+}

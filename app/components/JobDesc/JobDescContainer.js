@@ -28,6 +28,20 @@ const mapDispatchToProps = (dispatch) => ({
     addComment: (jobId, comment) => dispatch(addCommentToCompany(jobId, comment))
 })
 
+const styles = {
+    iconStyle: {
+        backgroundColor: 'rgb(0, 188, 212)',
+        color: '#ffffff',
+        width: '1.5em',
+        height: '1.5em',
+        borderRadius: '50%',
+        textAlign: 'center',
+        lineHeight: '1.5',
+        margin: '10px 15px',
+        verticalAlign: 'middle'
+    }
+};
+
 class JobDescContainer extends React.Component {
 
     constructor(props) {
@@ -44,7 +58,7 @@ class JobDescContainer extends React.Component {
     }
 
     componentDidMount() {
-        
+
     }
 
     componentWillReceiveProps(newProps) {
@@ -85,21 +99,28 @@ class JobDescContainer extends React.Component {
     render() {
         const { handleActive, handleApply } = this;
         const { jobInfo } = this.props.jobDesc;
+        // console.log("object", jobInfo.description);
         return (
-            <div>
+            <div style={{ margin: '1em' }}>
                 <ApplyForm />
                 <Card>
-                    <CardHeader
+                    {/*<CardHeader
                         title={jobInfo.title}
                         subtitle={jobInfo.company}
-                    />
+                    />*/}
+                    <div style={{ padding: '1em 0 0 1em' }}>
+                        <h2>{jobInfo.title}</h2>
+                        <h4>From: {jobInfo.company}</h4>
+                    </div>
                     <CardText>
                         <Tabs>
                             <Tab
                                 label="Job Description"
                                 onActive={handleActive}
                                 icon={<FontIcon className="material-icons">work</FontIcon>} >
-                                <div>
+
+                                <div style={{ whiteSpace: 'pre-line' }}>
+
                                     <p>
                                         {jobInfo.description}
                                     </p>
@@ -111,22 +132,20 @@ class JobDescContainer extends React.Component {
                                 onActive={handleActive}
                                 icon={<FontIcon className="material-icons">business</FontIcon>} >
                                 <div>
-                                    <p>Address<FontIcon className="material-icons">location</FontIcon></p>
-                                    <p> {jobInfo.address} </p>
-                                    <p> Website<FontIcon className="material-icons">link</FontIcon></p>
-                                    <p> {jobInfo.website || "No website found"}</p>
-                                    <p> Contact person <FontIcon className="material-icons">message</FontIcon></p>
-                                    <p>{jobInfo.email} </p>
+                                    <p><FontIcon className="material-icons" style={styles.iconStyle}>location_on</FontIcon>{jobInfo.address}</p>
+                                    {/*<p> {jobInfo.address} </p>*/}
+                                    <p><FontIcon className="material-icons" style={styles.iconStyle}>web</FontIcon>{jobInfo.website || "No website found"}</p>
+                                    {/*<p> {jobInfo.website || "No website found"}</p>*/}
+                                    <p><FontIcon className="material-icons" style={styles.iconStyle}>email</FontIcon>{jobInfo.email}</p>
+                                    {/*<p>{jobInfo.email} </p>*/}
                                 </div>
                             </Tab>
                             <Tab
                                 label="Comment"
                                 onActive={handleActive}
-                                icon={<FontIcon className="material-icons">work</FontIcon>} >
+                                icon={<FontIcon className="material-icons">comment</FontIcon>} >
                                 <div>
-                                    {
-                                        jobInfo.comments.map(comment => <JobDescComment jobComment={comment} />)
-                                    }
+                                    {jobInfo.comments.map(comment => <JobDescComment jobComment={comment} />)}
                                     <TextField
                                         value={this.state.commentInput}
                                         onChange={this.onCommentChange}
