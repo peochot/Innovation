@@ -8,33 +8,13 @@ import './home.css';
 
 class Home extends Component {
 
-  /*featureItem() {
-    const features = [
-      { title: 'Job map', img: 'job-map.png', link: '/map' },
-      { title: 'Easy Sign in', img: 'one-click.png', link: '/google' },
-      { title: 'Material Design', img: 'material-ui.png', link: '/' },
-    ]
-
-    const myFeatures = features.map(item => {
-      return (
-        <div className="u-flex-item-30 u-flex u-flex-column u-flex-vertical-center">
-          <a href="{item.link}">
-            <img src="./images/{item.img}"></img>
-            <h2>{item.title}</h2>
-          </a>
-        </div>
-      )
-    })
-    return myFeatures;
-  }*/
-
   render() {
     const features = [
       { title: 'Easy Sign in', img: './images/one-click.jpg', link: '/#', description: '' },
       { title: 'Company Feedback', img: './images/feedback.jpg', link: '/#', description: '' },
       { title: 'Material Design', img: './images/material-ui.png', link: '/#', description: '' },
       { title: 'Job Map', img: './images/job-map.png', link: '/map', description: '' },
-      { title: 'Professinal Profile', img: './images/profile.png', link: '/profile', description: '' },
+      { title: 'Professional Profile', img: './images/profile.png', link: '/profile', description: '' },
       { title: 'Email Template', img: './images/template.png', link: '/#', description: '' },
     ]
 
@@ -91,7 +71,7 @@ class Home extends Component {
         {/*About us*/}
         <div className="c-about-us u-flex u-flex-vertical-center u-flex-horizon-center">
           <h1>Smart Career</h1>
-          <p>Smart Career is a group project of student in Helsinki Metropolia. Our goal is to create a novel job market solution, which will help students and job seekers to share their knowledge, experiences, feedback about the jobs and companies. Furthermore, building their own connection and social network.</p>
+          <p>Smart Career is a group project of students in Helsinki Metropolia. Our goal is to create a novel job market service, which will improve the job market community and provide students and job seekers a convenient tool to share their knowledge, experiences, feedback about the jobs and companies and build their own connection and social network.</p>
         </div>
 
         {/*Features*/}
