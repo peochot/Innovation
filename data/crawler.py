@@ -139,9 +139,11 @@ def main():
                 print(job["expire"])
                 job["expire"] = datetime.strptime(job["expire"][:10], "%d.%m.%Y")
             else:
-                job["expire"] = datetime.now()+timedelta(days=1)
+                job["expire"] = datetime.now()+ timedelta(days=1)
             if job["created"]:
                 job["created"] = datetime.strptime(job["created"][:10], "%d.%m.%Y")
+
+            job["last_modified"] = datetime.utcnow()
             jobsCollection.insert(job)
         except Exception as e:
             print(job["expire"])
