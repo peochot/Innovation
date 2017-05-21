@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import {createLetters, toggleTemplateForm} from '../actions';
+import {createLetters, toggleTemplateForm, fetchLetters} from '../actions';
 import { Field, reduxForm } from 'redux-form'
 import {
     TextField
@@ -13,7 +13,8 @@ const mapStateToProps = ({templateFormToggler}) => ({templateFormToggler});
 
 const mapDispatchToProps = dispatch => ({
   createLetters :(body) => dispatch(createLetters(body)),
-  toggleTemplateForm :() => dispatch(toggleTemplateForm())
+  toggleTemplateForm :() => dispatch(toggleTemplateForm()),
+  fetchLetters: () => dispatch(fetchLetters())
 });
 
 const styles = {
@@ -32,7 +33,8 @@ class CreateTemplate extends React.Component {
   handleSubmit = (value) => {
     console.log('handleSubmit', value);
     this.props.createLetters(value);
-    this.forceUpdate();
+    this.props.toggleTemplateForm();
+    this.props.fetchLetters();
   }
 
   render() {

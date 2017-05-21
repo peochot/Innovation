@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import {applyWithFile, toggleApplyForm} from '../actions';
+import {applyWithFile, toggleApplyForm, fetchApplications} from '../actions';
 import { Field, reduxForm } from 'redux-form'
 import {
     TextField
@@ -22,7 +22,8 @@ const mapStateToProps = ({applyFormToggler, letter, jobDesc}) => {
 
 const mapDispatchToProps = dispatch => ({
   applyWithFile :(jobId, body) => dispatch(applyWithFile(jobId, body)),
-  toggleApplyForm :() => dispatch(toggleApplyForm())
+  toggleApplyForm :() => dispatch(toggleApplyForm()),
+  fetchApplications :() => dispatch(fetchApplications())
 });
 
 const adaptFileEventToValue = delegate =>
@@ -68,6 +69,8 @@ class ApplyForm extends React.Component {
     formData.append('letter', this.state.emailBody);
     formData.append('file', fileContainer.file);
     this.props.applyWithFile(this.props.jobDesc.jobInfo._id, formData);
+    this.props.toggleApplyForm();
+    this.props.fetchApplications();
   }
 
   handleChange = (e) => {
